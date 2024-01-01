@@ -1,0 +1,66 @@
+[tool.poetry]
+name = "PyBMKG"
+version = "0.1.0"
+description = "Python BMKG API Wrapper"
+authors = ["Kira <kiraware@github.com>"]
+packages = [
+    { include = "*", from = "src"}
+]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/kiraware/PyBMKG#readme"
+repository = "https://github.com/kiraware/PyBMKG"
+keywords = ["bmkg", "api"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.4.4"
+pytest-cov = "^4.1.0"
+black = "^23.12.1"
+mypy = "^1.8.0"
+bandit = "^1.7.6"
+docformatter = "^1.7.5"
+ruff = "^0.1.9"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+backend-path = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-vvv"
+testpaths = "tests"
+
+[tool.black]
+line_length = 88
+target_version = ['py310', 'py311', 'py312']
+
+[tool.isort]
+profile = "black"
+src_paths = ["src", "tests"]
+
+[tool.ruff]
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    "venv",
+]
+ignore = []
+line-length = 88
+select = [
+    "E",
+    "F",
+    "W",
+    "I001",
+]
+src = ["src", "tests"]
+
+[mypy]
+files = ["src"]
+strict_optional = false
