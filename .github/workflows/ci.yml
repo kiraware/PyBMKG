@@ -16,6 +16,9 @@ jobs:
       matrix:
         python-version: ["3.11", "3.12"]
         os: [ubuntu-latest, macos-latest, windows-latest]
+    defaults:
+      run:
+        shell: bash
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout source code
