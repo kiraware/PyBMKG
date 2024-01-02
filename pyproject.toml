@@ -13,7 +13,7 @@ repository = "https://github.com/kiraware/PyBMKG"
 keywords = ["bmkg", "api"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.4.4"
