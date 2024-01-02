@@ -37,5 +37,17 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: Install library
         run: poetry install --no-interaction
+      - name: Lint with ruff
+        run: poetry run ruff check src
+      - name: Check code security with bandit
+        run: poetry run bandit -r src
+      - name: Typing with mypy
+        run: poetry run mypy --check src
+      - name: Doc format with docformatter
+        run: poetry run docformatter --check --black -r src
+      - name: Sort import with isort
+        run: poetry run isort --check src tests
+      - name: Format with black
+        run: poetry run black --check src tests
       - name: Test with pytest
         run: poetry run pytest tests --cov=src
