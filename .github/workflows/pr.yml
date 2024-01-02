@@ -37,37 +37,25 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ matrix.poetry-version }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
       - name: Install library
         run: poetry install --no-interaction
+      - name: Activate virtual environment
+        run: source $VENV
       - name: Lint with ruff
-        run: |
-          source $VENV
-          poetry run ruff check src
+        run: poetry run ruff check src
       - name: Check code security with bandit
-        run: |
-          source $VENV
-          poetry run bandit -r src
+        run: poetry run bandit -r src
       - name: Typing with mypy
-        run: |
-          source $VENV
-          poetry run mypy --check src
+        run: poetry run mypy --check src
       - name: Doc format with docformatter
-        run: |
-          source $VENV
-          poetry run docformatter --check --black -r src
+        run: poetry run docformatter --check --black -r src
       - name: Sort import with isort
-        run: |
-          source $VENV
-          poetry run isort --check src tests
+        run: poetry run isort --check src tests
       - name: Format with black
-        run: |
-          source $VENV
-          poetry run black --check src tests
+        run: poetry run black --check src tests
       - name: Test with pytest
-        run: |
-          source $VENV
-          poetry run pytest tests --cov=src
+        run: poetry run pytest tests --cov=src
