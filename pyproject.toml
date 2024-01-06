@@ -15,6 +15,7 @@ keywords = ["bmkg", "api"]
 [tool.poetry.dependencies]
 python = "^3.11"
 aiohttp = "^3.9.1"
+defusedxml = "^0.7.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"
@@ -24,8 +25,8 @@ mypy = "^1.8.0"
 bandit = "^1.7.6"
 docformatter = "^1.7.5"
 ruff = "^0.1.9"
-isort = "^5.13.2"
 pytest-asyncio = "^0.23.3"
+poethepoet = "^0.24.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -35,6 +36,17 @@ backend-path = ["src"]
 [tool.pytest.ini_options]
 addopts = "-vvv"
 testpaths = "tests"
+asyncio_mode = "auto"
+
+[tool.poe.tasks]
+ruff = "ruff --fix src tests"
+bandit = "bandit -r src tests"
+mypy = "mypy --check src"
+lint = ["ruff", "bandit", "mypy"]
+docformatter = "docformatter --in-place --black -r src tests"
+black = "black src tests"
+format = ["docformatter", "black"]
+test = "pytest tests --cov=src"
 
 [tool.black]
 line_length = 88
