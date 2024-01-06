@@ -52,7 +52,7 @@ jobs:
       - name: Typing with mypy
         run: poetry run mypy --check src
       - name: Doc format with docformatter
-        run: poetry run docformatter --check --black -r src tests
+        run: poetry run docformatter --check src tests
       - name: Format with black
         run: poetry run black --check src tests
       - name: Test with pytest
