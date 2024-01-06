@@ -54,6 +54,7 @@ repos:
             "88",
             --wrap-descriptions,
             "88",
+            --black,
             src,
             tests,
           ]

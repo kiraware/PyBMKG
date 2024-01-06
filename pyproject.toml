@@ -43,7 +43,7 @@ ruff = "ruff --fix src tests"
 bandit = "bandit -r src tests"
 mypy = "mypy --check src"
 lint = ["ruff", "bandit", "mypy"]
-docformatter = "docformatter --in-place --black -r src tests"
+docformatter = "docformatter --in-place --black src tests"
 black = "black src tests"
 format = ["docformatter", "black"]
 test = "pytest tests --cov=src"
@@ -51,6 +51,13 @@ test = "pytest tests --cov=src"
 [tool.black]
 line_length = 88
 target_version = ['py311', 'py312']
+
+[tool.docformatter]
+recursive = true
+pre-summary-newline = true
+make-summary-multi-line = true
+wrap-summaries = 88
+wrap-descriptions = 88
 
 [tool.isort]
 profile = "black"
