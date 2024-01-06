@@ -24,13 +24,6 @@ repos:
           - "--config"
           - "./pyproject.toml"
 
-  # isort - sort import
-  - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
-    hooks:
-      - id: isort
-        name: isort (python)
-
   # ruff - linting
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: "v0.1.9"
