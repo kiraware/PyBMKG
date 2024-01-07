@@ -48,7 +48,7 @@ jobs:
       - name: Lint with ruff
         run: poetry run ruff check src tests
       - name: Check code security with bandit
-        run: poetry run bandit -r src tests
+        run: poetry run bandit -r src tests -c pyproject.toml
       - name: Typing with mypy
         run: poetry run mypy --check src
       - name: Doc format with docformatter

@@ -65,10 +65,7 @@ repos:
     hooks:
       - id: bandit
         name: bandit
-        exclude: ^tests/
-        args:
-          - -r
-          - src
+        args: [-r, src, tests, -c, pyproject.toml]
 
   - repo: local
     hooks:

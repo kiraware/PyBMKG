@@ -40,13 +40,16 @@ asyncio_mode = "auto"
 
 [tool.poe.tasks]
 ruff = "ruff --fix src tests"
-bandit = "bandit -r src tests"
+bandit = "bandit -r src tests -c pyproject.toml"
 mypy = "mypy --check src"
 lint = ["ruff", "bandit", "mypy"]
 docformatter = "docformatter --in-place src tests"
 black = "black src tests"
 format = ["docformatter", "black"]
 test = "pytest tests --cov=src"
+
+[tool.bandit.assert_used]
+skips = ["*_test.py", "*test_*.py"]
 
 [tool.black]
 line_length = 88
