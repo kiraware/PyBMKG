@@ -36,7 +36,7 @@ class Province(Enum):
     `SUMATERA_SELATAN` is `"SumateraSelatan"`,
     `SUMATERA_UTARA` is `"SumateraUtara"`, `INDONESIA` is `"Indonesia"`
 
-    `INDONESIA` is the country name
+    Note `INDONESIA` is the country name
     """
 
     ACEH = "Aceh"
