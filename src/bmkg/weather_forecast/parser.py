@@ -118,8 +118,8 @@ def parse_area_element(element: Element) -> Area:
 
     return Area(
         id,
-        latitude,
-        longitude,
+        float(latitude),
+        float(longitude),
         coordinate,
         type,
         region,

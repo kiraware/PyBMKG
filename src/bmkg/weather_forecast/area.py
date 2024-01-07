@@ -8,8 +8,8 @@ __all__ = ["Area"]
 @dataclass(unsafe_hash=True, slots=True)
 class Area:
     id: str
-    latitude: str
-    longitude: str
+    latitude: float
+    longitude: float
     coordinate: str
     type: str
     region: str
