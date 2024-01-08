@@ -1,4 +1,5 @@
-import asyncio
+from traceback import TracebackException
+from types import TracebackType
 
 from aiohttp import ClientSession
 
@@ -6,20 +7,19 @@ from aiohttp import ClientSession
 class BMKG:
     base_url = "https://data.bmkg.go.id/"
 
-    def __init__(self):
-        self._create_session()
+    def __init__(self) -> None:
+        self._session = ClientSession()
 
-    def __del__(self):
-        try:
-            loop = asyncio.get_event_loop()
-            asyncio.create_task(self._close_session())
-        except RuntimeError:
-            loop = asyncio.new_event_loop()
-            loop.run_until_complete(self._close_session())
+    async def __aenter__(self) -> "BMKG":
+        return self
 
-    async def _close_session(self):
-        if not self.session.closed:
-            await self.session.close()
+    async def __aexit__(
+        self,
+        exc_type: Exception,
+        exc_val: TracebackException,
+        traceback: TracebackType,
+    ) -> None:
+        await self.close()
 
-    def _create_session(self):
-        self.session = ClientSession()
+    async def close(self) -> None:
+        await self._session.close()

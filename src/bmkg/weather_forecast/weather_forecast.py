@@ -9,7 +9,7 @@ class WeatherForecast(BMKG):
     url = "DataMKG/MEWS/DigitalForecast/"
 
     async def get_weather_forecast(self, province: Province) -> WeatherForecastData:
-        response = await self.session.get(
+        response = await self._session.get(
             f"{self.base_url}{self.url}DigitalForecast-{province.value}.xml"
         )
 
