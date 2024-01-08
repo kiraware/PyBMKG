@@ -256,9 +256,12 @@ def parse_datetime_element(element: Element) -> Iterator[datetime]:
         yield datetime.strptime(dt, "%Y%m%d%H%M%S")
 
 
+WeatherForecastData = tuple[Data, Forecast, datetime, dict[Area, list[Weather]]]
+
+
 def parse_weather_forecast_data(
     weather_forecast_data: bytes,
-) -> tuple[Data, Forecast, datetime, dict[Area, list[Weather]]]:
+) -> WeatherForecastData:
     root = fromstring(weather_forecast_data)
 
     data = parse_data_element(root)
@@ -269,7 +272,7 @@ def parse_weather_forecast_data(
     issue_element = forecast_element[0]
     issue = parse_issue_element(issue_element)
 
-    WeatherForecastData = (
+    WeatherForecastParameter = (
         Iterator[datetime]
         | Iterator[Humidity]
         | Iterator[Temperature]
@@ -281,7 +284,7 @@ def parse_weather_forecast_data(
     for area_element in forecast_element.iterfind("area"):
         area = parse_area_element(area_element)
 
-        parameters: dict[str, WeatherForecastData] = {}
+        parameters: dict[str, WeatherForecastParameter] = {}
         for parameter_element in area_element.iterfind("parameter"):
             parameter_id = parameter_element.get("id")
             if parameter_id is None:
@@ -289,7 +292,7 @@ def parse_weather_forecast_data(
                     "id attribute in parameter tag not found"
                 )
 
-            parameter: WeatherForecastData
+            parameter: WeatherForecastParameter
             if (
                 parameter_id == "hu"
                 or parameter_id == "humax"
