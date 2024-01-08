@@ -10,7 +10,7 @@ from xml.etree.ElementTree import Element  # nosec B405
 # remove `type: ignore` if there is a stub for defusedxml
 from defusedxml.ElementTree import fromstring  # type: ignore
 
-from ..enum.weather_forecast import Cardinal, Sexa
+from ..enum.weather_forecast import Cardinal, Sexa, Type
 from ..enum.weather_forecast import Weather as WeatherEnum
 from .area import Area
 from .data import Data
@@ -136,7 +136,7 @@ def parse_area_element(element: Element) -> Area:
         float(latitude),
         float(longitude),
         coordinate,
-        type,
+        Type(type),
         region,
         level,
         description,

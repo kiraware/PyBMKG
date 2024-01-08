@@ -2,7 +2,7 @@ from itertools import chain, repeat
 
 import pytest
 
-from bmkg.enum.weather_forecast import Cardinal, Province, Sexa, Weather
+from bmkg.enum.weather_forecast import Cardinal, Province, Sexa, Type, Weather
 
 expected_cardinal_values = (
     "N",
@@ -77,6 +77,10 @@ expected_sexa_values = (
     "31500",
     "33730",
     "000",
+)
+expected_type_values = (
+    "land",
+    "sea",
 )
 expected_weather_values = (
     0,
@@ -168,6 +172,10 @@ expected_sexa_names = (
     "NORTH_NORTHWEST",
     "VARIABLE",
 )
+expected_type_names = (
+    "LAND",
+    "SEA",
+)
 expected_weather_names = (
     "CLEAR_SKIES",
     "PARTLY_CLOUDY",
@@ -188,29 +196,35 @@ expected_enum_names_or_values = chain(
     expected_cardinal_values,
     expected_province_values,
     expected_sexa_values,
+    expected_type_values,
     expected_weather_values,
     expected_cardinal_names,
     expected_province_names,
     expected_sexa_names,
+    expected_type_names,
     expected_weather_names,
 )
 
 actual_cardinal_values = (member.value for member in Cardinal)
 actual_province_values = (member.value for member in Province)
 actual_sexa_values = (member.value for member in Sexa)
+actual_type_values = (member.value for member in Type)
 actual_weather_values = (member.value for member in Weather)
 actual_cardinal_names = (member.name for member in Cardinal)
 actual_province_names = (member.name for member in Province)
 actual_sexa_names = (member.name for member in Sexa)
+actual_type_names = (member.name for member in Type)
 actual_weather_names = (member.name for member in Weather)
 actual_enum_names_or_values = chain(
     repeat(actual_cardinal_values, len(expected_cardinal_values)),
     repeat(actual_province_values, len(expected_province_values)),
     repeat(actual_sexa_values, len(expected_sexa_values)),
+    repeat(actual_type_values, len(expected_type_values)),
     repeat(actual_weather_values, len(expected_weather_values)),
     repeat(actual_cardinal_names, len(expected_cardinal_names)),
     repeat(actual_province_names, len(expected_province_names)),
     repeat(actual_sexa_names, len(expected_sexa_names)),
+    repeat(actual_type_names, len(expected_type_names)),
     repeat(actual_weather_names, len(expected_weather_names)),
 )
 
@@ -227,7 +241,7 @@ def test_enum_member_is_contained_in_enum_class(
 
 @pytest.mark.parametrize(
     "enum_class, count",
-    ((Cardinal, 17), (Province, 34 + 1), (Sexa, 17 - 1), (Weather, 12 + 2)),
+    ((Cardinal, 17), (Province, 34 + 1), (Sexa, 17 - 1), (Type, 2), (Weather, 12 + 2)),
 )
 def test_enum_member_count(enum_class, count):
     assert len(enum_class) == count

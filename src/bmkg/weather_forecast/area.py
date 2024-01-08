@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from ..enum.weather_forecast import Type
 from .name import Name
 
 __all__ = ["Area"]
@@ -11,7 +12,7 @@ class Area:
     latitude: float
     longitude: float
     coordinate: str
-    type: str
+    type: Type
     region: str
     level: str
     description: str
