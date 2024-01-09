@@ -279,7 +279,9 @@ def parse_weather_forecast_data(weather_forecast_data: bytes) -> WeatherForecast
         if area.type == Type.LAND:
             parameters: WeatherForecastParameters = {}
             for parameter_element in area_element.iterfind("parameter"):
-                parameter_id: WeatherForecastParameterId = parameter_element.get("id")
+                parameter_id: WeatherForecastParameterId | None = parameter_element.get(
+                    "id"
+                )
                 if parameter_id is None:
                     raise WeatherForecastParseError(
                         "id attribute in parameter tag not found"
