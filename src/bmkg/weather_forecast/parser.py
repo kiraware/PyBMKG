@@ -11,6 +11,7 @@ from xml.etree.ElementTree import Element  # nosec B405
 from defusedxml.ElementTree import fromstring  # type: ignore
 
 from .area import Area
+from .coordinate import Coordinate
 from .data import Data
 from .enum import Cardinal, Sexa, Type
 from .enum import Weather as WeatherEnum
@@ -91,10 +92,6 @@ def parse_area_element(element: Element) -> Area:
     if longitude is None:
         raise WeatherForecastParseError("longitude attribute in area tag not found")
 
-    coordinate = element.get("coordinate")
-    if coordinate is None:
-        raise WeatherForecastParseError("coordinate attribute in area tag not found")
-
     type = element.get("type")
     if type is None:
         raise WeatherForecastParseError("type attribute in area tag not found")
@@ -135,9 +132,7 @@ def parse_area_element(element: Element) -> Area:
 
     return Area(
         id,
-        float(latitude),
-        float(longitude),
-        coordinate,
+        Coordinate(float(latitude), float(longitude)),
         Type(type),
         region,
         level,
