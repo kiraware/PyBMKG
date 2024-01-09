@@ -1,6 +1,6 @@
+from collections.abc import Iterator
 from datetime import datetime
 from itertools import chain
-from typing import Iterator
 
 # FIXME
 # Element is used only for typing not parsing
@@ -261,7 +261,7 @@ def parse_datetime_element(element: Element) -> Iterator[datetime]:
         yield datetime.strptime(dt, "%Y%m%d%H%M%S")
 
 
-WeatherForecastData = tuple[Data, Forecast, datetime, dict[Area, list[Weather]]]
+WeatherForecastData = tuple[Data, Forecast, datetime, dict[Area, Iterator[Weather]]]
 
 
 def parse_weather_forecast_data(
@@ -280,7 +280,8 @@ def parse_weather_forecast_data(
     areas = {}
     for area_element in forecast_element.iterfind("area"):
         area = parse_area_element(area_element)
-        weathers = []
+        # if the area type is sea, then the weather is empty
+        weathers: Iterator[Weather] = iter(())
 
         # Only land that has weather, sea doesn't
         if area.type == Type.LAND:
@@ -325,29 +326,29 @@ def parse_weather_forecast_data(
             # for that day, therefore there are only 3 data for 3 days from tmin, tmax,
             # hmin, and hmax. Because the zip() function will stop at the smallest data
             # length, therefore we need to multiply the 3 data by 4 to get 12
-            for dt, weather, t, tmix, tmax, h, hmin, hmax, wd, ws in zip(
-                parameters["datetime"],
-                parameters["weather"],
-                parameters["t"],
-                chain.from_iterable(
-                    [(val, val, val, val) for val in parameters["tmin"]]
-                ),
-                chain.from_iterable(
-                    [(val, val, val, val) for val in parameters["tmax"]]
-                ),
-                parameters["hu"],
-                chain.from_iterable(
-                    [(val, val, val, val) for val in parameters["humin"]]
-                ),
-                chain.from_iterable(
-                    [(val, val, val, val) for val in parameters["humax"]]
-                ),
-                parameters["wd"],
-                parameters["ws"],
-            ):
-                weathers.append(
-                    Weather(dt, weather, t, tmix, tmax, h, hmin, hmax, wd, ws)
+            weathers = (
+                Weather(dt, weather, t, tmix, tmax, h, hmin, hmax, wd, ws)
+                for dt, weather, t, tmix, tmax, h, hmin, hmax, wd, ws in zip(
+                    parameters["datetime"],
+                    parameters["weather"],
+                    parameters["t"],
+                    chain.from_iterable(
+                        [(val, val, val, val) for val in parameters["tmin"]]
+                    ),
+                    chain.from_iterable(
+                        [(val, val, val, val) for val in parameters["tmax"]]
+                    ),
+                    parameters["hu"],
+                    chain.from_iterable(
+                        [(val, val, val, val) for val in parameters["humin"]]
+                    ),
+                    chain.from_iterable(
+                        [(val, val, val, val) for val in parameters["humax"]]
+                    ),
+                    parameters["wd"],
+                    parameters["ws"],
                 )
+            )
 
         areas[area] = weathers
 
