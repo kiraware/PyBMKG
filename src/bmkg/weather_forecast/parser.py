@@ -14,6 +14,7 @@ from .area import Area
 from .data import Data
 from .enum import Cardinal, Sexa, Type
 from .enum import Weather as WeatherEnum
+from .exception import WeatherForecastParseError
 from .forecast import Forecast
 from .humidity import Humidity
 from .name import Name
@@ -29,7 +30,6 @@ from .wind_direction import WindDirection
 from .wind_speed import WindSpeed
 
 __all__ = [
-    "WeatherForecastParseError",
     "parse_data_element",
     "parse_forecast_element",
     "parse_issue_element",
@@ -42,10 +42,6 @@ __all__ = [
     "parse_datetime_element",
     "parse_weather_forecast_data",
 ]
-
-
-class WeatherForecastParseError(Exception):
-    pass
 
 
 def parse_data_element(element: Element) -> Data:
