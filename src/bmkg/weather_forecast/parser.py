@@ -24,6 +24,7 @@ from .types import (
     WeatherForecastParameters,
 )
 from .weather import Weather
+from .weather_forecast_data import WeatherForecastData
 from .wind_direction import WindDirection
 from .wind_speed import WindSpeed
 
@@ -261,12 +262,7 @@ def parse_datetime_element(element: Element) -> Iterator[datetime]:
         yield datetime.strptime(dt, "%Y%m%d%H%M%S")
 
 
-WeatherForecastData = tuple[Data, Forecast, datetime, dict[Area, Iterator[Weather]]]
-
-
-def parse_weather_forecast_data(
-    weather_forecast_data: bytes,
-) -> WeatherForecastData:
+def parse_weather_forecast_data(weather_forecast_data: bytes) -> WeatherForecastData:
     root = fromstring(weather_forecast_data)
 
     data = parse_data_element(root)
@@ -352,4 +348,4 @@ def parse_weather_forecast_data(
 
         areas[area] = weathers
 
-    return (data, forecast, issue, areas)
+    return WeatherForecastData(data, forecast, issue, areas)

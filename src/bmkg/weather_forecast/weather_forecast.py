@@ -1,6 +1,7 @@
 from ..bmkg import BMKG
 from ..enum.weather_forecast import Province
-from .parser import WeatherForecastData, parse_weather_forecast_data
+from .parser import parse_weather_forecast_data
+from .weather_forecast_data import WeatherForecastData
 
 __all__ = ["WeatherForecast"]
 
