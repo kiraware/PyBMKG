@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
-from ..enum.weather_forecast import Weather as WeatherEnum
+from .enum import Weather as WeatherEnum
 from .humidity import Humidity
 from .temperature import Temperature
 from .wind_direction import WindDirection

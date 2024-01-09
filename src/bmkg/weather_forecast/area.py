@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from ..enum.weather_forecast import Type
+from .enum import Type
 from .name import Name
 
 __all__ = ["Area"]

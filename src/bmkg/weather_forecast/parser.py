@@ -10,10 +10,10 @@ from xml.etree.ElementTree import Element  # nosec B405
 # remove `type: ignore` if there is a stub for defusedxml
 from defusedxml.ElementTree import fromstring  # type: ignore
 
-from ..enum.weather_forecast import Cardinal, Sexa, Type
-from ..enum.weather_forecast import Weather as WeatherEnum
 from .area import Area
 from .data import Data
+from .enum import Cardinal, Sexa, Type
+from .enum import Weather as WeatherEnum
 from .forecast import Forecast
 from .humidity import Humidity
 from .name import Name

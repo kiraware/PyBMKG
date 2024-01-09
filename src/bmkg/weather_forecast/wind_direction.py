@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from ..enum.weather_forecast import Cardinal, Sexa
+from .enum import Cardinal, Sexa
 
 __all__ = ["WindDirection"]
 

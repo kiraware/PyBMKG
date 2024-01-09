@@ -1,5 +1,5 @@
 from ..bmkg import BMKG
-from ..enum.weather_forecast import Province
+from .enum import Province
 from .parser import parse_weather_forecast_data
 from .weather_forecast_data import WeatherForecastData
 

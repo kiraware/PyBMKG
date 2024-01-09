@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Iterator, Literal, TypedDict
 
-from ..enum.weather_forecast import Weather
+from .enum import Weather
 from .humidity import Humidity
 from .temperature import Temperature
 from .wind_direction import WindDirection
