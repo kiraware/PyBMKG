@@ -18,6 +18,11 @@ from .forecast import Forecast
 from .humidity import Humidity
 from .name import Name
 from .temperature import Temperature
+from .types import (
+    WeatherForecastParameter,
+    WeatherForecastParameterId,
+    WeatherForecastParameters,
+)
 from .weather import Weather
 from .wind_direction import WindDirection
 from .wind_speed import WindSpeed
@@ -272,14 +277,6 @@ def parse_weather_forecast_data(
     issue_element = forecast_element[0]
     issue = parse_issue_element(issue_element)
 
-    WeatherForecastParameter = (
-        Iterator[datetime]
-        | Iterator[Humidity]
-        | Iterator[Temperature]
-        | Iterator[WeatherEnum]
-        | Iterator[WindDirection]
-        | Iterator[WindSpeed]
-    )
     areas = {}
     for area_element in forecast_element.iterfind("area"):
         area = parse_area_element(area_element)
@@ -287,9 +284,9 @@ def parse_weather_forecast_data(
 
         # Only land that has weather, sea doesn't
         if area.type == Type.LAND:
-            parameters: dict[str, WeatherForecastParameter] = {}
+            parameters: WeatherForecastParameters = {}
             for parameter_element in area_element.iterfind("parameter"):
-                parameter_id = parameter_element.get("id")
+                parameter_id: WeatherForecastParameterId = parameter_element.get("id")
                 if parameter_id is None:
                     raise WeatherForecastParseError(
                         "id attribute in parameter tag not found"
