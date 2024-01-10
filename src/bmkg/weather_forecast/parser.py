@@ -10,8 +10,8 @@ from xml.etree.ElementTree import Element  # nosec B405
 # remove `type: ignore` if there is a stub for defusedxml
 from defusedxml.ElementTree import fromstring  # type: ignore
 
+from ..common.coordinate import Coordinate
 from .area import Area
-from .coordinate import Coordinate
 from .data import Data
 from .enum import Cardinal, Sexa, Type
 from .enum import Weather as WeatherEnum
