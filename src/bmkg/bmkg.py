@@ -1,5 +1,6 @@
 from traceback import TracebackException
 from types import TracebackType
+from typing import Self
 
 from aiohttp import ClientSession
 
@@ -10,7 +11,7 @@ class BMKG:
     def __init__(self) -> None:
         self._session = ClientSession()
 
-    async def __aenter__(self) -> "BMKG":
+    async def __aenter__(self) -> Self:
         return self
 
     async def __aexit__(
