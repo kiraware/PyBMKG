@@ -1,5 +1,8 @@
+from __future__ import annotations
+
 from dataclasses import asdict, dataclass
 from datetime import datetime
+from typing import Self
 
 from ...common.coordinate import Coordinate
 
@@ -15,5 +18,5 @@ class EarthquakeData:
     wilayah: str
 
     @classmethod
-    def from_instance(cls, instance, **kwargs):
+    def from_instance(cls, instance: EarthquakeData, **kwargs) -> Self:
         return cls(**asdict(instance), **kwargs)
