@@ -54,7 +54,7 @@ def parse_latest_earthquake_data(latest_earthquake_data: bytes) -> LatestEarthqu
     dirasakan = latest_earthquake_data_dict["Dirasakan"]
     shakemap = latest_earthquake_data_dict["Shakemap"]
 
-    return LatestEarthquakeData.from_instance(
+    return LatestEarthquakeData.from_earthquake_data(
         earthquake_data,
         potensi=potensi,
         dirasakan=dirasakan,
@@ -72,7 +72,7 @@ def parse_strong_earthquake_data(
         earthquake_data = parse_earthquake_data(strong_earthquake_data_dict)
         potensi = strong_earthquake_data_dict["Potensi"]
 
-        yield StrongEarthquakeData.from_instance(
+        yield StrongEarthquakeData.from_earthquake_data(
             earthquake_data,
             potensi=potensi,
         )
@@ -88,7 +88,7 @@ def parse_felt_earthquake_data(
         earthquake_data = parse_earthquake_data(felt_earthquake_data_dict)
         dirasakan = felt_earthquake_data_dict["Dirasakan"]
 
-        yield FeltEarthquakeData.from_instance(
+        yield FeltEarthquakeData.from_earthquake_data(
             earthquake_data,
             dirasakan=dirasakan,
         )
