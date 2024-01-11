@@ -2,10 +2,12 @@ from datetime import datetime
 from typing import Iterator, Literal, TypedDict
 
 from .enums import Weather
-from .humidity import Humidity
-from .temperature import Temperature
-from .wind_direction import WindDirection
-from .wind_speed import WindSpeed
+from .schemas import (
+    Humidity,
+    Temperature,
+    WindDirection,
+    WindSpeed,
+)
 
 __all__ = [
     "WeatherForecastParameter",

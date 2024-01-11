@@ -11,24 +11,26 @@ from xml.etree.ElementTree import Element  # nosec B405
 from defusedxml.ElementTree import fromstring  # type: ignore
 
 from ..common.coordinate import Coordinate
-from .area import Area
-from .data import Data
 from .enums import Cardinal, Sexa, Type
 from .enums import Weather as WeatherEnum
 from .exception import WeatherForecastParseError
-from .forecast import Forecast
-from .humidity import Humidity
-from .name import Name
-from .temperature import Temperature
+from .schemas import (
+    Area,
+    Data,
+    Forecast,
+    Humidity,
+    Name,
+    Temperature,
+    Weather,
+    WeatherForecastData,
+    WindDirection,
+    WindSpeed,
+)
 from .types import (
     WeatherForecastParameter,
     WeatherForecastParameterId,
     WeatherForecastParameters,
 )
-from .weather import Weather
-from .weather_forecast_data import WeatherForecastData
-from .wind_direction import WindDirection
-from .wind_speed import WindSpeed
 
 __all__ = [
     "parse_data_element",
