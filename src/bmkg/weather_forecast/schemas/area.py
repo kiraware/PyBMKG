@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from ...common.coordinate import Coordinate
+from ...common.schemas import Coordinate
 from ..enums import Type
 from .name import Name
 

@@ -2,7 +2,7 @@ import json
 from collections.abc import Iterator
 from datetime import datetime
 
-from ..common.coordinate import Coordinate
+from ..common.schemas import Coordinate
 from .schemas import (
     EarthquakeData,
     FeltEarthquakeData,

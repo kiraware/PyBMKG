@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Self
 
-from ...common.coordinate import Coordinate
+from ...common.schemas import Coordinate
 
 __all__ = ["EarthquakeData"]
 
