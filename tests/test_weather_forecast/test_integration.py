@@ -9,4 +9,6 @@ async def test_given_provinces_when_request_weather_forecast_then_pass_without_e
     province,
 ):
     async with WeatherForecast() as weather_forecast:
-        await weather_forecast.get_weather_forecast(province)
+        weather_forecast_data = await weather_forecast.get_weather_forecast(province)
+        for weather in weather_forecast_data.weathers.values():
+            list(weather)
