@@ -13,8 +13,8 @@ from defusedxml.ElementTree import fromstring  # type: ignore
 from ..common.coordinate import Coordinate
 from .area import Area
 from .data import Data
-from .enum import Cardinal, Sexa, Type
-from .enum import Weather as WeatherEnum
+from .enums import Cardinal, Sexa, Type
+from .enums import Weather as WeatherEnum
 from .exception import WeatherForecastParseError
 from .forecast import Forecast
 from .humidity import Humidity

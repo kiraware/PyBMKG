@@ -1,7 +1,7 @@
 import pytest
 
 from bmkg.weather_forecast import WeatherForecast
-from bmkg.weather_forecast.enum import Province
+from bmkg.weather_forecast.enums import Province
 
 
 @pytest.mark.parametrize("province", Province)

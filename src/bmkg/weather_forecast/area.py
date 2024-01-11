@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from ..common.coordinate import Coordinate
-from .enum import Type
+from .enums import Type
 from .name import Name
 
 __all__ = ["Area"]
