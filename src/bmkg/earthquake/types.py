@@ -2,19 +2,19 @@ from typing import TypedDict
 
 __all__ = [
     "Shakemap",
-    "EarthquakeDataDict",
-    "FeltEarthquakeDataDict",
-    "LatestEarthquakeDataDict",
-    "StrongEarthquakeDataDict",
-    "InfoFeltEarthquakeDataDict",
-    "InfoLatestEarthquakeDataDict",
-    "InfoStrongEarthquakeDataDict",
+    "EarthquakeData",
+    "FeltEarthquakeData",
+    "LatestEarthquakeData",
+    "StrongEarthquakeData",
+    "InfoFeltEarthquakeData",
+    "InfoLatestEarthquakeData",
+    "InfoStrongEarthquakeData",
 ]
 
 Shakemap = str
 
 
-class EarthquakeDataDict(TypedDict):
+class EarthquakeData(TypedDict):
     Tanggal: str
     Jam: str
     DateTime: str
@@ -26,39 +26,39 @@ class EarthquakeDataDict(TypedDict):
     Wilayah: str
 
 
-class StrongEarthquakeDataDict(EarthquakeDataDict):
+class StrongEarthquakeData(EarthquakeData):
     Potensi: str
 
 
-class FeltEarthquakeDataDict(EarthquakeDataDict):
+class FeltEarthquakeData(EarthquakeData):
     Dirasakan: str
 
 
-class LatestEarthquakeDataDict(EarthquakeDataDict):
+class LatestEarthquakeData(EarthquakeData):
     Potensi: str
     Dirasakan: str
     Shakemap: Shakemap
 
 
-class _StrongEarthquakeDataDict(TypedDict):
-    gempa: list[StrongEarthquakeDataDict]
+class _StrongEarthquakeData(TypedDict):
+    gempa: list[StrongEarthquakeData]
 
 
-class InfoStrongEarthquakeDataDict(TypedDict):
-    Infogempa: _StrongEarthquakeDataDict
+class InfoStrongEarthquakeData(TypedDict):
+    Infogempa: _StrongEarthquakeData
 
 
-class _FeltEarthquakeDataDict(TypedDict):
-    gempa: list[FeltEarthquakeDataDict]
+class _FeltEarthquakeData(TypedDict):
+    gempa: list[FeltEarthquakeData]
 
 
-class InfoFeltEarthquakeDataDict(TypedDict):
-    Infogempa: _FeltEarthquakeDataDict
+class InfoFeltEarthquakeData(TypedDict):
+    Infogempa: _FeltEarthquakeData
 
 
-class _LatestEarthquakeDataDict(TypedDict):
-    gempa: LatestEarthquakeDataDict
+class _LatestEarthquakeData(TypedDict):
+    gempa: LatestEarthquakeData
 
 
-class InfoLatestEarthquakeDataDict(TypedDict):
-    Infogempa: _LatestEarthquakeDataDict
+class InfoLatestEarthquakeData(TypedDict):
+    Infogempa: _LatestEarthquakeData
