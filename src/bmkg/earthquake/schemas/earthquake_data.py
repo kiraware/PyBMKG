@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Self
 
@@ -13,7 +13,7 @@ __all__ = ["EarthquakeData"]
 class EarthquakeData:
     datetime: datetime
     coordinate: Coordinate
-    magnitude: float
+    magnitude: float = field(metadata={"unit": "M"})
     kedalaman: str
     wilayah: str
 
