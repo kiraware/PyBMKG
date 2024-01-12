@@ -2,19 +2,19 @@ from typing import TypedDict
 
 __all__ = [
     "Shakemap",
-    "EarthquakeData",
-    "FeltEarthquakeData",
-    "LatestEarthquakeData",
-    "StrongEarthquakeData",
-    "InfoFeltEarthquakeData",
-    "InfoLatestEarthquakeData",
-    "InfoStrongEarthquakeData",
+    "EarthquakeDict",
+    "FeltEarthquakeDict",
+    "LatestEarthquakeDict",
+    "StrongEarthquakeDict",
+    "InfoFeltEarthquakeDict",
+    "InfoLatestEarthquakeDict",
+    "InfoStrongEarthquakeDict",
 ]
 
 Shakemap = str
 
 
-class EarthquakeData(TypedDict):
+class EarthquakeDict(TypedDict):
     Tanggal: str
     Jam: str
     DateTime: str
@@ -26,39 +26,39 @@ class EarthquakeData(TypedDict):
     Wilayah: str
 
 
-class StrongEarthquakeData(EarthquakeData):
+class StrongEarthquakeDict(EarthquakeDict):
     Potensi: str
 
 
-class FeltEarthquakeData(EarthquakeData):
+class FeltEarthquakeDict(EarthquakeDict):
     Dirasakan: str
 
 
-class LatestEarthquakeData(EarthquakeData):
+class LatestEarthquakeDict(EarthquakeDict):
     Potensi: str
     Dirasakan: str
     Shakemap: Shakemap
 
 
-class _StrongEarthquakeData(TypedDict):
-    gempa: list[StrongEarthquakeData]
+class _StrongEarthquakeDict(TypedDict):
+    gempa: list[StrongEarthquakeDict]
 
 
-class InfoStrongEarthquakeData(TypedDict):
-    Infogempa: _StrongEarthquakeData
+class InfoStrongEarthquakeDict(TypedDict):
+    Infogempa: _StrongEarthquakeDict
 
 
-class _FeltEarthquakeData(TypedDict):
-    gempa: list[FeltEarthquakeData]
+class _FeltEarthquakeDict(TypedDict):
+    gempa: list[FeltEarthquakeDict]
 
 
-class InfoFeltEarthquakeData(TypedDict):
-    Infogempa: _FeltEarthquakeData
+class InfoFeltEarthquakeDict(TypedDict):
+    Infogempa: _FeltEarthquakeDict
 
 
-class _LatestEarthquakeData(TypedDict):
-    gempa: LatestEarthquakeData
+class _LatestEarthquakeDict(TypedDict):
+    gempa: LatestEarthquakeDict
 
 
-class InfoLatestEarthquakeData(TypedDict):
-    Infogempa: _LatestEarthquakeData
+class InfoLatestEarthquakeDict(TypedDict):
+    Infogempa: _LatestEarthquakeDict

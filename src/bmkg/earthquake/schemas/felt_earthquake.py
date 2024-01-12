@@ -6,5 +6,6 @@ __all__ = ["FeltEarthquake"]
 
 
 @dataclass(slots=True)
-class FeltEarthquake(Earthquake):
+class FeltEarthquake:
+    earthquake: Earthquake
     dirasakan: str

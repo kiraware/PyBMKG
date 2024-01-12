@@ -6,5 +6,6 @@ __all__ = ["StrongEarthquake"]
 
 
 @dataclass(slots=True)
-class StrongEarthquake(Earthquake):
+class StrongEarthquake:
+    earthquake: Earthquake
     potensi: str

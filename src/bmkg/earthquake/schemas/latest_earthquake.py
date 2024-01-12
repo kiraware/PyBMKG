@@ -7,7 +7,8 @@ __all__ = ["LatestEarthquake"]
 
 
 @dataclass(slots=True)
-class LatestEarthquake(Earthquake):
+class LatestEarthquake:
+    earthquake: Earthquake
     potensi: str
     dirasakan: str
     shakemap: Shakemap
