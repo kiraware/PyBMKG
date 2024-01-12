@@ -7,11 +7,11 @@ from .data import Data
 from .forecast import Forecast
 from .weather import Weather
 
-__all__ = ["WeatherForecastData"]
+__all__ = ["WeatherForecast"]
 
 
 @dataclass
-class WeatherForecastData:
+class WeatherForecast:
     data: Data
     forecast: Forecast
     issue: datetime

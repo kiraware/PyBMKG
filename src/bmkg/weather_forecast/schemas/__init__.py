@@ -5,7 +5,7 @@ from .humidity import Humidity
 from .name import Name
 from .temperature import Temperature
 from .weather import Weather
-from .weather_forecast_data import WeatherForecastData
+from .weather_forecast import WeatherForecast
 from .wind_direction import WindDirection
 from .wind_speed import WindSpeed
 
@@ -16,7 +16,7 @@ __all__ = [
     "Humidity",
     "Name",
     "Temperature",
-    "WeatherForecastData",
+    "WeatherForecast",
     "Weather",
     "WindDirection",
     "WindSpeed",

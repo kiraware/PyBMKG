@@ -22,7 +22,7 @@ from .schemas import (
     Name,
     Temperature,
     Weather,
-    WeatherForecastData,
+    WeatherForecast,
     WindDirection,
     WindSpeed,
 )
@@ -255,7 +255,7 @@ def parse_datetime_element(element: Element) -> Iterator[datetime]:
         yield datetime.strptime(dt, "%Y%m%d%H%M%S")
 
 
-def parse_weather_forecast_data(weather_forecast_data: bytes) -> WeatherForecastData:
+def parse_weather_forecast_data(weather_forecast_data: bytes) -> WeatherForecast:
     root = fromstring(weather_forecast_data)
 
     data = parse_data_element(root)
@@ -343,4 +343,4 @@ def parse_weather_forecast_data(weather_forecast_data: bytes) -> WeatherForecast
 
         areas[area] = weathers
 
-    return WeatherForecastData(data, forecast, issue, areas)
+    return WeatherForecast(data, forecast, issue, areas)
