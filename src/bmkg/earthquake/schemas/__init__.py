@@ -1,11 +1,11 @@
-from .earthquake_data import EarthquakeData
-from .felt_earthquake_data import FeltEarthquakeData
-from .latest_earthquake_data import LatestEarthquakeData
-from .strong_earthquake_data import StrongEarthquakeData
+from .earthquake import Earthquake
+from .felt_earthquake import FeltEarthquake
+from .latest_earthquake import LatestEarthquake
+from .strong_earthquake import StrongEarthquake
 
 __all__ = [
-    "EarthquakeData",
-    "FeltEarthquakeData",
-    "LatestEarthquakeData",
-    "StrongEarthquakeData",
+    "Earthquake",
+    "FeltEarthquake",
+    "LatestEarthquake",
+    "StrongEarthquake",
 ]

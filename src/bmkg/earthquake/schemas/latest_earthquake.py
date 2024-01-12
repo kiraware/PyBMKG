@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 
 from ..types import Shakemap
-from .earthquake_data import EarthquakeData
+from .earthquake import Earthquake
 
-__all__ = ["LatestEarthquakeData"]
+__all__ = ["LatestEarthquake"]
 
 
 @dataclass(slots=True)
-class LatestEarthquakeData(EarthquakeData):
+class LatestEarthquake(Earthquake):
     potensi: str
     dirasakan: str
     shakemap: Shakemap

@@ -6,11 +6,11 @@ from typing import Self
 
 from ...common.schemas import Coordinate
 
-__all__ = ["EarthquakeData"]
+__all__ = ["Earthquake"]
 
 
 @dataclass(slots=True)
-class EarthquakeData:
+class Earthquake:
     datetime: datetime
     coordinate: Coordinate
     magnitude: float = field(metadata={"unit": "M"})
@@ -18,7 +18,7 @@ class EarthquakeData:
     wilayah: str
 
     @classmethod
-    def from_earthquake_data(cls, earthquake_data: EarthquakeData, **kwargs) -> Self:
+    def from_earthquake_data(cls, earthquake_data: Earthquake, **kwargs) -> Self:
         return cls(
             earthquake_data.datetime,
             earthquake_data.coordinate,

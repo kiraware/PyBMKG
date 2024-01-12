@@ -4,10 +4,10 @@ from datetime import datetime
 
 from ..common.schemas import Coordinate
 from .schemas import (
-    EarthquakeData,
-    FeltEarthquakeData,
-    LatestEarthquakeData,
-    StrongEarthquakeData,
+    Earthquake,
+    FeltEarthquake,
+    LatestEarthquake,
+    StrongEarthquake,
 )
 from .types import (
     EarthquakeDataDict,
@@ -27,7 +27,7 @@ __all__ = [
 ]
 
 
-def parse_earthquake_data(earthquake_data: EarthquakeDataDict) -> EarthquakeData:
+def parse_earthquake_data(earthquake_data: EarthquakeDataDict) -> Earthquake:
     dt = earthquake_data["DateTime"]
     coordinate = earthquake_data["Coordinates"].split(",")
     latitude = coordinate[0]
@@ -36,7 +36,7 @@ def parse_earthquake_data(earthquake_data: EarthquakeDataDict) -> EarthquakeData
     kedalaman = earthquake_data["Kedalaman"]
     wilayah = earthquake_data["Wilayah"]
 
-    return EarthquakeData(
+    return Earthquake(
         datetime.fromisoformat(dt),
         Coordinate(float(latitude), float(longitude)),
         float(magnitude),
@@ -45,7 +45,7 @@ def parse_earthquake_data(earthquake_data: EarthquakeDataDict) -> EarthquakeData
     )
 
 
-def parse_latest_earthquake_data(latest_earthquake_data: bytes) -> LatestEarthquakeData:
+def parse_latest_earthquake_data(latest_earthquake_data: bytes) -> LatestEarthquake:
     data: InfoLatestEarthquakeDataDict = json.loads(latest_earthquake_data)
 
     latest_earthquake_data_dict: LatestEarthquakeDataDict = data["Infogempa"]["gempa"]
@@ -54,7 +54,7 @@ def parse_latest_earthquake_data(latest_earthquake_data: bytes) -> LatestEarthqu
     dirasakan = latest_earthquake_data_dict["Dirasakan"]
     shakemap = latest_earthquake_data_dict["Shakemap"]
 
-    return LatestEarthquakeData.from_earthquake_data(
+    return LatestEarthquake.from_earthquake_data(
         earthquake_data,
         potensi=potensi,
         dirasakan=dirasakan,
@@ -64,7 +64,7 @@ def parse_latest_earthquake_data(latest_earthquake_data: bytes) -> LatestEarthqu
 
 def parse_strong_earthquake_data(
     strong_earthquake_data: bytes,
-) -> Iterator[StrongEarthquakeData]:
+) -> Iterator[StrongEarthquake]:
     data: InfoStrongEarthquakeDataDict = json.loads(strong_earthquake_data)
 
     strong_earthquake_data_dict: StrongEarthquakeDataDict
@@ -72,7 +72,7 @@ def parse_strong_earthquake_data(
         earthquake_data = parse_earthquake_data(strong_earthquake_data_dict)
         potensi = strong_earthquake_data_dict["Potensi"]
 
-        yield StrongEarthquakeData.from_earthquake_data(
+        yield StrongEarthquake.from_earthquake_data(
             earthquake_data,
             potensi=potensi,
         )
@@ -80,7 +80,7 @@ def parse_strong_earthquake_data(
 
 def parse_felt_earthquake_data(
     felt_earthquake_data: bytes,
-) -> Iterator[FeltEarthquakeData]:
+) -> Iterator[FeltEarthquake]:
     data: InfoFeltEarthquakeDataDict = json.loads(felt_earthquake_data)
 
     felt_earthquake_data_dict: FeltEarthquakeDataDict
@@ -88,7 +88,7 @@ def parse_felt_earthquake_data(
         earthquake_data = parse_earthquake_data(felt_earthquake_data_dict)
         dirasakan = felt_earthquake_data_dict["Dirasakan"]
 
-        yield FeltEarthquakeData.from_earthquake_data(
+        yield FeltEarthquake.from_earthquake_data(
             earthquake_data,
             dirasakan=dirasakan,
         )
