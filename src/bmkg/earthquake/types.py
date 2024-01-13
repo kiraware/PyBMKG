@@ -2,19 +2,19 @@ from typing import TypedDict
 
 __all__ = [
     "Shakemap",
-    "EarthquakeDict",
-    "FeltEarthquakeDict",
-    "LatestEarthquakeDict",
-    "StrongEarthquakeDict",
-    "InfoFeltEarthquakeDict",
-    "InfoLatestEarthquakeDict",
-    "InfoStrongEarthquakeDict",
+    "EarthquakeData",
+    "FeltEarthquakeData",
+    "LatestEarthquakeData",
+    "StrongEarthquakeData",
+    "InfoFeltEarthquakeData",
+    "InfoLatestEarthquakeData",
+    "InfoStrongEarthquakeData",
 ]
 
 Shakemap = str
 
 
-class EarthquakeDict(TypedDict):
+class EarthquakeData(TypedDict):
     Tanggal: str
     Jam: str
     DateTime: str
@@ -26,39 +26,39 @@ class EarthquakeDict(TypedDict):
     Wilayah: str
 
 
-class StrongEarthquakeDict(EarthquakeDict):
+class StrongEarthquakeData(EarthquakeData):
     Potensi: str
 
 
-class FeltEarthquakeDict(EarthquakeDict):
+class FeltEarthquakeData(EarthquakeData):
     Dirasakan: str
 
 
-class LatestEarthquakeDict(EarthquakeDict):
+class LatestEarthquakeData(EarthquakeData):
     Potensi: str
     Dirasakan: str
     Shakemap: Shakemap
 
 
-class _StrongEarthquakeDict(TypedDict):
-    gempa: list[StrongEarthquakeDict]
+class _StrongEarthquakeData(TypedDict):
+    gempa: list[StrongEarthquakeData]
 
 
-class InfoStrongEarthquakeDict(TypedDict):
-    Infogempa: _StrongEarthquakeDict
+class InfoStrongEarthquakeData(TypedDict):
+    Infogempa: _StrongEarthquakeData
 
 
-class _FeltEarthquakeDict(TypedDict):
-    gempa: list[FeltEarthquakeDict]
+class _FeltEarthquakeData(TypedDict):
+    gempa: list[FeltEarthquakeData]
 
 
-class InfoFeltEarthquakeDict(TypedDict):
-    Infogempa: _FeltEarthquakeDict
+class InfoFeltEarthquakeData(TypedDict):
+    Infogempa: _FeltEarthquakeData
 
 
-class _LatestEarthquakeDict(TypedDict):
-    gempa: LatestEarthquakeDict
+class _LatestEarthquakeData(TypedDict):
+    gempa: LatestEarthquakeData
 
 
-class InfoLatestEarthquakeDict(TypedDict):
-    Infogempa: _LatestEarthquakeDict
+class InfoLatestEarthquakeData(TypedDict):
+    Infogempa: _LatestEarthquakeData
