@@ -22,7 +22,7 @@ class Earthquake(BMKG):
     async def get_latest_earthquake(self) -> LatestEarthquake:
         response = await self._session.get(f"{self.base_url}{self.url}autogempa.json")
 
-        return parse_latest_earthquake_data(await response.read())
+        return parse_latest_earthquake_data(await response.json())
 
     async def get_latest_earthquake_shakemap(self, shakemap: Shakemap) -> bytes:
         response = await self._session.get(f"{self.base_url}{self.url}{shakemap}")
@@ -34,11 +34,11 @@ class Earthquake(BMKG):
             f"{self.base_url}{self.url}gempaterkini.json"
         )
 
-        return parse_strong_earthquake_data(await response.read())
+        return parse_strong_earthquake_data(await response.json())
 
     async def get_felt_earthquake(self) -> Iterator[FeltEarthquake]:
         response = await self._session.get(
             f"{self.base_url}{self.url}gempadirasakan.json"
         )
 
-        return parse_felt_earthquake_data(await response.read())
+        return parse_felt_earthquake_data(await response.json())

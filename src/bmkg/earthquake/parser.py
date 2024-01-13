@@ -1,4 +1,3 @@
-import json
 from collections.abc import Iterator
 from datetime import datetime
 
@@ -45,11 +44,9 @@ def parse_earthquake_dict(earthquake_dict: EarthquakeDict) -> Earthquake:
     )
 
 
-def parse_latest_earthquake_data(latest_earthquake_data: bytes) -> LatestEarthquake:
-    info_latest_earthquake_dict: InfoLatestEarthquakeDict = json.loads(
-        latest_earthquake_data
-    )
-
+def parse_latest_earthquake_data(
+    info_latest_earthquake_dict: InfoLatestEarthquakeDict,
+) -> LatestEarthquake:
     latest_earthquake_dict: LatestEarthquakeDict = info_latest_earthquake_dict[
         "Infogempa"
     ]["gempa"]
@@ -62,12 +59,8 @@ def parse_latest_earthquake_data(latest_earthquake_data: bytes) -> LatestEarthqu
 
 
 def parse_strong_earthquake_data(
-    strong_earthquake_data: bytes,
+    info_strong_earthquake_dict: InfoStrongEarthquakeDict,
 ) -> Iterator[StrongEarthquake]:
-    info_strong_earthquake_dict: InfoStrongEarthquakeDict = json.loads(
-        strong_earthquake_data
-    )
-
     strong_earthquake_dict: StrongEarthquakeDict
     for strong_earthquake_dict in info_strong_earthquake_dict["Infogempa"]["gempa"]:
         earthquake = parse_earthquake_dict(strong_earthquake_dict)
@@ -76,9 +69,9 @@ def parse_strong_earthquake_data(
         yield StrongEarthquake(earthquake, potensi)
 
 
-def parse_felt_earthquake_data(felt_earthquake_data: bytes) -> Iterator[FeltEarthquake]:
-    info_felt_earthquake_dict: InfoFeltEarthquakeDict = json.loads(felt_earthquake_data)
-
+def parse_felt_earthquake_data(
+    info_felt_earthquake_dict: InfoFeltEarthquakeDict,
+) -> Iterator[FeltEarthquake]:
     felt_earthquake_dict: FeltEarthquakeDict
     for felt_earthquake_dict in info_felt_earthquake_dict["Infogempa"]["gempa"]:
         earthquake = parse_earthquake_dict(felt_earthquake_dict)
