@@ -54,4 +54,4 @@ jobs:
       - name: Format with ruff
         run: poetry run ruff format --check src tests
       - name: Test with pytest
-        run: poetry run pytest tests --cov=src
+        run: poetry run pytest
