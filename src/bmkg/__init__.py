@@ -5,4 +5,3 @@ __all__ = [
     "Earthquake",
     "WeatherForecast",
 ]
-__version__ = "0.1.0"
