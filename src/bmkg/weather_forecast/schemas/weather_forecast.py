@@ -26,4 +26,4 @@ class WeatherForecast:
     data: Data
     forecast: Forecast
     issue: datetime
-    weathers: dict[Area, Iterator[Weather]]
+    weathers: dict[Area, Iterator[Weather] | None]

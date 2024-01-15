@@ -311,7 +311,7 @@ def parse_weather_forecast_data(weather_forecast_data: bytes) -> WeatherForecast
     for area_element in forecast_element.iterfind("area"):
         area = parse_area_element(area_element)
         # if the area type is sea, then the weather is empty
-        weathers: Iterator[Weather] = iter(())
+        weathers: Iterator[Weather] | None = None
 
         # Only land that has weather, sea doesn't
         if area.type == Type.LAND:
