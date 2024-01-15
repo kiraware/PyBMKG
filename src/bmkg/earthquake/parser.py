@@ -24,6 +24,9 @@ __all__ = [
 
 
 def parse_earthquake_data(earthquake_data: EarthquakeData) -> Earthquake:
+    """
+    Parse `EarthquakeData` json and return `Earthquake` schema.
+    """
     dt = earthquake_data["DateTime"]
     coordinate = earthquake_data["Coordinates"].split(",")
     latitude = coordinate[0]
@@ -44,6 +47,9 @@ def parse_earthquake_data(earthquake_data: EarthquakeData) -> Earthquake:
 def parse_latest_earthquake_data(
     info_latest_earthquake_data: InfoLatestEarthquakeData,
 ) -> LatestEarthquake:
+    """
+    Parse `InfoLatestEarthquakeData` json and return `LatestEarthquake` schema.
+    """
     latest_earthquake_data = info_latest_earthquake_data["Infogempa"]["gempa"]
     earthquake = parse_earthquake_data(latest_earthquake_data)
     potensi = latest_earthquake_data["Potensi"]
@@ -56,6 +62,10 @@ def parse_latest_earthquake_data(
 def parse_strong_earthquake_data(
     info_strong_earthquake_data: InfoStrongEarthquakeData,
 ) -> Iterator[StrongEarthquake]:
+    """
+    Parse `InfoStrongEarthquakeData` json and return iterator of `StrongEarthquake`
+    schema.
+    """
     for strong_earthquake_data in info_strong_earthquake_data["Infogempa"]["gempa"]:
         earthquake = parse_earthquake_data(strong_earthquake_data)
         potensi = strong_earthquake_data["Potensi"]
@@ -66,6 +76,9 @@ def parse_strong_earthquake_data(
 def parse_felt_earthquake_data(
     info_felt_earthquake_data: InfoFeltEarthquakeData,
 ) -> Iterator[FeltEarthquake]:
+    """
+    Parse `InfoFeltEarthquakeData` json and return iterator of `FeltEarthquake` schema.
+    """
     for felt_earthquake_data in info_felt_earthquake_data["Infogempa"]["gempa"]:
         earthquake = parse_earthquake_data(felt_earthquake_data)
         dirasakan = felt_earthquake_data["Dirasakan"]

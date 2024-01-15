@@ -48,6 +48,9 @@ __all__ = [
 
 
 def parse_data_element(element: Element) -> Data:
+    """
+    Parse data element tree in xml and return `Data` schema.
+    """
     source = element.get("source")
     if source is None:
         raise WeatherForecastParseError("source attribute in data tag not found")
@@ -62,6 +65,9 @@ def parse_data_element(element: Element) -> Data:
 
 
 def parse_forecast_element(element: Element) -> Forecast:
+    """
+    Parse forecast element tree in xml and return `Forecast` schema.
+    """
     domain = element.get("domain")
     if domain is None:
         raise WeatherForecastParseError("domain attribute in forecast tag not found")
@@ -70,6 +76,9 @@ def parse_forecast_element(element: Element) -> Forecast:
 
 
 def parse_issue_element(element: Element) -> datetime:
+    """
+    Parse issue element tree in xml and return `datetime`.
+    """
     timestamp_element = element.find("timestamp")
     if timestamp_element is None:
         raise WeatherForecastParseError("timestamp tag in issue tag not found")
@@ -82,6 +91,9 @@ def parse_issue_element(element: Element) -> datetime:
 
 
 def parse_area_element(element: Element) -> Area:
+    """
+    Parse area element tree in xml and return `Area` schema.
+    """
     id = element.get("id")
     if id is None:
         raise WeatherForecastParseError("id attribute in area tag not found")
@@ -146,6 +158,9 @@ def parse_area_element(element: Element) -> Area:
 
 
 def parse_humidity_element(element: Element) -> Iterator[Humidity]:
+    """
+    Parse humidity element tree in xml and return iterator of `Humidity` schema.
+    """
     for timerange in element:
         value_element = timerange.find("value")
         if value_element is None:
@@ -161,6 +176,9 @@ def parse_humidity_element(element: Element) -> Iterator[Humidity]:
 
 
 def parse_temperature_element(element: Element) -> Iterator[Temperature]:
+    """
+    Parse temperature element tree in xml and return iterator of `Temperature` schema.
+    """
     for timerange in element:
         value_elements = timerange.findall("value")
         if len(value_elements) < 2:
@@ -180,6 +198,9 @@ def parse_temperature_element(element: Element) -> Iterator[Temperature]:
 
 
 def parse_weather_element(element: Element) -> Iterator[WeatherEnum]:
+    """
+    Parse weather element tree in xml and return iterator of `Weather` enum.
+    """
     for timerange in element:
         value_elements = timerange.find("value")
         if value_elements is None:
@@ -195,6 +216,10 @@ def parse_weather_element(element: Element) -> Iterator[WeatherEnum]:
 
 
 def parse_wind_direction_element(element: Element) -> Iterator[WindDirection]:
+    """
+    Parse wind direction element tree in xml and return iterator of `WindDirection`
+    schema.
+    """
     for timerange in element:
         value_elements = timerange.findall("value")
         if len(value_elements) < 3:
@@ -218,6 +243,9 @@ def parse_wind_direction_element(element: Element) -> Iterator[WindDirection]:
 
 
 def parse_wind_speed_element(element: Element) -> Iterator[WindSpeed]:
+    """
+    Parse wind speed element tree in xml and return iterator of `WindSpeed` schema.
+    """
     for timerange in element:
         value_elements = timerange.findall("value")
         if len(value_elements) < 4:
@@ -245,6 +273,12 @@ def parse_wind_speed_element(element: Element) -> Iterator[WindSpeed]:
 
 
 def parse_datetime_element(element: Element) -> Iterator[datetime]:
+    """
+    Parse datetime element tree in xml and return iterator of `datetime`.
+
+    This parse datetime string found in element tree in the following format
+    `"%Y%m%d%H%M%S"`.
+    """
     for timerange in element:
         dt = timerange.get("datetime")
         if dt is None:
@@ -256,6 +290,13 @@ def parse_datetime_element(element: Element) -> Iterator[datetime]:
 
 
 def parse_weather_forecast_data(weather_forecast_data: bytes) -> WeatherForecast:
+    """
+    Parse weather forecast data element tree in xml and return iterator of
+    `WeatherForecast` schema.
+
+    This control when area type is sea then it has no information regarding weather
+    forecast. Also this use wind speed element tree to get the datetime information.
+    """
     root = fromstring(weather_forecast_data)
 
     data = parse_data_element(root)

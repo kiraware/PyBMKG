@@ -6,6 +6,10 @@ from aiohttp import ClientSession
 
 
 class BMKG:
+    """
+    Base BMKG API wrapper.
+    """
+
     base_url = "https://data.bmkg.go.id/"
 
     def __init__(self) -> None:
