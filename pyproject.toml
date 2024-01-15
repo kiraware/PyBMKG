@@ -60,7 +60,7 @@ exclude = [
     "venv",
 ]
 line-length = 88
-target-version = ['py311', 'py312']
+target-version = "py311"
 select = [
     "E",
     "F",
