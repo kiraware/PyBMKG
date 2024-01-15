@@ -40,11 +40,11 @@ testpaths = ["tests", "src"]
 asyncio_mode = "auto"
 
 [tool.poe.tasks]
-ruff = "ruff --fix src tests"
+ruff = "ruff --fix"
 bandit = "bandit -r src tests -c pyproject.toml"
 mypy = "mypy --check src"
 lint = ["mypy", "bandit", "ruff"]
-format = "ruff format src tests"
+format = "ruff format"
 test = "pytest"
 
 [tool.bandit.assert_used]

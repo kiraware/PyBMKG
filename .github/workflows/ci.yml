@@ -46,12 +46,12 @@ jobs:
       - name: Activate virtual environment
         run: source $VENV
       - name: Lint with ruff
-        run: poetry run ruff check src tests
+        run: poetry run ruff check
       - name: Check code security with bandit
         run: poetry run bandit -r src tests -c pyproject.toml
       - name: Typing with mypy
         run: poetry run mypy --check src
       - name: Format with ruff
-        run: poetry run ruff format --check src tests
+        run: poetry run ruff format --check
       - name: Test with pytest
         run: poetry run pytest
