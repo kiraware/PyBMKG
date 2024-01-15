@@ -20,13 +20,14 @@ defusedxml = "^0.7.1"
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"
 pytest-cov = "^4.1.0"
-black = "^23.12.1"
 mypy = "^1.8.0"
 bandit = "^1.7.6"
-docformatter = "^1.7.5"
 ruff = "^0.1.9"
 pytest-asyncio = "^0.23.3"
 poethepoet = "^0.24.4"
+mkdocs = "^1.5.3"
+mkdocstrings = {extras = ["python"], version = "^0.24.0"}
+mkdocs-material = "^9.5.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -42,30 +43,12 @@ asyncio_mode = "auto"
 ruff = "ruff --fix src tests"
 bandit = "bandit -r src tests -c pyproject.toml"
 mypy = "mypy --check src"
-lint = ["ruff", "bandit", "mypy"]
-docformatter = "docformatter --in-place src tests"
-black = "black src tests"
-format = ["docformatter", "black"]
+lint = ["mypy", "bandit", "ruff"]
+format = "ruff format src tests"
 test = "pytest tests --cov=src"
 
 [tool.bandit.assert_used]
 skips = ["*_test.py", "*test_*.py"]
-
-[tool.black]
-line_length = 88
-target_version = ['py311', 'py312']
-
-[tool.docformatter]
-black = true
-recursive = true
-pre-summary-newline = true
-make-summary-multi-line = true
-wrap-summaries = 88
-wrap-descriptions = 88
-
-[tool.isort]
-profile = "black"
-src_paths = ["src", "tests"]
 
 [tool.ruff]
 exclude = [
@@ -76,15 +59,20 @@ exclude = [
     "dist",
     "venv",
 ]
-ignore = []
 line-length = 88
+target-version = ['py311', 'py312']
 select = [
     "E",
     "F",
     "W",
     "I001",
 ]
+ignore = []
 src = ["src", "tests"]
+
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
 
 [mypy]
 files = ["src"]

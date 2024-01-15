@@ -51,9 +51,7 @@ jobs:
         run: poetry run bandit -r src tests -c pyproject.toml
       - name: Typing with mypy
         run: poetry run mypy --check src
-      - name: Doc format with docformatter
-        run: poetry run docformatter --check src tests
-      - name: Format with black
-        run: poetry run black --check src tests
+      - name: Format with ruff
+        run: poetry run ruff format --check src tests
       - name: Test with pytest
         run: poetry run pytest tests --cov=src
