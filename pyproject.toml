@@ -65,7 +65,7 @@ select = [
     "E",
     "F",
     "W",
-    "I001",
+    "I",
 ]
 ignore = []
 src = ["src", "tests"]
