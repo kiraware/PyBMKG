@@ -49,7 +49,21 @@ __all__ = [
 
 def parse_data_element(element: Element) -> Data:
     """
-    Parse data element tree in xml and return `Data` schema.
+    Parse data element tree in xml.
+
+    Examples:
+    >>> element = fromstring(
+    ...     '<data source="meteofactory" productioncenter="NC Jakarta"></data>'
+    ... )
+    >>> data = parse_data_element(element)
+    >>> data
+    Data(source='meteofactory', productioncenter='NC Jakarta')
+
+    Args:
+        element: an element of data
+
+    Returns:
+        A `Data` schema.
     """
     source = element.get("source")
     if source is None:
@@ -66,7 +80,19 @@ def parse_data_element(element: Element) -> Data:
 
 def parse_forecast_element(element: Element) -> Forecast:
     """
-    Parse forecast element tree in xml and return `Forecast` schema.
+    Parse forecast element tree in xml.
+
+    Examples:
+    >>> element = fromstring('<forecast domain="local"></forecast>')
+    >>> forecast = parse_forecast_element(element)
+    >>> forecast
+    Forecast(domain='local')
+
+    Args:
+        element: an element of forecast
+
+    Returns:
+        A `Forecast` schema.
     """
     domain = element.get("domain")
     if domain is None:
@@ -77,7 +103,29 @@ def parse_forecast_element(element: Element) -> Forecast:
 
 def parse_issue_element(element: Element) -> datetime:
     """
-    Parse issue element tree in xml and return `datetime`.
+    Parse issue element tree in xml.
+
+    Examples:
+    >>> element = fromstring(
+    ...     "<issue>"
+    ...     "<timestamp>20240116032347</timestamp>"
+    ...     "<year>2024</year>"
+    ...     "<month>01</month>"
+    ...     "<day>16</day>"
+    ...     "<hour>03</hour>"
+    ...     "<minute>23</minute>"
+    ...     "<second>47</second>"
+    ...     "</issue>"
+    ... )
+    >>> issue = parse_issue_element(element)
+    >>> issue
+    datetime.datetime(2024, 1, 16, 3, 23, 47)
+
+    Args:
+        element: an element of issue
+
+    Returns:
+        A naive `datetime` object.
     """
     timestamp_element = element.find("timestamp")
     if timestamp_element is None:
@@ -92,7 +140,35 @@ def parse_issue_element(element: Element) -> datetime:
 
 def parse_area_element(element: Element) -> Area:
     """
-    Parse area element tree in xml and return `Area` schema.
+    Parse area element tree in xml.
+
+    Examples:
+    >>> element = fromstring(
+    ...     "<area"
+    ...     ' id="501409"'
+    ...     ' latitude="4.176594"'
+    ...     ' longitude="96.124878"'
+    ...     ' coordinate="96.124878 4.176594"'
+    ...     ' type="land"'
+    ...     ' region=""'
+    ...     ' level="1"'
+    ...     ' description="Aceh Barat"'
+    ...     ' domain="Aceh"'
+    ...     ' tags=""'
+    ...     ">"
+    ...     '<name xml:lang="en_US">Aceh Barat</name>'
+    ...     '<name xml:lang="id_ID">Kab. Aceh Barat</name>'
+    ...     "</area>"
+    ... )
+    >>> area = parse_area_element(element)
+    >>> area
+    Area(id='501409', coordinate=Coordinate(latitude=4.176594, longitude=96.124878), ...
+
+    Args:
+        element: an element of area
+
+    Returns:
+        An `Area` schema.
     """
     id = element.get("id")
     if id is None:
@@ -159,7 +235,31 @@ def parse_area_element(element: Element) -> Area:
 
 def parse_humidity_element(element: Element) -> Iterator[Humidity]:
     """
-    Parse humidity element tree in xml and return iterator of `Humidity` schema.
+    Parse humidity element tree in xml.
+
+    Examples:
+    >>> element = fromstring(
+    ...     '<parameter id="hu" description="Humidity" type="hourly">'
+    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '<value unit="%">95</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '<value unit="%">90</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '<value unit="%">95</value>'
+    ...     "</timerange>"
+    ...     "</parameter>"
+    ... )
+    >>> humidity = parse_humidity_element(element)
+    >>> humidity
+    <generator object parse_humidity_element at ...>
+
+    Args:
+        element: a parameter element that contain humidity
+
+    Returns:
+        An iterator of `Humidity` schema.
     """
     for timerange in element:
         value_element = timerange.find("value")
@@ -177,7 +277,34 @@ def parse_humidity_element(element: Element) -> Iterator[Humidity]:
 
 def parse_temperature_element(element: Element) -> Iterator[Temperature]:
     """
-    Parse temperature element tree in xml and return iterator of `Temperature` schema.
+    Parse temperature element tree in xml.
+
+    Examples:
+    >>> element = fromstring(
+    ...     '<parameter id="t" description="Temperature" type="hourly">'
+    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '<value unit="C">24</value>'
+    ...     '<value unit="F">75.2</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '<value unit="C">28</value>'
+    ...     '<value unit="F">82.4</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '<value unit="C">26</value>'
+    ...     '<value unit="F">78.8</value>'
+    ...     "</timerange>"
+    ...     "</parameter>"
+    ... )
+    >>> temperature = parse_temperature_element(element)
+    >>> temperature
+    <generator object parse_temperature_element at ...>
+
+    Args:
+        element: a parameter element that contain temperature
+
+    Returns:
+        An iterator of `Temperature` schema.
     """
     for timerange in element:
         value_elements = timerange.findall("value")
@@ -199,7 +326,31 @@ def parse_temperature_element(element: Element) -> Iterator[Temperature]:
 
 def parse_weather_element(element: Element) -> Iterator[WeatherEnum]:
     """
-    Parse weather element tree in xml and return iterator of `Weather` enum.
+    Parse weather element tree in xml.
+
+    Examples:
+    >>> element = fromstring(
+    ...     '<parameter id="weather" description="Weather" type="hourly">'
+    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '<value unit="icon">60</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '<value unit="icon">60</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '<value unit="icon">1</value>'
+    ...     "</timerange>"
+    ...     "</parameter>"
+    ... )
+    >>> weather = parse_weather_element(element)
+    >>> weather
+    <generator object parse_weather_element at ...>
+
+    Args:
+        element: a parameter element that contain weather
+
+    Returns:
+        An iterator of `Weather` enum.
     """
     for timerange in element:
         value_elements = timerange.find("value")
@@ -217,8 +368,37 @@ def parse_weather_element(element: Element) -> Iterator[WeatherEnum]:
 
 def parse_wind_direction_element(element: Element) -> Iterator[WindDirection]:
     """
-    Parse wind direction element tree in xml and return iterator of `WindDirection`
-    schema.
+    Parse wind direction element tree in xml.
+
+    Examples:
+    >>> element = fromstring(
+    ...     '<parameter id="wd" description="Wind direction" type="hourly">'
+    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '<value unit="deg">90</value>'
+    ...     '<value unit="CARD">E</value>'
+    ...     '<value unit="SEXA">9000</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '<value unit="deg">157.5</value>'
+    ...     '<value unit="CARD">SSE</value>'
+    ...     '<value unit="SEXA">15730</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '<value unit="deg">0</value>'
+    ...     '<value unit="CARD">VARIABLE</value>'
+    ...     '<value unit="SEXA">000</value>'
+    ...     "</timerange>"
+    ...     "</parameter>"
+    ... )
+    >>> wind_direction = parse_wind_direction_element(element)
+    >>> wind_direction
+    <generator object parse_wind_direction_element at ...>
+
+    Args:
+        element: a parameter element that contain wind direction
+
+    Returns:
+        An iterator of `WindDirection` schema.
     """
     for timerange in element:
         value_elements = timerange.findall("value")
@@ -244,7 +424,40 @@ def parse_wind_direction_element(element: Element) -> Iterator[WindDirection]:
 
 def parse_wind_speed_element(element: Element) -> Iterator[WindSpeed]:
     """
-    Parse wind speed element tree in xml and return iterator of `WindSpeed` schema.
+    Parse wind speed element tree in xml.
+
+    Examples:
+    >>> element = fromstring(
+    ...     '<parameter id="ws" description="Wind speed" type="hourly">'
+    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '<value unit="Kt">5</value>'
+    ...     '<value unit="MPH">5.75389725</value>'
+    ...     '<value unit="KPH">9.26</value>'
+    ...     '<value unit="MS">2.57222222</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '<value unit="Kt">2</value>'
+    ...     '<value unit="MPH">2.3015589</value>'
+    ...     '<value unit="KPH">3.704</value>'
+    ...     '<value unit="MS">1.028888888</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '<value unit="Kt">0</value>'
+    ...     '<value unit="MPH">0</value>'
+    ...     '<value unit="KPH">0</value>'
+    ...     '<value unit="MS">0</value>'
+    ...     "</timerange>"
+    ...     "</parameter>"
+    ... )
+    >>> wind_speed = parse_wind_speed_element(element)
+    >>> wind_speed
+    <generator object parse_wind_speed_element at ...>
+
+    Args:
+        element: a parameter element that contain wind speed
+
+    Returns:
+        An iterator of `WindSpeed` schema.
     """
     for timerange in element:
         value_elements = timerange.findall("value")
@@ -274,10 +487,43 @@ def parse_wind_speed_element(element: Element) -> Iterator[WindSpeed]:
 
 def parse_datetime_element(element: Element) -> Iterator[datetime]:
     """
-    Parse datetime element tree in xml and return iterator of `datetime`.
+    Parse datetime element tree in xml.
 
     This parse datetime string found in element tree in the following format
     `"%Y%m%d%H%M%S"`.
+
+    Examples:
+    >>> element = fromstring(
+    ...     '<parameter id="ws" description="datetime" type="hourly">'
+    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '<value unit="Kt">5</value>'
+    ...     '<value unit="MPH">5.75389725</value>'
+    ...     '<value unit="KPH">9.26</value>'
+    ...     '<value unit="MS">2.57222222</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '<value unit="Kt">2</value>'
+    ...     '<value unit="MPH">2.3015589</value>'
+    ...     '<value unit="KPH">3.704</value>'
+    ...     '<value unit="MS">1.028888888</value>'
+    ...     "</timerange>"
+    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '<value unit="Kt">0</value>'
+    ...     '<value unit="MPH">0</value>'
+    ...     '<value unit="KPH">0</value>'
+    ...     '<value unit="MS">0</value>'
+    ...     "</timerange>"
+    ...     "</parameter>"
+    ... )
+    >>> datetime = parse_datetime_element(element)
+    >>> datetime
+    <generator object parse_datetime_element at ...>
+
+    Args:
+        element: any parameter element that contain datetime with type hourly
+
+    Returns:
+        An iterator of `datetime` object.
     """
     for timerange in element:
         dt = timerange.get("datetime")

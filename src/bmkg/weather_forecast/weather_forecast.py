@@ -17,9 +17,23 @@ class WeatherForecast(BMKG):
         """
         Request weather forecast from weather forecast API.
 
-        Return `WeatherForecastData`
-        schema.
-        """
+        Examples:
+            >>> import asyncio
+            >>> async def main():
+            ...     async with WeatherForecast() as weather_forecast:
+            ...         weather_forecast_data = await weather_forecast.get_weather_forecast(
+            ...             Province.ACEH
+            ...         )
+            ...         print(weather_forecast_data)
+            >>> asyncio.run(main())
+            WeatherForecast(data=Data(source=...)
+
+        Args:
+            A `province` enum instance.
+
+        Returns:
+            A `WeatherForecastData` schema.
+        """  # noqa: E501
         async with self._session.get(
             f"{self.base_url}{self.url}DigitalForecast-{province.value}.xml"
         ) as response:

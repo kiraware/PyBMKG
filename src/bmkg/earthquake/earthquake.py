@@ -27,7 +27,17 @@ class Earthquake(BMKG):
         """
         Request latest earthquake from earthquake API.
 
-        Return `LatestEarthquake` schema.
+        Examples:
+            >>> import asyncio
+            >>> async def main():
+            ...     async with Earthquake() as earthquake:
+            ...         latest_earthquake = await earthquake.get_latest_earthquake()
+            ...         print(latest_earthquake)
+            >>> asyncio.run(main())
+            LatestEarthquake(earthquake=Earthquake(datetime=datetime.datetime(...)
+
+        Returns:
+            A `LatestEarthquake` schema.
         """
         async with self._session.get(
             f"{self.base_url}{self.url}autogempa.json"
@@ -38,7 +48,23 @@ class Earthquake(BMKG):
         """
         Request latest earthquake shakemap from earthquake API.
 
-        Return bytes of shakemap image.
+        Examples:
+            >>> import asyncio
+            >>> async def main():
+            ...     async with Earthquake() as earthquake:
+            ...         latest_earthquake = await earthquake.get_latest_earthquake()
+            ...         shakemap = await earthquake.get_latest_earthquake_shakemap(
+            ...             latest_earthquake.shakemap
+            ...         )
+            ...         print(shakemap)
+            >>> asyncio.run(main())
+            b'...'
+
+        Args:
+            A `shakemap` file name.
+
+        Returns:
+            A bytes of `shakemap` image.
         """
         async with self._session.get(
             f"{self.base_url}{self.url}{shakemap}"
@@ -49,8 +75,18 @@ class Earthquake(BMKG):
         """
         Request strong earthquake that has magnitude 5.0 above from earthquake API.
 
-        Return iterator of fifteen `StrongEarthquake` schema that has magnitude 5.0
-        above.
+        Examples:
+            >>> import asyncio
+            >>> async def main():
+            ...     async with Earthquake() as earthquake:
+            ...         strong_earthquake = await earthquake.get_strong_earthquake()
+            ...         print(strong_earthquake)
+            >>> asyncio.run(main())
+            <generator object parse_strong_earthquake_data at ...>
+
+        Returns:
+            An iterator of fifteen `StrongEarthquake` schema that has magnitude 5.0
+            above.
         """
         async with self._session.get(
             f"{self.base_url}{self.url}gempaterkini.json"
@@ -61,8 +97,17 @@ class Earthquake(BMKG):
         """
         Request felt earthquake from earthquake API.
 
-        Return iterator of fifteen
-        `FeltEarthquake` schema.
+        Examples:
+            >>> import asyncio
+            >>> async def main():
+            ...     async with Earthquake() as earthquake:
+            ...         felt_earthquake = await earthquake.get_felt_earthquake()
+            ...         print(felt_earthquake)
+            >>> asyncio.run(main())
+            <generator object parse_felt_earthquake_data at ...>
+
+        Returns:
+            An iterator of fifteen `FeltEarthquake` schema.
         """
         async with self._session.get(
             f"{self.base_url}{self.url}gempadirasakan.json"
