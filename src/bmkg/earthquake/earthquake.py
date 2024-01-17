@@ -61,7 +61,7 @@ class Earthquake(BMKG):
             b'...'
 
         Args:
-            A `shakemap` file name.
+            shakemap: A `Shakemap` file name.
 
         Returns:
             A bytes of `shakemap` image.

@@ -29,7 +29,7 @@ class WeatherForecast(BMKG):
             WeatherForecast(data=Data(source=...)
 
         Args:
-            A `province` enum instance.
+            province: A `Province` enum symbolic names (members).
 
         Returns:
             A `WeatherForecastData` schema.
