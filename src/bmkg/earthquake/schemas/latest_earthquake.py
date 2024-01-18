@@ -13,8 +13,8 @@ class LatestEarthquake:
 
     Attributes:
         earthquake: earthquake schema.
-        potency: potency of latest earthquake.
-        felt: zone of latest earthquake.
+        potency: potential tsunami or not, and the status of the earthquake felt.
+        felt: area that felt an earthquake on the MMI scale.
         shakemap: shakemap file name of latest earthquake.
     """
 

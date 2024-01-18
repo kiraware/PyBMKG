@@ -12,7 +12,7 @@ class StrongEarthquake:
 
     Attributes:
         earthquake: earthquake schema.
-        potency: potency of latest earthquake.
+        potency: potential tsunami or not, and the status of the earthquake felt.
     """
 
     earthquake: Earthquake

@@ -12,7 +12,7 @@ class FeltEarthquake:
 
     Attributes:
         earthquake: earthquake schema.
-        felt: zone of felt earthquake.
+        felt: area that felt an earthquake on the MMI scale.
     """
 
     earthquake: Earthquake

@@ -56,14 +56,14 @@ def parse_earthquake_data(earthquake_data: EarthquakeData) -> Earthquake:
     latitude = coordinate[0]
     longitude = coordinate[1]
     magnitude = earthquake_data["Magnitude"]
-    depth = earthquake_data["Kedalaman"]
+    depth = earthquake_data["Kedalaman"].split()[0]
     region = earthquake_data["Wilayah"]
 
     return Earthquake(
         datetime.fromisoformat(dt),
         Coordinate(float(latitude), float(longitude)),
         float(magnitude),
-        depth,
+        float(depth),
         region,
     )
 
