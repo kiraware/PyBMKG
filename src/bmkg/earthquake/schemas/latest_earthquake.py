@@ -13,12 +13,12 @@ class LatestEarthquake:
 
     Attributes:
         earthquake: earthquake schema.
-        potensi: potency of latest earthquake.
-        dirasakan: zone of latest earthquake.
+        potency: potency of latest earthquake.
+        felt: zone of latest earthquake.
         shakemap: shakemap file name of latest earthquake.
     """
 
     earthquake: Earthquake
-    potensi: str
-    dirasakan: str
+    potency: str
+    felt: str
     shakemap: Shakemap

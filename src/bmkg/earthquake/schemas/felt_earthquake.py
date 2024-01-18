@@ -12,8 +12,8 @@ class FeltEarthquake:
 
     Attributes:
         earthquake: earthquake schema.
-        dirasakan: zone of felt earthquake.
+        felt: zone of felt earthquake.
     """
 
     earthquake: Earthquake
-    dirasakan: str
+    felt: str

@@ -12,8 +12,8 @@ class StrongEarthquake:
 
     Attributes:
         earthquake: earthquake schema.
-        potensi: potency of latest earthquake.
+        potency: potency of latest earthquake.
     """
 
     earthquake: Earthquake
-    potensi: str
+    potency: str
