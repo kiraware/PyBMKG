@@ -6,7 +6,11 @@ __all__ = ["Data"]
 @dataclass(slots=True)
 class Data:
     """
-    `Data` schema used to store info about `source` and `productioncenter`.
+    A schema used to store info about data.
+
+    Attributes:
+        source: source of a data.
+        productioncenter: production center of a data.
     """
 
     source: str

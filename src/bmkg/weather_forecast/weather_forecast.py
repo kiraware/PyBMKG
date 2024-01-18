@@ -17,6 +17,12 @@ class WeatherForecast(BMKG):
         """
         Request weather forecast from weather forecast API.
 
+        Args:
+            province: A `Province` enum symbolic names (members).
+
+        Returns:
+            A `WeatherForecastData` schema.
+
         Examples:
             >>> import asyncio
             >>> async def main():
@@ -27,12 +33,6 @@ class WeatherForecast(BMKG):
             ...         print(weather_forecast_data)
             >>> asyncio.run(main())
             WeatherForecast(data=Data(source=...)
-
-        Args:
-            province: A `Province` enum symbolic names (members).
-
-        Returns:
-            A `WeatherForecastData` schema.
         """  # noqa: E501
         async with self._session.get(
             f"{self.base_url}{self.url}DigitalForecast-{province.value}.xml"

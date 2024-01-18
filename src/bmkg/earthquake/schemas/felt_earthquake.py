@@ -8,7 +8,11 @@ __all__ = ["FeltEarthquake"]
 @dataclass(slots=True)
 class FeltEarthquake:
     """
-    `FeltEarthquake` schema used to store info about `earthquake` and `dirasakan`.
+    A schema used to store info about felt earthquake.
+
+    Attributes:
+        earthquake: earthquake schema.
+        dirasakan: zone of felt earthquake.
     """
 
     earthquake: Earthquake

@@ -6,11 +6,13 @@ __all__ = ["WindSpeed"]
 @dataclass(slots=True)
 class WindSpeed:
     """
-    `WindSpeed` schema used to store info about wind speed in `knot`, `mph`, `kph`, and
-    `ms`.
+    A schema used to store info about wind speed.
 
-    `knot` has metadata unit `"kn"`, `mph` has metadata unit `"mph"`, `kph` has
-    metadata unit `"km/h"`, and `ms` has metadata unit `"m/s"`.
+    Attributes:
+        knot: knot of a wind speed with kn as its unit.
+        mph: mph of a wind speed with mph as its unit.
+        kph: kph of a wind speed with km/h as its unit.
+        ms: ms of a wind speed with m/s as its unit.
     """
 
     knot: float = field(metadata={"unit": "kn"})

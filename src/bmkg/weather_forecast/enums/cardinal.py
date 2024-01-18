@@ -10,33 +10,44 @@ class Cardinal(Enum):
     """
     An enum class that define valid cardinal direction.
 
-    There are seventeen valid cardinal directions:
-    `NORTH` is `"N"`, `NORTH_NORTHEAST` is `"NNE"`, `NORTHEAST` is `"NE"`,
-    `EAST_NORTHEAST` is `"ENE"`, `EAST` is `"E"`, `EAST_SOUTHEAST` is `"ESE"`,
-    `SOUTHEAST` is `"SE"`, `SOUTH_SOUTHEAST` is `"SSE"`, `SOUTH` is `"S"`,
-    `SOUTH_SOUTHWEST` is `"SSW"`, `SOUTHWEST` is `"SW"`,
-    `WEST_SOUTHWEST` is `"WSW"`, `WEST` is `"W"`, `WEST_NORTHWEST` is `"WNW"`,
-    `NORTHWEST` is `"NW"`, `NORTH_NORTHWEST` is `"NNW"`,
-    `VARIABLE` is `"VARIABLE"`
+    Attributes:
+        NORTH: "N"
+        NORTH_NORTHEAST: "NNE"
+        NORTHEAST: "NE"
+        EAST_NORTHEAST: "ENE"
+        EAST: "E"
+        EAST_SOUTHEAST: "ESE"
+        SOUTHEAST: "SE"
+        SOUTH_SOUTHEAST: "SSE"
+        SOUTH: "S"
+        SOUTH_SOUTHWEST: "SSW"
+        SOUTHWEST: "SW"
+        WEST_SOUTHWEST: "WSW"
+        WEST: "W"
+        WEST_NORTHWEST: "WNW"
+        NORTHWEST: "NW"
+        NORTH_NORTHWEST: "NNW"
+        VARIABLE: "VARIABLE"
 
-    `VARIABLE` direction mean as it's name suggest, the direction can't be
-    determined.
+    Note:
+        `VARIABLE` direction mean as its name suggest, the direction can't be
+        determined.
     """
 
-    NORTH = "N"
-    NORTH_NORTHEAST = "NNE"
-    NORTHEAST = "NE"
-    EAST_NORTHEAST = "ENE"
-    EAST = "E"
-    EAST_SOUTHEAST = "ESE"
-    SOUTHEAST = "SE"
-    SOUTH_SOUTHEAST = "SSE"
-    SOUTH = "S"
-    SOUTH_SOUTHWEST = "SSW"
-    SOUTHWEST = "SW"
-    WEST_SOUTHWEST = "WSW"
-    WEST = "W"
-    WEST_NORTHWEST = "WNW"
-    NORTHWEST = "NW"
-    NORTH_NORTHWEST = "NNW"
-    VARIABLE = "VARIABLE"
+    NORTH: str = "N"
+    NORTH_NORTHEAST: str = "NNE"
+    NORTHEAST: str = "NE"
+    EAST_NORTHEAST: str = "ENE"
+    EAST: str = "E"
+    EAST_SOUTHEAST: str = "ESE"
+    SOUTHEAST: str = "SE"
+    SOUTH_SOUTHEAST: str = "SSE"
+    SOUTH: str = "S"
+    SOUTH_SOUTHWEST: str = "SSW"
+    SOUTHWEST: str = "SW"
+    WEST_SOUTHWEST: str = "WSW"
+    WEST: str = "W"
+    WEST_NORTHWEST: str = "WNW"
+    NORTHWEST: str = "NW"
+    NORTH_NORTHWEST: str = "NNW"
+    VARIABLE: str = "VARIABLE"

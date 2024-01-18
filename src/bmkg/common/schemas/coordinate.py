@@ -6,7 +6,11 @@ __all__ = ["Coordinate"]
 @dataclass(unsafe_hash=True, slots=True)
 class Coordinate:
     """
-    Coordinate schema used to store info about latitude and longitude.
+    A schema used to store info about coordinate.
+
+    Attributes:
+        latitude: latitude of the coordinate.
+        longitude: longitude of the coordinate.
     """
 
     latitude: float

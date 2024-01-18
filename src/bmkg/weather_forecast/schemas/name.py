@@ -6,8 +6,11 @@ __all__ = ["Name"]
 @dataclass(unsafe_hash=True, slots=True)
 class Name:
     """
-    `Name` schema used to store info about name of an `Area` either in `en_US` and
-    `id_ID`.
+    A schema used to store info about name of an area.
+
+    Attributes:
+        en_US: name of an area in english.
+        id_ID: name of an area in indonesian.
     """
 
     en_US: str

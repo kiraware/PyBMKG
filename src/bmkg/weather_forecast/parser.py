@@ -51,6 +51,15 @@ def parse_data_element(element: Element) -> Data:
     """
     Parse data element tree in xml.
 
+    Args:
+        element: an element of data
+
+    Returns:
+        A `Data` schema.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
+
     Examples:
     >>> element = fromstring(
     ...     '<data source="meteofactory" productioncenter="NC Jakarta"></data>'
@@ -58,12 +67,6 @@ def parse_data_element(element: Element) -> Data:
     >>> data = parse_data_element(element)
     >>> data
     Data(source='meteofactory', productioncenter='NC Jakarta')
-
-    Args:
-        element: an element of data
-
-    Returns:
-        A `Data` schema.
     """
     source = element.get("source")
     if source is None:
@@ -82,17 +85,20 @@ def parse_forecast_element(element: Element) -> Forecast:
     """
     Parse forecast element tree in xml.
 
-    Examples:
-    >>> element = fromstring('<forecast domain="local"></forecast>')
-    >>> forecast = parse_forecast_element(element)
-    >>> forecast
-    Forecast(domain='local')
-
     Args:
         element: an element of forecast
 
     Returns:
         A `Forecast` schema.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
+
+    Examples:
+    >>> element = fromstring('<forecast domain="local"></forecast>')
+    >>> forecast = parse_forecast_element(element)
+    >>> forecast
+    Forecast(domain='local')
     """
     domain = element.get("domain")
     if domain is None:
@@ -104,6 +110,15 @@ def parse_forecast_element(element: Element) -> Forecast:
 def parse_issue_element(element: Element) -> datetime:
     """
     Parse issue element tree in xml.
+
+    Args:
+        element: an element of issue
+
+    Returns:
+        A naive `datetime` object.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
 
     Examples:
     >>> element = fromstring(
@@ -120,12 +135,6 @@ def parse_issue_element(element: Element) -> datetime:
     >>> issue = parse_issue_element(element)
     >>> issue
     datetime.datetime(2024, 1, 16, 3, 23, 47)
-
-    Args:
-        element: an element of issue
-
-    Returns:
-        A naive `datetime` object.
     """
     timestamp_element = element.find("timestamp")
     if timestamp_element is None:
@@ -141,6 +150,15 @@ def parse_issue_element(element: Element) -> datetime:
 def parse_area_element(element: Element) -> Area:
     """
     Parse area element tree in xml.
+
+    Args:
+        element: an element of area
+
+    Returns:
+        An `Area` schema.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
 
     Examples:
     >>> element = fromstring(
@@ -163,12 +181,6 @@ def parse_area_element(element: Element) -> Area:
     >>> area = parse_area_element(element)
     >>> area
     Area(id='501409', coordinate=Coordinate(latitude=4.176594, longitude=96.124878), ...
-
-    Args:
-        element: an element of area
-
-    Returns:
-        An `Area` schema.
     """
     id = element.get("id")
     if id is None:
@@ -237,6 +249,15 @@ def parse_humidity_element(element: Element) -> Iterator[Humidity]:
     """
     Parse humidity element tree in xml.
 
+    Args:
+        element: a parameter element that contain humidity
+
+    Yields:
+        Some `Humidity` schema.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
+
     Examples:
     >>> element = fromstring(
     ...     '<parameter id="hu" description="Humidity" type="hourly">'
@@ -254,12 +275,6 @@ def parse_humidity_element(element: Element) -> Iterator[Humidity]:
     >>> humidity = parse_humidity_element(element)
     >>> humidity
     <generator object parse_humidity_element at ...>
-
-    Args:
-        element: a parameter element that contain humidity
-
-    Returns:
-        An iterator of `Humidity` schema.
     """
     for timerange in element:
         value_element = timerange.find("value")
@@ -278,6 +293,15 @@ def parse_humidity_element(element: Element) -> Iterator[Humidity]:
 def parse_temperature_element(element: Element) -> Iterator[Temperature]:
     """
     Parse temperature element tree in xml.
+
+    Args:
+        element: a parameter element that contain temperature
+
+    Yields:
+        Some `Temperature` schema.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
 
     Examples:
     >>> element = fromstring(
@@ -299,12 +323,6 @@ def parse_temperature_element(element: Element) -> Iterator[Temperature]:
     >>> temperature = parse_temperature_element(element)
     >>> temperature
     <generator object parse_temperature_element at ...>
-
-    Args:
-        element: a parameter element that contain temperature
-
-    Returns:
-        An iterator of `Temperature` schema.
     """
     for timerange in element:
         value_elements = timerange.findall("value")
@@ -328,6 +346,15 @@ def parse_weather_element(element: Element) -> Iterator[WeatherEnum]:
     """
     Parse weather element tree in xml.
 
+    Args:
+        element: a parameter element that contain weather
+
+    Yields:
+        Some `Weather` enum.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
+
     Examples:
     >>> element = fromstring(
     ...     '<parameter id="weather" description="Weather" type="hourly">'
@@ -345,12 +372,6 @@ def parse_weather_element(element: Element) -> Iterator[WeatherEnum]:
     >>> weather = parse_weather_element(element)
     >>> weather
     <generator object parse_weather_element at ...>
-
-    Args:
-        element: a parameter element that contain weather
-
-    Returns:
-        An iterator of `Weather` enum.
     """
     for timerange in element:
         value_elements = timerange.find("value")
@@ -369,6 +390,15 @@ def parse_weather_element(element: Element) -> Iterator[WeatherEnum]:
 def parse_wind_direction_element(element: Element) -> Iterator[WindDirection]:
     """
     Parse wind direction element tree in xml.
+
+    Args:
+        element: a parameter element that contain wind direction
+
+    Yields:
+        Some `WindDirection` schema.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
 
     Examples:
     >>> element = fromstring(
@@ -393,12 +423,6 @@ def parse_wind_direction_element(element: Element) -> Iterator[WindDirection]:
     >>> wind_direction = parse_wind_direction_element(element)
     >>> wind_direction
     <generator object parse_wind_direction_element at ...>
-
-    Args:
-        element: a parameter element that contain wind direction
-
-    Returns:
-        An iterator of `WindDirection` schema.
     """
     for timerange in element:
         value_elements = timerange.findall("value")
@@ -426,6 +450,15 @@ def parse_wind_speed_element(element: Element) -> Iterator[WindSpeed]:
     """
     Parse wind speed element tree in xml.
 
+    Args:
+        element: a parameter element that contain wind speed
+
+    Yields:
+        Some `WindSpeed` schema.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
+
     Examples:
     >>> element = fromstring(
     ...     '<parameter id="ws" description="Wind speed" type="hourly">'
@@ -452,12 +485,6 @@ def parse_wind_speed_element(element: Element) -> Iterator[WindSpeed]:
     >>> wind_speed = parse_wind_speed_element(element)
     >>> wind_speed
     <generator object parse_wind_speed_element at ...>
-
-    Args:
-        element: a parameter element that contain wind speed
-
-    Returns:
-        An iterator of `WindSpeed` schema.
     """
     for timerange in element:
         value_elements = timerange.findall("value")
@@ -492,6 +519,15 @@ def parse_datetime_element(element: Element) -> Iterator[datetime]:
     This parse datetime string found in element tree in the following format
     `"%Y%m%d%H%M%S"`.
 
+    Args:
+        element: any parameter element that contain datetime with type hourly
+
+    Yields:
+        Some `datetime` object.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
+
     Examples:
     >>> element = fromstring(
     ...     '<parameter id="ws" description="datetime" type="hourly">'
@@ -518,12 +554,6 @@ def parse_datetime_element(element: Element) -> Iterator[datetime]:
     >>> datetime = parse_datetime_element(element)
     >>> datetime
     <generator object parse_datetime_element at ...>
-
-    Args:
-        element: any parameter element that contain datetime with type hourly
-
-    Returns:
-        An iterator of `datetime` object.
     """
     for timerange in element:
         dt = timerange.get("datetime")
@@ -535,13 +565,21 @@ def parse_datetime_element(element: Element) -> Iterator[datetime]:
         yield datetime.strptime(dt, "%Y%m%d%H%M%S")
 
 
-def parse_weather_forecast_data(weather_forecast_data: bytes) -> WeatherForecast:
+def parse_weather_forecast_data(weather_forecast_data: str | bytes) -> WeatherForecast:
     """
-    Parse weather forecast data element tree in xml and return iterator of
-    `WeatherForecast` schema.
+    Parse weather forecast data element tree in xml.
 
     This control when area type is sea then it has no information regarding weather
     forecast. Also this use wind speed element tree to get the datetime information.
+
+    Args:
+        weather_forecast_data: string or bytes of xml data.
+
+    Returns:
+        A` WeatherForecast` schema.
+
+    Raises:
+        WeatherForecastParseError: If some expected attribute is not found.
     """
     root = fromstring(weather_forecast_data)
 

@@ -6,7 +6,10 @@ __all__ = ["Humidity"]
 @dataclass(slots=True)
 class Humidity:
     """
-    `Humidity` schema used to store info about humidity `percentage`.
+    A schema used to store info about humidity.
+
+    Attributes:
+        percentage: percentage of humidity in % as its unit.
     """
 
     percentage: int = field(metadata={"unit": "%"})

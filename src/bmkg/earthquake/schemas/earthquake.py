@@ -9,11 +9,17 @@ __all__ = ["Earthquake"]
 @dataclass(slots=True)
 class Earthquake:
     """
-    `Earthquake` schema used to store info about `datetime`, `coordinate`, `magnitude`,
-    `kedalaman` and `wilayah`.
+    A schema used to store info about earthquake.
 
-    The `datetime` field is aware datetime,
-    meaning it has the timezone. The magnitude has `"M"` for its unit.
+    Attributes:
+        datetime: datetime of the earthquake.
+        coordinate: coordinate of the earthquake.
+        magnitude: magnitude of earthquake in M as its unit.
+        kedalaman: depth of the earthquake in km as its unit.
+        wilayah: region of the earthquake.
+
+    Note:
+        The `datetime` field is aware datetime, meaning it has the timezone information.
     """
 
     datetime: datetime

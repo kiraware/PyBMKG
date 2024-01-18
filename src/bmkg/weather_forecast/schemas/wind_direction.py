@@ -8,11 +8,12 @@ __all__ = ["WindDirection"]
 @dataclass(slots=True)
 class WindDirection:
     """
-    `WindDirection` schema used to store info about wind direction in `deg`, `card`, and
-    `sexa`.
+    A schema used to store info about wind direction.
 
-    Note `deg` is degree. `deg` has metadata unit `"deg"`, `card` has metadata
-    unit `"CARD"` and `sexa` has metadata unit `"SEXA"`.
+    Attributes:
+        deg: degree of a wind direction with deg as its unit.
+        card: card direction of a wind direction with CARD as its unit.
+        sexa: sexa direction of a wind direction with SEXA as its unit.
     """
 
     deg: float = field(metadata={"unit": "deg"})

@@ -13,14 +13,24 @@ __all__ = ["Weather"]
 @dataclass(slots=True)
 class Weather:
     """
-    `Weather` schema used to store info about weather.
+    A schema used to store info about weather.
 
-    There are `datetime`, `weather`,
-    `temperature`, `minimum_temperature`, `maximum_temperature`, `humidity`,
-    `min_humidity`, `max_humidity`, `wind_direction`,  and `wind_speed`. Note that
-    `datetime` is naive datetime, means it has no information about it's timezone. Also
-    don't be confused with `weather`, this `weather` field is weather enum that has
-    representation of weather condition.
+    Attributes:
+        datetime: datetime of a weather.
+        weather: `Weather` enum symbolic names (members) of a weather condition.
+        temperature: temperature of a weather.
+        minimum_temperature: minimum temperature of a weather.
+        maximum_temperature: maximum temperature of a weather.
+        humidity: humidity of a weather.
+        min_humidity: minimum humidity of a weather.
+        max_humidity: maximum humidity of a weather.
+        wind_direction: wind direction of a weather.
+        wind_speed: wind speed of a weather.
+
+    Note:
+        `datetime` is naive datetime, means it has no information about its timezone.
+        Also don't be confused with `weather`, this `weather` field is weather enum that
+        has representation of weather condition.
     """
 
     datetime: datetime

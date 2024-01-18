@@ -10,9 +10,10 @@ class Type(Enum):
     """
     An enum class that define valid area type.
 
-    There are two valid area type:
-    `LAND` is `"land"` and `SEA` is `"sea"`.
+    Attributes:
+        LAND: "land"
+        SEA: "sea"
     """
 
-    LAND = "land"
-    SEA = "sea"
+    LAND: str = "land"
+    SEA: str = "sea"

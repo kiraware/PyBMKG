@@ -27,6 +27,12 @@ def parse_earthquake_data(earthquake_data: EarthquakeData) -> Earthquake:
     """
     Parse `EarthquakeData` JSON.
 
+    Args:
+        earthquake_data: A dict representing JSON of earthquake.
+
+    Returns:
+        An `Earthquake` schema.
+
     Examples:
         >>> earthquake_data = EarthquakeData(
         ...     {
@@ -43,12 +49,6 @@ def parse_earthquake_data(earthquake_data: EarthquakeData) -> Earthquake:
         ... )
         >>> parse_earthquake_data(earthquake_data)
         Earthquake(datetime=datetime.datetime(2024, 1, 13, 20, 13, 37, tzinfo=datetim...
-
-    Args:
-        earthquake_data: A dict representing JSON of earthquake.
-
-    Returns:
-        An `Earthquake` schema.
     """
 
     dt = earthquake_data["DateTime"]
@@ -74,6 +74,12 @@ def parse_latest_earthquake_data(
     """
     Parse `InfoLatestEarthquakeData` JSON.
 
+    Args:
+        info_latest_earthquake_data: A dict representing JSON of info latest earthquake.
+
+    Returns:
+        A `LatestEarthquake` schema.
+
     Examples:
         >>> info_latest_earthquake_data = InfoLatestEarthquakeData(
         ...     {
@@ -97,12 +103,6 @@ def parse_latest_earthquake_data(
         ... )
         >>> parse_latest_earthquake_data(info_latest_earthquake_data)
         LatestEarthquake(earthquake=Earthquake(datetime=datetime.datetime(2024, 1, 15...
-
-    Args:
-        info_latest_earthquake_data: A dict representing JSON of info latest earthquake.
-
-    Returns:
-        An `LatestEarthquake` schema.
     """
 
     latest_earthquake_data = info_latest_earthquake_data["Infogempa"]["gempa"]
@@ -119,6 +119,12 @@ def parse_strong_earthquake_data(
 ) -> Iterator[StrongEarthquake]:
     """
     Parse `InfoStrongEarthquakeData` JSON.
+
+    Args:
+        info_strong_earthquake_data: A dict representing JSON of info strong earthquake.
+
+    Yields:
+        A `StrongEarthquake` schema.
 
     Examples:
         >>> info_strong_earthquake_data = InfoLatestEarthquakeData(
@@ -143,12 +149,6 @@ def parse_strong_earthquake_data(
         ... )
         >>> parse_strong_earthquake_data(info_strong_earthquake_data)
         <generator object parse_strong_earthquake_data at ...>
-
-    Args:
-        info_strong_earthquake_data: A dict representing JSON of info strong earthquake.
-
-    Returns:
-        An iterator of `StrongEarthquake` schema.
     """
 
     for strong_earthquake_data in info_strong_earthquake_data["Infogempa"]["gempa"]:
@@ -163,6 +163,12 @@ def parse_felt_earthquake_data(
 ) -> Iterator[FeltEarthquake]:
     """
     Parse `InfoFeltEarthquakeData` JSON.
+
+    Args:
+        info_felt_earthquake_data: A dict representing JSON of info felt earthquake.
+
+    Yields:
+        A `FeltEarthquake` schema.
 
     Examples:
         >>> info_felt_earthquake_data = InfoFeltEarthquakeData(
@@ -187,12 +193,6 @@ def parse_felt_earthquake_data(
         ... )
         >>> parse_felt_earthquake_data(info_felt_earthquake_data)
         <generator object parse_felt_earthquake_data at ...>
-
-    Args:
-        info_felt_earthquake_data: A dict representing JSON of info felt earthquake.
-
-    Returns:
-        An iterator of `FeltEarthquake` schema.
     """
 
     for felt_earthquake_data in info_felt_earthquake_data["Infogempa"]["gempa"]:

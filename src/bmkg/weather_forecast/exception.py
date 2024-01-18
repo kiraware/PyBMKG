@@ -4,4 +4,8 @@ __all__ = ["WeatherForecastParseError"]
 
 
 class WeatherForecastParseError(BMKGError):
+    """
+    Weather forecast parse exception.
+    """
+
     pass

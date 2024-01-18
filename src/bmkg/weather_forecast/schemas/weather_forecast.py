@@ -13,14 +13,19 @@ __all__ = ["WeatherForecast"]
 @dataclass
 class WeatherForecast:
     """
-    `WeatherForecast` schema used to store info about weather forecast `data`,
-    `forecast`, `issue`, and `weathers`.
+    A schema used to store info about weather forecast.
 
-    Note that `issue` is naive datetime, means it
-    has no information about it's timezone. `weathers` has an `Area` schema as it key
-    and iterator of `Weather` that contain information about weather forecast of that
-    area as it value. Only `Area.type == Type.LAND` that has weather forecast
-    information, `Type.SEA` is not.
+    Attributes:
+        data: Data schema from api.
+        forecast: Forecast schema from api.
+        issue: datetime of the issue.
+        weathers: weather info with Area as key and iterator of Weather as value.
+
+    Note:
+        `issue` field is naive datetime, means it has no information about its
+        timezone. `weathers` has an `Area` schema as it key and iterator of `Weather`
+        that contain information about weather forecast of that area as it value. Only
+        area type is land that has weather forecast information, whereas sea is not.
     """
 
     data: Data

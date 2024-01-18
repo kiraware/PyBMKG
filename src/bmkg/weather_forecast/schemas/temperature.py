@@ -6,11 +6,11 @@ __all__ = ["Temperature"]
 @dataclass(slots=True)
 class Temperature:
     """
-    `Temperature` schema used to store info about temperature in `celcius` and
-    `fahrenheit`.
+    A schema used to store info about temperature.
 
-    `celcius` has metadata unit `"C"` and `fahrenheit` has metadata unit
-    `"F"`.
+    Attributes:
+        celcius: temperature in celcius with C as its unit.
+        fahrenheit: temperature in fahrenheit with F as its unit.
     """
 
     celcius: float = field(metadata={"unit": "C"})

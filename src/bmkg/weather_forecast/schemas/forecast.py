@@ -6,7 +6,10 @@ __all__ = ["Forecast"]
 @dataclass(slots=True)
 class Forecast:
     """
-    `Forecast` schema used to store info about `domain`.
+    A schema used to store info about forecast.
+
+    Attributes:
+        domain: domain of a forecast.
     """
 
     domain: str
