@@ -39,6 +39,7 @@ repos:
       - id: ruff-format
         name: ruff format
 
+  # pytest - testing
   - repo: local
     hooks:
       - id: pytest
@@ -54,3 +55,12 @@ repos:
     hooks:
       - id: prettier
         exclude: ^poetry.lock
+
+  # mkdocs - build the documentation
+  - repo: local
+    hooks:
+      - id: mkdocs-build
+        name: Build the MkDocs documentation
+        entry: poetry run mkdocs build
+        language: system
+        types: [text, markdown]
