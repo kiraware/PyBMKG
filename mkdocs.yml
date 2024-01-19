@@ -28,7 +28,6 @@ theme:
         icon: material/brightness-auto
         name: Switch to light mode
       primary: light blue
-      accent: indigo
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -37,7 +36,6 @@ theme:
         icon: material/brightness-7
         name: Switch to dark mode
       primary: light blue
-      accent: indigo
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
@@ -46,7 +44,6 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
       primary: light blue
-      accent: indigo
 
 nav:
   - Home: index.md
