@@ -63,4 +63,5 @@ repos:
         name: Build the MkDocs documentation
         entry: poetry run mkdocs build
         language: system
+        files: ^docs/
         types: [text, markdown]
