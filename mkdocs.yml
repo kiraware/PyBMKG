@@ -1,0 +1,67 @@
+site_name: PyBMKG
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+
+theme:
+  favicon: images/favicon.ico
+  features:
+    - content.code.copy
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - search.suggest
+    - search.highlight
+    - search.share
+  logo: images/logo.png
+  name: "material"
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+      primary: light blue
+      accent: indigo
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: light blue
+      accent: indigo
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+      primary: light blue
+      accent: indigo
+
+nav:
+  - Home: index.md
+  - tutorials.md
+  - How-To Guides: how-to-guides.md
+  - Reference:
+      - API: reference/api.md
+      - reference/exception.md
+      - reference/enum.md
+      - reference/schema.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+
+repo_url: https://github.com/kiraware/PyBMKG
+repo_name: kiraware/PyBMKG
