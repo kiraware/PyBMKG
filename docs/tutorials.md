@@ -7,7 +7,7 @@ using the following command. Make sure Python is installed
 on your computer.
 
 ```properties
-pip install pybmkg
+pip install PyBMKG
 ```
 
 All done!
