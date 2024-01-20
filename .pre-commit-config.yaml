@@ -67,3 +67,11 @@ repos:
         files: ^docs/
         types: [text, markdown]
         pass_filenames: false
+
+  - repo: https://github.com/python-poetry/poetry
+    rev: "1.7.1"
+    hooks:
+      - id: poetry-check
+      - id: poetry-lock
+      - id: poetry-export
+      - id: poetry-install
