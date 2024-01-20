@@ -45,7 +45,7 @@ bandit = "bandit -r src tests -c pyproject.toml"
 mypy = "mypy --check src"
 lint = ["mypy", "bandit", "ruff"]
 format = "ruff format"
-test = "pytest"
+test = "pytest --cov=src"
 
 [tool.bandit.assert_used]
 skips = ["*_test.py", "*test_*.py"]
