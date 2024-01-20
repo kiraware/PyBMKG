@@ -22,8 +22,8 @@ pre-commit install
 ```
 
 We use [Poetry](https://python-poetry.org/) as the project
-packaging dependency management. Install development dependency
-with the following command:
+packaging and dependency management. Install development
+dependency with the following command:
 
 ```console
 poetry install
