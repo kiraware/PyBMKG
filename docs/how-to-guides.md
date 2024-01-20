@@ -72,8 +72,15 @@ poetry run poe test
 ### Documenting
 
 We use [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
-as static site documentation with markdown. To run development mode
-you can use the following command:
+as static site documentation with markdown. PyBMKG does not include
+docs dependencies by default, to install it you can use the
+following command:
+
+```console
+poetry install --with docs
+```
+
+To run development mode you can use the following command:
 
 ```console
 poetry run mkdocs serve
