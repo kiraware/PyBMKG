@@ -54,7 +54,7 @@ jobs:
       - name: Format with Ruff
         run: poetry run ruff format --check
       - name: Test with pytest
-        run: poetry run pytest --cov=src --cov-report=html
+        run: poetry run pytest --cov=src --cov-report=xml
       - name: Build docs with Material for MkDocs
         run: poetry run mkdocs build
       - name: Upload coverage reports to Codecov
