@@ -54,6 +54,6 @@ jobs:
       - name: Format with Ruff
         run: poetry run ruff format --check
       - name: Test with pytest
-        run: poetry run pytest --cov=src
+        run: poetry run pytest --cov=src --cov-report=html
       - name: Build docs with Material for MkDocs
         run: poetry run mkdocs build
