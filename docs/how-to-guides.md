@@ -5,17 +5,25 @@
 ### Getting Started
 
 You can contribute directly to PyBMKG by submit a pull
-request. First clone the repository with the following
-command:
+request. We encourage linear history on commit. The
+project uses Squash-and-Merge strategy for GitHub Merge
+button.
+
+Basically it means that there is no need to rebase a Pull
+Request against main branch. Just git merge main into your
+working copy (a fork) if needed. The Pull Request is
+automatically squashed into the single commit once the PR
+is accepted. First clone the forked repository with the
+following command:
 
 ```console
-git clone https://github.com/kiraware/PyBMKG
+git clone https://github.com/YOUR-USERNAME/PyBMKG
 ```
 
 After that, make sure your terminal's working directory
-is active in the PyBMKG folder. Then to install
-[pre-commit](https://pre-commit.com/) git hook use the
-following command:
+is active in the PyBMKG folder and [pre-commit](https://pre-commit.com/)
+is installed globally. Then to install pre-commit git
+hook use the following command:
 
 ```console
 pre-commit install
@@ -30,6 +38,10 @@ poetry install
 ```
 
 And done! You can contribute directly by getting your hands wet.
+If you have installed [poethepoet](https://poethepoet.natn.io/index.html)
+globally, then you can use the command below only with `poe lint`,
+`poe format`, etc instead of `poetry run poe lint`,
+`poetry run poe format`, etc.
 
 ### Linting
 
@@ -69,6 +81,10 @@ To run pytest you can use the following command:
 poetry run poe test
 ```
 
+We really pay attention to testing coverage, therefore to
+contribute we are expected to make tests and if possible increase
+the code coverage.
+
 ### Documenting
 
 We use [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
@@ -80,7 +96,10 @@ following command:
 poetry install --with docs
 ```
 
-To run development mode you can use the following command:
+Documentation is very important to make it easier for users to use
+a library. So writing documentation for changes to contributed code
+is very important. To run development mode you can use the following
+command:
 
 ```console
 poetry run mkdocs serve
