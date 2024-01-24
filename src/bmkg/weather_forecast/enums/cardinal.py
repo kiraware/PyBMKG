@@ -11,23 +11,23 @@ class Cardinal(Enum):
     An enum class that define valid cardinal direction.
 
     Attributes:
-        NORTH: "N"
-        NORTH_NORTHEAST: "NNE"
-        NORTHEAST: "NE"
-        EAST_NORTHEAST: "ENE"
-        EAST: "E"
-        EAST_SOUTHEAST: "ESE"
-        SOUTHEAST: "SE"
-        SOUTH_SOUTHEAST: "SSE"
-        SOUTH: "S"
-        SOUTH_SOUTHWEST: "SSW"
-        SOUTHWEST: "SW"
-        WEST_SOUTHWEST: "WSW"
-        WEST: "W"
-        WEST_NORTHWEST: "WNW"
-        NORTHWEST: "NW"
-        NORTH_NORTHWEST: "NNW"
-        VARIABLE: "VARIABLE"
+        NORTH: `"N"`
+        NORTH_NORTHEAST: `"NNE"`
+        NORTHEAST: `"NE"`
+        EAST_NORTHEAST: `"ENE"`
+        EAST: `"E"`
+        EAST_SOUTHEAST: `"ESE"`
+        SOUTHEAST: `"SE"`
+        SOUTH_SOUTHEAST: `"SSE"`
+        SOUTH: `"S"`
+        SOUTH_SOUTHWEST: `"SSW"`
+        SOUTHWEST: `"SW"`
+        WEST_SOUTHWEST: `"WSW"`
+        WEST: `"W"`
+        WEST_NORTHWEST: `"WNW"`
+        NORTHWEST: `"NW"`
+        NORTH_NORTHWEST: `"NNW"`
+        VARIABLE: `"VARIABLE"`
 
     Note:
         `VARIABLE` direction mean as its name suggest, the direction can't be

@@ -11,41 +11,41 @@ class Province(Enum):
     An enum class that define valid province.
 
     Attributes:
-        ACEH: "Aceh"
-        BALI: "Bali"
-        BANGKA_BELITUNG: "BangkaBelitung"
-        BANTEN: "Banten"
-        BENGKULU: "Bengkulu"
-        DI_YOGYAKARTA: "DIYogyakarta"
-        DKI_JAKARTA: "DKIJakarta"
-        GORONTALO: "Gorontalo"
-        JAMBI: "Jambi"
-        JAWA_BARAT: "JawaBarat"
-        JAWA_TENGAH: "JawaTengah"
-        JAWA_TIMUR: "JawaTimur"
-        KALIMANTAN_BARAT: "KalimantanBarat"
-        KALIMANTAN_SELATAN: "KalimantanSelatan"
-        KALIMANTAN_TENGAH: "KalimantanTengah"
-        KALIMANTAN_TIMUR: "KalimantanTimur"
-        KALIMANTAN_UTARA: "KalimantanUtara"
-        KEPULAUAN_RIAU: "KepulauanRiau"
-        LAMPUNG: "Lampung"
-        MALUKU: "Maluku"
-        MALUKU_UTARA: "MalukuUtara"
-        NUSA_TENGGARA_BARAT: "NusaTenggaraBarat"
-        NUSA_TENGGARA_TIMUR: "NusaTenggaraTimur"
-        PAPUA: "Papua"
-        PAPUA_BARAT: "PapuaBarat"
-        RIAU: "Riau"
-        SULAWESI_BARAT: "SulawesiBarat"
-        SULAWESI_SELATAN: "SulawesiSelatan"
-        SULAWESI_TENGAH: "SulawesiTengah"
-        SULAWESI_TENGGARA: "SulawesiTenggara"
-        SULAWESI_UTARA: "SulawesiUtara"
-        SUMATERA_BARAT: "SumateraBarat"
-        SUMATERA_SELATAN: "SumateraSelatan"
-        SUMATERA_UTARA: "SumateraUtara"
-        INDONESIA: "Indonesia"
+        ACEH: `"Aceh"`
+        BALI: `"Bali"`
+        BANGKA_BELITUNG: `"BangkaBelitung"`
+        BANTEN: `"Banten"`
+        BENGKULU: `"Bengkulu"`
+        DI_YOGYAKARTA: `"DIYogyakarta"`
+        DKI_JAKARTA: `"DKIJakarta"`
+        GORONTALO: `"Gorontalo"`
+        JAMBI: `"Jambi"`
+        JAWA_BARAT: `"JawaBarat"`
+        JAWA_TENGAH: `"JawaTengah"`
+        JAWA_TIMUR: `"JawaTimur"`
+        KALIMANTAN_BARAT: `"KalimantanBarat"`
+        KALIMANTAN_SELATAN: `"KalimantanSelatan"`
+        KALIMANTAN_TENGAH: `"KalimantanTengah"`
+        KALIMANTAN_TIMUR: `"KalimantanTimur"`
+        KALIMANTAN_UTARA: `"KalimantanUtara"`
+        KEPULAUAN_RIAU: `"KepulauanRiau"`
+        LAMPUNG: `"Lampung"`
+        MALUKU: `"Maluku"`
+        MALUKU_UTARA: `"MalukuUtara"`
+        NUSA_TENGGARA_BARAT: `"NusaTenggaraBarat"`
+        NUSA_TENGGARA_TIMUR: `"NusaTenggaraTimur"`
+        PAPUA: `"Papua"`
+        PAPUA_BARAT: `"PapuaBarat"`
+        RIAU: `"Riau"`
+        SULAWESI_BARAT: `"SulawesiBarat"`
+        SULAWESI_SELATAN: `"SulawesiSelatan"`
+        SULAWESI_TENGAH: `"SulawesiTengah"`
+        SULAWESI_TENGGARA: `"SulawesiTenggara"`
+        SULAWESI_UTARA: `"SulawesiUtara"`
+        SUMATERA_BARAT: `"SumateraBarat"`
+        SUMATERA_SELATAN: `"SumateraSelatan"`
+        SUMATERA_UTARA: `"SumateraUtara"`
+        INDONESIA: `"Indonesia"`
 
     Note:
         `INDONESIA` is the country name.

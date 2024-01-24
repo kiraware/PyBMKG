@@ -11,20 +11,20 @@ class Weather(Enum):
     An enum class that define valid weather.
 
     Attributes:
-        CLEAR_SKIES: 0
-        PARTLY_CLOUDY: 1
-        PARTLY_CLOUDY2: 2
-        MOSTLY_CLOUDY: 3
-        OVERCAST: 4
-        HAZE: 5
-        SMOKE: 10
-        FOG: 45
-        LIGHT_RAIN: 60
-        RAIN: 61
-        HEAVY_RAIN: 63
-        ISOLATED_SHOWER: 80
-        SEVERE_THUNDERSTORM: 95
-        SEVERE_THUNDERSTORM2: 97
+        CLEAR_SKIES: `0`
+        PARTLY_CLOUDY: `1`
+        PARTLY_CLOUDY2: `2`
+        MOSTLY_CLOUDY: `3`
+        OVERCAST: `4`
+        HAZE: `5`
+        SMOKE: `10`
+        FOG: `45`
+        LIGHT_RAIN: `60`
+        RAIN: `61`
+        HEAVY_RAIN: `63`
+        ISOLATED_SHOWER: `80`
+        SEVERE_THUNDERSTORM: `95`
+        SEVERE_THUNDERSTORM2: `97`
 
     Note:
         There is `PARTLY_CLOUDY` and `PARTLY_CLOUDY2`, the weather

@@ -11,22 +11,22 @@ class Sexa(Enum):
     An enum class that define valid sexa direction.
 
     Attributes:
-        NORTH_NORTHEAST: "2230"
-        NORTHEAST: "4500"
-        EAST_NORTHEAST: "6730"
-        EAST: "9000"
-        EAST_SOUTHEAST: "11230"
-        SOUTHEAST: "13500"
-        SOUTH_SOUTHEAST: "15730"
-        SOUTH: "18000"
-        SOUTH_SOUTHWEST: "20230"
-        SOUTHWEST: "22500"
-        WEST_SOUTHWEST: "24730"
-        WEST: "27000"
-        WEST_NORTHWEST: "29230"
-        NORTHWEST: "31500"
-        NORTH_NORTHWEST: "33730"
-        VARIABLE: "000"
+        NORTH_NORTHEAST: `"2230"`
+        NORTHEAST: `"4500"`
+        EAST_NORTHEAST: `"6730"`
+        EAST: `"9000"`
+        EAST_SOUTHEAST: `"11230"`
+        SOUTHEAST: `"13500"`
+        SOUTH_SOUTHEAST: `"15730"`
+        SOUTH: `"18000"`
+        SOUTH_SOUTHWEST: `"20230"`
+        SOUTHWEST: `"22500"`
+        WEST_SOUTHWEST: `"24730"`
+        WEST: `"27000"`
+        WEST_NORTHWEST: `"29230"`
+        NORTHWEST: `"31500"`
+        NORTH_NORTHWEST: `"33730"`
+        VARIABLE: `"000"`
 
     Note:
         `VARIABLE` direction mean as it's name suggest, the direction can't be

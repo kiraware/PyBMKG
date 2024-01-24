@@ -11,8 +11,8 @@ class Type(Enum):
     An enum class that define valid area type.
 
     Attributes:
-        LAND: "land"
-        SEA: "sea"
+        LAND: `"land"`
+        SEA: `"sea"`
     """
 
     LAND: str = "land"
