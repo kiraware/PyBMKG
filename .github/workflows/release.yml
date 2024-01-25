@@ -8,10 +8,11 @@ jobs:
   publish:
     strategy:
       fail-fast: false
-      matrix:
-        python-version: ["3.12"]
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
@@ -19,14 +20,17 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.12"
       - name: Install Poetry
         uses: snok/install-poetry@v1.3.4
         with:
           virtualenvs-in-project: true
+      - name: Mint token
+        id: mint
+        uses: tschm/token-mint-action@v1.0.2
       - name: Publish to PyPi
         env:
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+          PYPI_TOKEN: ${{ steps.mint.outputs.api-token }}
         run: |
           poetry config pypi-token.pypi $PYPI_TOKEN
           poetry publish --build
