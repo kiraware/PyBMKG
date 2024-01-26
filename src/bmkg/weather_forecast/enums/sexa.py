@@ -1,14 +1,14 @@
 """
-Module to store an enum class representation sexa directions.
+Module to store a str enum class representation sexa directions.
 """
-from enum import Enum
+from enum import StrEnum
 
 __all__ = ["Sexa"]
 
 
-class Sexa(Enum):
+class Sexa(StrEnum):
     """
-    An enum class that define valid sexa direction.
+    A str enum class that define valid sexa direction.
 
     Attributes:
         NORTH_NORTHEAST: `"2230"`
@@ -27,6 +27,18 @@ class Sexa(Enum):
         NORTHWEST: `"31500"`
         NORTH_NORTHWEST: `"33730"`
         VARIABLE: `"000"`
+
+    Examples:
+        >>> Sexa("2230")
+        <Sexa.NORTH_NORTHEAST: '2230'>
+        >>> Sexa["NORTH_NORTHEAST"]
+        <Sexa.NORTH_NORTHEAST: '2230'>
+        >>> Sexa.NORTH_NORTHEAST
+        <Sexa.NORTH_NORTHEAST: '2230'>
+        >>> Sexa.NORTH_NORTHEAST == "2230"
+        True
+        >>> print(Sexa.NORTH_NORTHEAST)
+        2230
 
     Note:
         `VARIABLE` direction mean as it's name suggest, the direction can't be

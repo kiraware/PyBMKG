@@ -1,14 +1,14 @@
 """
-Module to store an enum class representation cardinal directions.
+Module to store a str enum class representation cardinal directions.
 """
-from enum import Enum
+from enum import StrEnum
 
 __all__ = ["Cardinal"]
 
 
-class Cardinal(Enum):
+class Cardinal(StrEnum):
     """
-    An enum class that define valid cardinal direction.
+    A str enum class that define valid cardinal direction.
 
     Attributes:
         NORTH: `"N"`
@@ -28,6 +28,18 @@ class Cardinal(Enum):
         NORTHWEST: `"NW"`
         NORTH_NORTHWEST: `"NNW"`
         VARIABLE: `"VARIABLE"`
+
+    Examples:
+        >>> Cardinal("N")
+        <Cardinal.NORTH: 'N'>
+        >>> Cardinal["NORTH"]
+        <Cardinal.NORTH: 'N'>
+        >>> Cardinal.NORTH
+        <Cardinal.NORTH: 'N'>
+        >>> Cardinal.NORTH == "N"
+        True
+        >>> print(Cardinal.NORTH)
+        N
 
     Note:
         `VARIABLE` direction mean as its name suggest, the direction can't be

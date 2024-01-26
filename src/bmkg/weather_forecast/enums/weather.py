@@ -1,14 +1,14 @@
 """
-Module to store an enum class representation of the weather code.
+Module to store an int enum class representation of the weather code.
 """
-from enum import Enum
+from enum import IntEnum
 
 __all__ = ["Weather"]
 
 
-class Weather(Enum):
+class Weather(IntEnum):
     """
-    An enum class that define valid weather.
+    An int enum class that define valid weather.
 
     Attributes:
         CLEAR_SKIES: `0`
@@ -25,6 +25,18 @@ class Weather(Enum):
         ISOLATED_SHOWER: `80`
         SEVERE_THUNDERSTORM: `95`
         SEVERE_THUNDERSTORM2: `97`
+
+    Examples:
+        >>> Weather(0)
+        <Weather.CLEAR_SKIES: 0>
+        >>> Weather["CLEAR_SKIES"]
+        <Weather.CLEAR_SKIES: 0>
+        >>> Weather.CLEAR_SKIES
+        <Weather.CLEAR_SKIES: 0>
+        >>> Weather.CLEAR_SKIES == 0
+        True
+        >>> print(Weather.CLEAR_SKIES)
+        0
 
     Note:
         There is `PARTLY_CLOUDY` and `PARTLY_CLOUDY2`, the weather

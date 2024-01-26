@@ -35,6 +35,6 @@ class WeatherForecast(BMKG):
             WeatherForecast(data=Data(source=...)
         """  # noqa: E501
         async with self._session.get(
-            f"{self.base_url}{self.url}DigitalForecast-{province.value}.xml"
+            f"{self.base_url}{self.url}DigitalForecast-{province}.xml"
         ) as response:
             return parse_weather_forecast_data(await response.read())

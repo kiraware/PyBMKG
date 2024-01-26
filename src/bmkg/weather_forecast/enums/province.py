@@ -1,14 +1,14 @@
 """
-Module to store an enum class representation the name of the province.
+Module to store a str enum class representation the name of the province.
 """
-from enum import Enum
+from enum import StrEnum
 
 __all__ = ["Province"]
 
 
-class Province(Enum):
+class Province(StrEnum):
     """
-    An enum class that define valid province.
+    A str enum class that define valid province.
 
     Attributes:
         ACEH: `"Aceh"`
@@ -46,6 +46,18 @@ class Province(Enum):
         SUMATERA_SELATAN: `"SumateraSelatan"`
         SUMATERA_UTARA: `"SumateraUtara"`
         INDONESIA: `"Indonesia"`
+
+    Examples:
+        >>> Province("Aceh")
+        <Province.ACEH: 'Aceh'>
+        >>> Province["ACEH"]
+        <Province.ACEH: 'Aceh'>
+        >>> Province.ACEH
+        <Province.ACEH: 'Aceh'>
+        >>> Province.ACEH == "Aceh"
+        True
+        >>> print(Province.ACEH)
+        Aceh
 
     Note:
         `INDONESIA` is the country name.

@@ -1,18 +1,30 @@
 """
-Module to store an enum class representation area type.
+Module to store a str enum class representation area type.
 """
-from enum import Enum
+from enum import StrEnum
 
 __all__ = ["Type"]
 
 
-class Type(Enum):
+class Type(StrEnum):
     """
-    An enum class that define valid area type.
+    A str enum class that define valid area type.
 
     Attributes:
         LAND: `"land"`
         SEA: `"sea"`
+
+    Examples:
+        >>> Type("land")
+        <Type.LAND: 'land'>
+        >>> Type["LAND"]
+        <Type.LAND: 'land'>
+        >>> Type.LAND
+        <Type.LAND: 'land'>
+        >>> Type.LAND == "land"
+        True
+        >>> print(Type.LAND)
+        land
     """
 
     LAND: str = "land"
