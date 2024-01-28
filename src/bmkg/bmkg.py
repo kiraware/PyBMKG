@@ -12,10 +12,9 @@ class BMKG:
 
     base_url = "https://data.bmkg.go.id/"
 
-    def __init__(self) -> None:
+    async def __aenter__(self) -> Self:
         self._session = ClientSession()
 
-    async def __aenter__(self) -> Self:
         return self
 
     async def __aexit__(
