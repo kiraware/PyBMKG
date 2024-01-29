@@ -65,6 +65,7 @@ test = "pytest --cov=src --cov-report=html"
 
 [tool.bandit]
 targets = ["src", "tests"]
+exclude_dirs = ["venv"]
 
 [tool.bandit.assert_used]
 skips = ["*_test.py", "*test_*.py"]
