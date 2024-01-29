@@ -27,7 +27,7 @@ repos:
     hooks:
       - id: bandit
         name: bandit
-        args: [-c, pyproject.toml, -r, src, tests]
+        args: [-c, pyproject.toml, -r, .]
 
   # ruff - linting and format
   - repo: https://github.com/astral-sh/ruff-pre-commit
