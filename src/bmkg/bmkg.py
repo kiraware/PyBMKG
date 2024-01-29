@@ -10,10 +10,8 @@ class BMKG:
     Base BMKG API wrapper.
     """
 
-    base_url = "https://data.bmkg.go.id/"
-
     async def __aenter__(self) -> Self:
-        self._session = ClientSession()
+        self._session = ClientSession("https://data.bmkg.go.id")
 
         return self
 

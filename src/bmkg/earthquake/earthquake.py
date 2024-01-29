@@ -21,7 +21,7 @@ class Earthquake(BMKG):
     Earthquake API Wrapper from BMKG API.
     """
 
-    url = "DataMKG/TEWS/"
+    url = "/DataMKG/TEWS/"
 
     async def get_latest_earthquake(self) -> LatestEarthquake:
         """
@@ -39,9 +39,7 @@ class Earthquake(BMKG):
             >>> asyncio.run(main())
             LatestEarthquake(earthquake=Earthquake(datetime=datetime.datetime(...)
         """
-        async with self._session.get(
-            f"{self.base_url}{self.url}autogempa.json"
-        ) as response:
+        async with self._session.get(f"{self.url}autogempa.json") as response:
             return parse_latest_earthquake_data(await response.json())
 
     async def get_latest_earthquake_shakemap(self, shakemap: Shakemap) -> bytes:
@@ -66,9 +64,7 @@ class Earthquake(BMKG):
             >>> asyncio.run(main())
             b'...'
         """
-        async with self._session.get(
-            f"{self.base_url}{self.url}{shakemap}"
-        ) as response:
+        async with self._session.get(f"{self.url}{shakemap}") as response:
             return await response.read()
 
     async def get_strong_earthquake(self) -> Iterator[StrongEarthquake]:
@@ -87,9 +83,7 @@ class Earthquake(BMKG):
             >>> asyncio.run(main())
             <generator object parse_strong_earthquake_data at ...>
         """
-        async with self._session.get(
-            f"{self.base_url}{self.url}gempaterkini.json"
-        ) as response:
+        async with self._session.get(f"{self.url}gempaterkini.json") as response:
             return parse_strong_earthquake_data(await response.json())
 
     async def get_felt_earthquake(self) -> Iterator[FeltEarthquake]:
@@ -108,7 +102,5 @@ class Earthquake(BMKG):
             >>> asyncio.run(main())
             <generator object parse_felt_earthquake_data at ...>
         """
-        async with self._session.get(
-            f"{self.base_url}{self.url}gempadirasakan.json"
-        ) as response:
+        async with self._session.get(f"{self.url}gempadirasakan.json") as response:
             return parse_felt_earthquake_data(await response.json())
