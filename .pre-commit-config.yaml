@@ -23,7 +23,7 @@ repos:
 
   # bandit - find common security issues
   - repo: https://github.com/pycqa/bandit
-    rev: 1.7.6
+    rev: 1.7.7
     hooks:
       - id: bandit
         name: bandit
@@ -73,5 +73,4 @@ repos:
     hooks:
       - id: poetry-check
       - id: poetry-lock
-      - id: poetry-export
       - id: poetry-install
