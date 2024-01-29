@@ -244,17 +244,7 @@ async def main():
 
         for area, weathers in weather_forecast_data.weathers.items():
             if area.type == Type.LAND:
-                print(
-                    area.id,
-                    area.coordinate,
-                    area.type,
-                    area.region,
-                    area.level,
-                    area.description,
-                    area.domain,
-                    area.tags,
-                    area.names,
-                )
+                print(area)
 
                 for weather in weathers:
                     print(weather.datetime)
@@ -277,9 +267,9 @@ Example output:
 Data(source='meteofactory', productioncenter='NC Jakarta')
 Forecast(domain='local')
 2024-01-18 03:13:02
-501409 Coordinate(latitude=4.176594, longitude=96.124878) Type.LAND  1 Aceh Barat Aceh  Name(en_US='Aceh Barat', id_ID='Kab. Aceh Barat')
+Area(id='501409', coordinate=Coordinate(latitude=4.176594, longitude=96.124878), type=<Type.LAND: 'land'>, region='', level='1', description='Aceh Barat', domain='Aceh', tags='', names=Name(en_US='Aceh Barat', id_ID='Kab. Aceh Barat'))
 2024-01-18 00:00:00
-Weather.PARTLY_CLOUDY
+1
 Temperature(celcius=25.0, fahrenheit=77.0)
 Temperature(celcius=25.0, fahrenheit=77.0)
 Temperature(celcius=32.0, fahrenheit=89.6)
