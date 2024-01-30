@@ -96,7 +96,6 @@ src = ["src", "tests"]
 
 [tool.ruff.format]
 docstring-code-format = true
-docstring-code-line-length = "dynamic"
 
 [tool.pytest.ini_options]
 addopts = "-vvv --doctest-modules"
