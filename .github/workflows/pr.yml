@@ -34,7 +34,7 @@ jobs:
           virtualenvs-in-project: true
       - name: Load cached venv
         id: cached-poetry-dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
@@ -48,12 +48,16 @@ jobs:
       - name: Lint with Ruff
         run: poetry run ruff check
       - name: Check code security with Bandit
-        run: poetry run bandit -r src tests -c pyproject.toml
+        run: poetry run bandit -c pyproject.toml -r .
       - name: Typing with mypy
-        run: poetry run mypy --check src
+        run: poetry run mypy
       - name: Format with Ruff
         run: poetry run ruff format --check
       - name: Test with pytest
         run: poetry run pytest --cov=src --cov-report=xml
       - name: Build docs with Material for MkDocs
         run: poetry run mkdocs build
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

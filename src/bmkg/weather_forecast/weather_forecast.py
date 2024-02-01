@@ -11,7 +11,7 @@ class WeatherForecast(BMKG):
     Weather Forecast API Wrapper from BMKG API.
     """
 
-    url = "DataMKG/MEWS/DigitalForecast/"
+    url = "/DataMKG/MEWS/DigitalForecast"
 
     async def get_weather_forecast(self, province: Province) -> WeatherForecastData:
         """
@@ -35,6 +35,6 @@ class WeatherForecast(BMKG):
             WeatherForecast(data=Data(source=...)
         """  # noqa: E501
         async with self._session.get(
-            f"{self.base_url}{self.url}DigitalForecast-{province}.xml"
+            f"{self.url}/DigitalForecast-{province}.xml"
         ) as response:
             return parse_weather_forecast_data(await response.read())

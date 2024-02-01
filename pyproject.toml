@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyBMKG"
-version = "0.1.1"
+version = "0.2.0"
 description = "Python BMKG API Wrapper"
 authors = ["Kira <kiraware@github.com>"]
 packages = [
@@ -55,21 +55,24 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 backend-path = ["src"]
 
-[tool.pytest.ini_options]
-addopts = "-vvv --doctest-modules"
-testpaths = ["tests", "src"]
-asyncio_mode = "auto"
-
 [tool.poe.tasks]
-bandit = "bandit -r src tests -c pyproject.toml"
-mypy = "mypy --check src"
+bandit = "bandit -c pyproject.toml -r ."
+mypy = "mypy"
 ruff = "ruff --fix"
 lint = ["bandit", "mypy", "ruff"]
 format = "ruff format"
 test = "pytest --cov=src --cov-report=html"
 
+[tool.bandit]
+targets = ["src", "tests"]
+exclude_dirs = ["venv"]
+
 [tool.bandit.assert_used]
 skips = ["*_test.py", "*test_*.py"]
+
+[tool.mypy]
+files = ["src", "tests"]
+strict_optional = false
 
 [tool.ruff]
 exclude = [
@@ -93,8 +96,8 @@ src = ["src", "tests"]
 
 [tool.ruff.format]
 docstring-code-format = true
-docstring-code-line-length = "dynamic"
 
-[mypy]
-files = ["src"]
-strict_optional = false
+[tool.pytest.ini_options]
+addopts = "-vvv --doctest-modules"
+testpaths = ["tests", "src"]
+asyncio_mode = "auto"
