@@ -1,1 +1,1 @@
-::: bmkg.weather_forecast.enums
+::: bmkg.enums

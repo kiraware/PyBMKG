@@ -32,12 +32,12 @@ Code example:
 import asyncio
 from dataclasses import fields
 
-from bmkg.earthquake import Earthquake
+from bmkg import BMKG
 
 
 async def main():
-    async with Earthquake() as earthquake:
-        latest_earthquake = await earthquake.get_latest_earthquake()
+    async with BMKG() as bmkg:
+        latest_earthquake = await bmkg.earthquake.get_latest_earthquake()
 
         print(latest_earthquake.earthquake.datetime)
         print(latest_earthquake.earthquake.coordinate)
@@ -67,7 +67,7 @@ Coordinate(latitude=-3.63, longitude=140.46)
 46 km BaratDaya KEEROM-PAPUA
 Tidak berpotensi tsunami
 -
-20240118013237.mmi.jpg
+Shakemap(file_name='20240118013237.mmi.jpg')
 ```
 
 ### get_latest_earthquake_shakemap
@@ -82,19 +82,18 @@ Code example:
 
 ```python
 import asyncio
-from dataclasses import fields
 
-from bmkg.earthquake import Earthquake
+from bmkg import BMKG
 
 
 async def main():
-    async with Earthquake() as earthquake:
-        latest_earthquake = await earthquake.get_latest_earthquake()
+    async with BMKG() as bmkg:
+        latest_earthquake = await bmkg.earthquake.get_latest_earthquake()
+        shakemap = latest_earthquake.shakemap
+        shakemap_content = await shakemap.get_content()
 
-        shakemap = await earthquake.get_latest_earthquake_shakemap(
-            latest_earthquake.shakemap
-        )
-        print(shakemap)
+        print(shakemap.file_name)
+        print(shakemap_content)
 
 asyncio.run(main())
 ```
@@ -102,6 +101,7 @@ asyncio.run(main())
 Example output:
 
 ```console
+20240203152510.mmi.jpg
 b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00...'
 ```
 
@@ -120,12 +120,12 @@ Code example:
 import asyncio
 from dataclasses import fields
 
-from bmkg.earthquake import Earthquake
+from bmkg import BMKG
 
 
 async def main():
-    async with Earthquake() as earthquake:
-        strong_earthquakes = await earthquake.get_strong_earthquake()
+    async with BMKG() as bmkg:
+        strong_earthquakes = await bmkg.earthquake.get_strong_earthquake()
 
         for strong_earthquake in strong_earthquakes:
             print(strong_earthquake.earthquake.datetime)
@@ -170,12 +170,12 @@ Code example:
 import asyncio
 from dataclasses import fields
 
-from bmkg.earthquake import Earthquake
+from bmkg import BMKG
 
 
 async def main():
-    async with Earthquake() as earthquake:
-        felt_earthquakes = await earthquake.get_felt_earthquake()
+    async with BMKG() as bmkg:
+        felt_earthquakes = await bmkg.earthquake.get_felt_earthquake()
 
         for felt_earthquake in felt_earthquakes:
             print(felt_earthquake.earthquake.datetime)
@@ -228,15 +228,14 @@ Code example:
 
 ```python
 import asyncio
-from dataclasses import fields
 
-from bmkg.weather_forecast import WeatherForecast
-from bmkg.weather_forecast.enums import Province, Type
+from bmkg import BMKG
+from bmkg.enums import Province, Type
 
 
 async def main():
-    async with WeatherForecast() as weather_forecast:
-        weather_forecast_data = await weather_forecast.get_weather_forecast(Province.ACEH)
+    async with BMKG() as bmkg:
+        weather_forecast_data = await bmkg.weather_forecast.get_weather_forecast(Province.ACEH)
 
         print(weather_forecast_data.data)
         print(weather_forecast_data.forecast)
