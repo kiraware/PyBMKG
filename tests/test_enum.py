@@ -2,7 +2,7 @@ from itertools import chain, repeat
 
 import pytest
 
-from bmkg.weather_forecast.enums import Cardinal, Province, Sexa, Type, Weather
+from bmkg.enums import Cardinal, Province, Sexa, Type, Weather
 
 expected_cardinal_values = (
     "N",
