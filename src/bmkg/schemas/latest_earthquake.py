@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from ..types import Shakemap
 from .earthquake import Earthquake
+from .shakemap import Shakemap
 
 __all__ = ["LatestEarthquake"]
 
@@ -15,7 +15,7 @@ class LatestEarthquake:
         earthquake: earthquake schema.
         potency: potential tsunami or not, and the status of the earthquake felt.
         felt: area that felt an earthquake on the MMI scale.
-        shakemap: shakemap file name of latest earthquake.
+        shakemap: shakemap schema.
     """
 
     earthquake: Earthquake

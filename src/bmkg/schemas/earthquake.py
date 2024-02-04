@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from datetime import datetime
 
-from ...common.schemas import Coordinate
+from .coordinate import Coordinate
 
 __all__ = ["Earthquake"]
 
