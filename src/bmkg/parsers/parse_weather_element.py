@@ -49,8 +49,6 @@ def parse_weather_element(element: Element) -> Iterator[enums.Weather]:
 
         weather = value_elements.text
         if weather is None:
-            raise WeatherForecastParseError(
-                "value tag in timerange tag not has no text"
-            )
+            raise WeatherForecastParseError("value tag in timerange tag has no text")
 
         yield enums.Weather(int(weather))
