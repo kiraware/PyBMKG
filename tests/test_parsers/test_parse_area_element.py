@@ -46,14 +46,17 @@ def test_parse_element_with_wrong_names_length():
     ),
 )
 def test_parse_element_with_invalid_en_US_name(index, err_msg):
-    names = MagicMock()
-    names.__len__.return_value = 2
-    names[0].text = MagicMock()
-    names[1].text = MagicMock()
-    names[index].text = None
+    value_element = MagicMock()
+    value_element.text = None
+
+    value_elements = MagicMock()
+    value_elements.__len__.return_value = 2
+    value_elements.__getitem__.side_effect = (
+        lambda idx: value_element if idx == index else MagicMock()
+    )
 
     element = MagicMock()
-    element.findall.return_value = names
+    element.findall.return_value = value_elements
 
     with pytest.raises(WeatherForecastParseError, match=err_msg):
         parse_area_element(element)

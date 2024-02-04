@@ -31,11 +31,14 @@ def test_parse_element_with_invalid_attribute():
     ),
 )
 def test_parse_element_with_invalid_value_elements_text(index, err_msg):
+    value_element = MagicMock()
+    value_element.text = None
+
     value_elements = MagicMock()
     value_elements.__len__.return_value = 2
-    value_elements[0].text = MagicMock()
-    value_elements[1].text = MagicMock()
-    value_elements[index].text = None
+    value_elements.__getitem__.side_effect = (
+        lambda idx: value_element if idx == index else MagicMock()
+    )
 
     timerange = MagicMock()
     timerange.findall.return_value = value_elements
