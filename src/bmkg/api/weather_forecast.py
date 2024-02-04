@@ -1,12 +1,12 @@
-from ..bmkg import BMKG
-from .enums import Province
-from .parser import parse_weather_forecast_data
-from .schemas import WeatherForecast as WeatherForecastData
+from ..enums import Province
+from ..parsers import parse_weather_forecast_data
+from ..schemas import WeatherForecast as WeatherForecastData
+from .api import API
 
 __all__ = ["WeatherForecast"]
 
 
-class WeatherForecast(BMKG):
+class WeatherForecast(API):
     """
     Weather Forecast API Wrapper from BMKG API.
     """
@@ -25,10 +25,11 @@ class WeatherForecast(BMKG):
 
         Examples:
             >>> import asyncio
+            >>> from bmkg import BMKG
             >>> async def main():
-            ...     async with WeatherForecast() as weather_forecast:
-            ...         weather_forecast_data = await weather_forecast.get_weather_forecast(
-            ...             Province.ACEH
+            ...     async with BMKG() as bmkg:
+            ...         weather_forecast_data = (
+            ...             await bmkg.weather_forecast.get_weather_forecast(Province.ACEH)
             ...         )
             ...         print(weather_forecast_data)
             >>> asyncio.run(main())
