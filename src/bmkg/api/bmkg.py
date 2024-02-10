@@ -18,6 +18,8 @@ class BMKG(API):
         weather_forecast (WeatherForecast): weather forecast api interface.
     """
 
+    __slots__ = ("earthquake", "weather_forecast")
+
     def __init__(self) -> None:
         API.__init__(self)
 
