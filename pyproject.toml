@@ -98,6 +98,10 @@ src = ["src", "tests"]
 docstring-code-format = true
 
 [tool.pytest.ini_options]
-addopts = "-vvv --doctest-modules"
+addopts = [
+    "-vvv",
+    "--doctest-modules",
+    "--import-mode=importlib",
+]
 testpaths = ["tests", "src"]
 asyncio_mode = "auto"
