@@ -8,8 +8,6 @@ class API:
     Base API class.
     """
 
-    __slots__ = ("_session",)
-
     def __init__(self, session: ClientSession | None = None) -> None:
         self._session = (
             session if session is not None else ClientSession("https://data.bmkg.go.id")
