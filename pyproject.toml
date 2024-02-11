@@ -103,5 +103,6 @@ addopts = [
     "--doctest-modules",
     "--import-mode=importlib",
 ]
+pythonpath = "src"
 testpaths = ["tests", "src"]
 asyncio_mode = "auto"
