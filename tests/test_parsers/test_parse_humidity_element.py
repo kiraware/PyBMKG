@@ -2,7 +2,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from bmkg.exception import WeatherForecastParseError
+from bmkg.exceptions import WeatherForecastParseError
 from bmkg.parsers import parse_humidity_element
 
 
