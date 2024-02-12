@@ -5,7 +5,7 @@ from collections.abc import Iterator
 from xml.etree.ElementTree import Element  # nosec B405
 
 from ..enums import Cardinal, Sexa
-from ..exception import WeatherForecastParseError
+from ..exceptions import WeatherForecastParseError
 from ..schemas import WindDirection
 
 __all__ = ["parse_wind_direction_element"]

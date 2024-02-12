@@ -2,7 +2,7 @@
 # Element is used only for typing not parsing
 from xml.etree.ElementTree import Element  # nosec B405
 
-from ..exception import WeatherForecastParseError
+from ..exceptions import WeatherForecastParseError
 from ..schemas import Forecast
 
 __all__ = ["parse_forecast_element"]

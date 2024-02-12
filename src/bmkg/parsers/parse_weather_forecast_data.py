@@ -6,7 +6,7 @@ from itertools import chain
 from defusedxml.ElementTree import fromstring  # type: ignore
 
 from ..enums import Type
-from ..exception import WeatherForecastParseError
+from ..exceptions import WeatherForecastParseError
 from ..schemas import (
     Weather,
     WeatherForecast,
