@@ -23,7 +23,7 @@ and get_felt_earthquake.
 get_latest_earthquake is used to get latest earthquake
 information at `https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json`.
 Read get_latest_earthquake
-[reference](reference/api.md/#bmkg.api.earthquake.Earthquake.get_latest_earthquake)
+[reference](reference/api.md/#bmkg.api.Earthquake.get_latest_earthquake)
 for more details.
 
 Code example:
@@ -76,7 +76,7 @@ get_strong_earthquake is used to get fifteen strong earthquake
 information with a magnitude of 5.0 M and above at
 `https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.json`.
 Read get_strong_earthquake
-[reference](reference/api.md/#bmkg.api.earthquake.Earthquake.get_strong_earthquake)
+[reference](reference/api.md/#bmkg.api.Earthquake.get_strong_earthquake)
 for more details.
 
 Code example:
@@ -126,7 +126,7 @@ Tidak berpotensi tsunami
 get_felt_earthquake is used to get fifteen felt earthquake
 information at `https://data.bmkg.go.id/DataMKG/TEWS/gempadirasakan.json`.
 Read get_felt_earthquake
-[reference](reference/api.md/#bmkg.api.earthquake.Earthquake.get_felt_earthquake)
+[reference](reference/api.md/#bmkg.api.Earthquake.get_felt_earthquake)
 for more details.
 
 Code example:
@@ -179,9 +179,9 @@ that the shakemap API has, namely the get_content method.
 ### get_content
 
 get_content is used to get latest earthquake shake map.
-The link starts with `https://data.bmkg.go.id/DataMKG/TEWS/`
-and followed with shakemap filename. Read get_content
-[reference](reference/api.md/#bmkg.api.shakemap.Shakemap.get_content)
+The link starts with `https://data.bmkg.go.id/DataMKG/TEWS`
+and followed with `/shakemap-filename`. Read get_content
+[reference](reference/api.md/#bmkg.api.Shakemap.get_content)
 for more details.
 
 Code example:
@@ -224,9 +224,9 @@ within three days. There are 35 weather forecast data
 representing provinces and major cities in Indonesia.
 For each area you will get twelve weather forecasts data
 so there are four weather forecasts for one day. The link
-starts with `https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/`
-and followed with `DigitalForecast-{PROVINCE_NAME}.xml`. Read
-get_weather_forecast [reference](reference/api.md/#bmkg.api.weather_forecast.WeatherForecast.get_weather_forecast)
+starts with `https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast`
+and followed with `/DigitalForecast-{PROVINCE_NAME}.xml`. Read
+get_weather_forecast [reference](reference/api.md/#bmkg.api.WeatherForecast.get_weather_forecast)
 for more details.
 
 Code example:
