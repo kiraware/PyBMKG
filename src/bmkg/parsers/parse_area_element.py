@@ -3,7 +3,7 @@
 from xml.etree.ElementTree import Element  # nosec B405
 
 from ..enums import Type
-from ..exception import WeatherForecastParseError
+from ..exceptions import WeatherForecastParseError
 from ..schemas import (
     Area,
     Coordinate,

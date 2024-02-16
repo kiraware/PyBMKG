@@ -1,1 +1,1 @@
-::: bmkg.exception
+::: bmkg.exceptions

@@ -14,16 +14,16 @@ All done!
 
 ## Earthquake API
 
-There are four APIs available for earthquakes
-namely get_latest_earthquake, get_latest_earthquake_shakemap,
-get_strong_earthquake, and get_felt_earthquake.
+There are three APIs available for earthquakes
+namely get_latest_earthquake, get_strong_earthquake,
+and get_felt_earthquake.
 
 ### get_latest_earthquake
 
 get_latest_earthquake is used to get latest earthquake
 information at `https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json`.
 Read get_latest_earthquake
-[reference](reference/api.md/#bmkg.earthquake.Earthquake.get_latest_earthquake)
+[reference](reference/api.md/#bmkg.api.Earthquake.get_latest_earthquake)
 for more details.
 
 Code example:
@@ -70,48 +70,13 @@ Tidak berpotensi tsunami
 Shakemap(file_name='20240118013237.mmi.jpg')
 ```
 
-### get_latest_earthquake_shakemap
-
-get_latest_earthquake_shakemap is used to get latest
-earthquake shake map. The link starts with `https://data.bmkg.go.id/DataMKG/TEWS/`
-and followed with shakemap filename. Read get_latest_earthquake_shakemap
-[reference](reference/api.md/#bmkg.earthquake.Earthquake.get_latest_earthquake_shakemap)
-for more details.
-
-Code example:
-
-```python
-import asyncio
-
-from bmkg import BMKG
-
-
-async def main():
-    async with BMKG() as bmkg:
-        latest_earthquake = await bmkg.earthquake.get_latest_earthquake()
-        shakemap = latest_earthquake.shakemap
-        shakemap_content = await shakemap.get_content()
-
-        print(shakemap.file_name)
-        print(shakemap_content)
-
-asyncio.run(main())
-```
-
-Example output:
-
-```console
-20240203152510.mmi.jpg
-b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00...'
-```
-
 ### get_strong_earthquake
 
 get_strong_earthquake is used to get fifteen strong earthquake
 information with a magnitude of 5.0 M and above at
 `https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.json`.
 Read get_strong_earthquake
-[reference](reference/api.md/#bmkg.earthquake.Earthquake.get_strong_earthquake)
+[reference](reference/api.md/#bmkg.api.Earthquake.get_strong_earthquake)
 for more details.
 
 Code example:
@@ -161,7 +126,7 @@ Tidak berpotensi tsunami
 get_felt_earthquake is used to get fifteen felt earthquake
 information at `https://data.bmkg.go.id/DataMKG/TEWS/gempadirasakan.json`.
 Read get_felt_earthquake
-[reference](reference/api.md/#bmkg.earthquake.Earthquake.get_felt_earthquake)
+[reference](reference/api.md/#bmkg.api.Earthquake.get_felt_earthquake)
 for more details.
 
 Code example:
@@ -206,6 +171,46 @@ III Banda Aceh, II-III Calang Aceh Jaya, II-III Aceh Besar
 ...
 ```
 
+## Shakemap API
+
+Shakemap API is part of the earthquake API. There is one method
+that the shakemap API has, namely the get_content method.
+
+### get_content
+
+get_content is used to get latest earthquake shake map.
+The link starts with `https://data.bmkg.go.id/DataMKG/TEWS`
+and followed with `/shakemap-filename`. Read get_content
+[reference](reference/api.md/#bmkg.api.Shakemap.get_content)
+for more details.
+
+Code example:
+
+```python
+import asyncio
+
+from bmkg import BMKG
+
+
+async def main():
+    async with BMKG() as bmkg:
+        latest_earthquake = await bmkg.earthquake.get_latest_earthquake()
+        shakemap = latest_earthquake.shakemap
+        shakemap_content = await shakemap.get_content()
+
+        print(shakemap.file_name)
+        print(shakemap_content)
+
+asyncio.run(main())
+```
+
+Example output:
+
+```console
+20240203152510.mmi.jpg
+b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00...'
+```
+
 ## Weather Forecast API
 
 There is only one API available for weather forecast
@@ -219,9 +224,9 @@ within three days. There are 35 weather forecast data
 representing provinces and major cities in Indonesia.
 For each area you will get twelve weather forecasts data
 so there are four weather forecasts for one day. The link
-starts with `https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/`
-and followed with `DigitalForecast-{PROVINCE_NAME}.xml`. Read
-get_weather_forecast [reference](reference/api.md/#bmkg.weather_forecast.WeatherForecast.get_weather_forecast)
+starts with `https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast`
+and followed with `/DigitalForecast-{PROVINCE_NAME}.xml`. Read
+get_weather_forecast [reference](reference/api.md/#bmkg.api.WeatherForecast.get_weather_forecast)
 for more details.
 
 Code example:

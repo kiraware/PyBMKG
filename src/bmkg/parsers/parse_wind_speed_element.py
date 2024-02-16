@@ -4,7 +4,7 @@ from collections.abc import Iterator
 # Element is used only for typing not parsing
 from xml.etree.ElementTree import Element  # nosec B405
 
-from ..exception import WeatherForecastParseError
+from ..exceptions import WeatherForecastParseError
 from ..schemas import WindSpeed
 
 __all__ = ["parse_wind_speed_element"]

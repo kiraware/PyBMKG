@@ -5,7 +5,7 @@ from collections.abc import Iterator
 from xml.etree.ElementTree import Element  # nosec B405
 
 from .. import enums
-from ..exception import WeatherForecastParseError
+from ..exceptions import WeatherForecastParseError
 
 __all__ = ["parse_weather_element"]
 

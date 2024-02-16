@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyBMKG"
-version = "1.0.0"
+version = "2.0.0"
 description = "Python BMKG API Wrapper"
 authors = ["Kira <kiraware@github.com>"]
 packages = [
@@ -35,10 +35,10 @@ python = "^3.11"
 bandit = "^1.7.6"
 mypy = "^1.8.0"
 poethepoet = "^0.24.4"
-ruff = "^0.1.14"
+ruff = "^0.2.1"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^7.4.4"
+pytest = "^8.0.0"
 pytest-asyncio = "^0.23.3"
 pytest-cov = "^4.1.0"
 
@@ -98,6 +98,14 @@ src = ["src", "tests"]
 docstring-code-format = true
 
 [tool.pytest.ini_options]
-addopts = "-vvv --doctest-modules"
+addopts = [
+    "-vvv",
+    "--doctest-modules",
+    "--import-mode=importlib",
+]
+pythonpath = [
+    ".",
+    "src",
+]
 testpaths = ["tests", "src"]
 asyncio_mode = "auto"
