@@ -27,7 +27,7 @@ jobs:
           virtualenvs-in-project: true
       - name: Mint token
         id: mint
-        uses: tschm/token-mint-action@v1.0.2
+        uses: tschm/token-mint-action@v1.0.3
       - name: Publish to PyPi
         env:
           PYPI_TOKEN: ${{ steps.mint.outputs.api-token }}
