@@ -13,11 +13,32 @@ Basically it means that there is no need to rebase a Pull
 Request against main branch. Just git merge main into your
 working copy (a fork) if needed. The Pull Request is
 automatically squashed into the single commit once the PR
-is accepted. First clone the forked repository with the
+is accepted.
+
+The pull request submitted must be very specific so that
+one pull request specifically describes one change.
+
+First clone the forked repository with the
 following command:
 
 ```console
 git clone https://github.com/YOUR-USERNAME/PyBMKG
+```
+
+Then create a branch for pull requests in the fork
+repository with a short branch name that explains in
+general what pull request will be submitted. For
+example in the following command:
+
+```console
+git branch fix-docs-typos
+```
+
+And don't forget to checkout and start making changes
+from there.
+
+```console
+git checkout fix-docs-typos
 ```
 
 After that, make sure your terminal's working directory
@@ -104,3 +125,11 @@ command:
 ```console
 poetry run mkdocs serve
 ```
+
+### Releasing
+
+We use the GitHub workflow to automatically release to PyPi when we
+release to Github. The special environment for people who have access
+to the workflow is in the Github environment with the name `production`.
+Each release tag must be the same as `version` in `pyproject.toml` in
+the `tool.poetry` section.
