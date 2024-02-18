@@ -20,6 +20,7 @@ jobs:
       run:
         shell: bash
     runs-on: ${{ matrix.os }}
+    environment: development
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
