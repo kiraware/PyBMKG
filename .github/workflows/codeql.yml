@@ -10,7 +10,6 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
-    environment: development
     permissions:
       actions: read
       contents: read
