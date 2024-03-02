@@ -10,7 +10,7 @@ from .weather import Weather
 __all__ = ["WeatherForecast"]
 
 
-@dataclass
+@dataclass(slots=True)
 class WeatherForecast:
     """
     A schema used to store info about weather forecast.

@@ -41,7 +41,7 @@ def parse_weather_forecast_data(weather_forecast_data: str | bytes) -> WeatherFo
         weather_forecast_data: string or bytes of xml data.
 
     Returns:
-        A` WeatherForecast` schema.
+        A `WeatherForecast` schema.
 
     Raises:
         WeatherForecastParseError: If some expected attribute is not found.
