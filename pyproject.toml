@@ -39,7 +39,7 @@ python = "^3.11"
 bandit = "^1.7.6"
 mypy = "^1.8.0"
 poethepoet = "^0.25.0"
-ruff = "^0.2.1"
+ruff = "^0.3.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.0.0"
@@ -62,7 +62,7 @@ backend-path = ["src"]
 [tool.poe.tasks]
 bandit = "bandit -c pyproject.toml -r ."
 mypy = "mypy"
-ruff = "ruff --fix"
+ruff = "ruff check --fix"
 lint = ["bandit", "mypy", "ruff"]
 format = "ruff format"
 test = "pytest --cov=src --cov-report=html"
@@ -89,6 +89,9 @@ exclude = [
 ]
 line-length = 88
 target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
 select = [
     "E",
     "F",
@@ -96,7 +99,6 @@ select = [
     "I",
 ]
 ignore = []
-src = ["src", "tests"]
 
 [tool.ruff.format]
 docstring-code-format = true

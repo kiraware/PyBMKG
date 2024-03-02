@@ -1,6 +1,7 @@
 """
 Module to store a str enum class representation cardinal directions.
 """
+
 from enum import StrEnum
 
 __all__ = ["Cardinal"]

@@ -1,6 +1,7 @@
 """
 Module to store a str enum class representation the name of the province.
 """
+
 from enum import StrEnum
 
 __all__ = ["Province"]

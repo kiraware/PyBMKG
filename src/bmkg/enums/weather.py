@@ -1,6 +1,7 @@
 """
 Module to store an int enum class representation of the weather code.
 """
+
 from enum import IntEnum
 
 __all__ = ["Weather"]
