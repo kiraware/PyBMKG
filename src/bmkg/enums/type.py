@@ -1,6 +1,7 @@
 """
 Module to store a str enum class representation area type.
 """
+
 from enum import StrEnum
 
 __all__ = ["Type"]
