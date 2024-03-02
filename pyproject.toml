@@ -62,7 +62,7 @@ backend-path = ["src"]
 [tool.poe.tasks]
 bandit = "bandit -c pyproject.toml -r ."
 mypy = "mypy"
-ruff = "ruff --fix"
+ruff = "ruff check --fix"
 lint = ["bandit", "mypy", "ruff"]
 format = "ruff format"
 test = "pytest --cov=src --cov-report=html"
