@@ -4,9 +4,17 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
     versioning-strategy: "increase-if-necessary"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      dependencies:
+        patterns:
+          - "*"
