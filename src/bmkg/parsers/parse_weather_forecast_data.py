@@ -1,9 +1,8 @@
 from collections.abc import Iterator
 from itertools import chain
+from typing import Any
 
-# FIXME
-# remove `type: ignore` if there is a stub for defusedxml
-from defusedxml.ElementTree import fromstring  # type: ignore
+from defusedxml.ElementTree import fromstring
 
 from ..enums import Type
 from ..exceptions import WeatherForecastParseError
@@ -11,11 +10,7 @@ from ..schemas import (
     Weather,
     WeatherForecast,
 )
-from ..types import (
-    WeatherForecastParameter,
-    WeatherForecastParameterId,
-    WeatherForecastParameters,
-)
+from ..types import WeatherForecastParameter
 from .parse_area_element import parse_area_element
 from .parse_data_element import parse_data_element
 from .parse_datetime_element import parse_datetime_element
@@ -64,11 +59,9 @@ def parse_weather_forecast_data(weather_forecast_data: str | bytes) -> WeatherFo
 
         # Only land that has weather, sea doesn't
         if area.type == Type.LAND:
-            parameters: WeatherForecastParameters = {}
+            parameters: dict[str, Any] = {}
             for parameter_element in area_element.iterfind("parameter"):
-                parameter_id: WeatherForecastParameterId | None = parameter_element.get(
-                    "id"
-                )
+                parameter_id = parameter_element.get("id")
                 if parameter_id is None:
                     raise WeatherForecastParseError(
                         "id attribute in parameter tag not found"

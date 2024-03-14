@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Iterator, Literal, TypedDict
+from typing import Iterator, TypedDict
 
 from .enums import Weather
 from .schemas import (
@@ -11,8 +11,6 @@ from .schemas import (
 
 __all__ = [
     "WeatherForecastParameter",
-    "WeatherForecastParameterId",
-    "WeatherForecastParameters",
     "EarthquakeData",
     "FeltEarthquakeData",
     "LatestEarthquakeData",
@@ -23,19 +21,6 @@ __all__ = [
 ]
 
 
-class WeatherForecastParameters(TypedDict, total=False):
-    datetime: Iterator[datetime]
-    hu: Iterator[Humidity]
-    humax: Iterator[Humidity]
-    humin: Iterator[Humidity]
-    t: Iterator[Temperature]
-    tmax: Iterator[Temperature]
-    tmin: Iterator[Temperature]
-    weather: Iterator[Weather]
-    wd: Iterator[WindDirection]
-    ws: Iterator[WindSpeed]
-
-
 WeatherForecastParameter = (
     Iterator[datetime]
     | Iterator[Humidity]
@@ -44,10 +29,6 @@ WeatherForecastParameter = (
     | Iterator[WindDirection]
     | Iterator[WindSpeed]
 )
-
-WeatherForecastParameterId = Literal[
-    "datetime", "hu", "humax", "humin", "t", "tmax", "tmin", "weather", "wd", "ws"
-]
 
 
 class EarthquakeData(TypedDict):
