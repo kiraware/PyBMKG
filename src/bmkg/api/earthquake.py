@@ -43,7 +43,7 @@ class Earthquake(API):
             latest_earthquake = parse_latest_earthquake_data(await response.json())  # type: ignore
 
             latest_earthquake.shakemap = Shakemap(
-                self._session, latest_earthquake.shakemap.file_name
+                latest_earthquake.shakemap.file_name, self._session
             )
 
             return latest_earthquake
