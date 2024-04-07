@@ -13,7 +13,7 @@ class Shakemap(API, schemas.Shakemap):
 
     url = "/DataMKG/TEWS"
 
-    def __init__(self, session: ClientSession, file_name: str) -> None:
+    def __init__(self, file_name: str, session: ClientSession | None = None) -> None:
         API.__init__(self, session)
         schemas.Shakemap.__init__(self, file_name)
 
