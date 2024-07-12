@@ -29,7 +29,7 @@ jobs:
       - name: Mint token
         id: mint
         uses: tschm/token-mint-action@v1.0.3
-      - name: Publish to PyPi
+      - name: Publish to PyPI
         env:
           PYPI_TOKEN: ${{ steps.mint.outputs.api-token }}
         run: |

@@ -128,8 +128,8 @@ poetry run mkdocs serve
 
 ### Releasing
 
-We use the GitHub workflow to automatically release to PyPi when we
-release to Github. The special environment for people who have access
-to the workflow is in the Github environment with the name `production`.
+We use the GitHub workflow to automatically release to PyPI when we
+release to GitHub. The special environment for people who have access
+to the workflow is in the GitHub environment with the name `production`.
 Each release tag must be the same as `version` in `pyproject.toml` in
 the `tool.poetry` section.
