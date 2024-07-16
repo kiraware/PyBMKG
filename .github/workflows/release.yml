@@ -7,13 +7,11 @@ on:
 
 jobs:
   publish:
-    strategy:
-      fail-fast: false
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     environment: production
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
@@ -35,3 +33,5 @@ jobs:
         run: |
           poetry config pypi-token.pypi $PYPI_TOKEN
           poetry publish --build
+    strategy:
+      fail-fast: false
