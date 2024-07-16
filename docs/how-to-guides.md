@@ -34,11 +34,11 @@ example in the following command:
 git branch fix-docs-typos
 ```
 
-And don't forget to checkout and start making changes
+And don't forget to switch and start making changes
 from there.
 
 ```console
-git checkout fix-docs-typos
+git switch fix-docs-typos
 ```
 
 After that, make sure your terminal's working directory
@@ -59,10 +59,12 @@ poetry install
 ```
 
 And done! You can contribute directly by getting your hands wet.
-If you have installed [poethepoet](https://poethepoet.natn.io/index.html)
-globally, then you can use the command below only with `poe lint`,
-`poe format`, etc instead of `poetry run poe lint`,
-`poetry run poe format`, etc.
+
+!!! tip
+    If you have installed [poethepoet](https://poethepoet.natn.io/index.html)
+    globally, then you can use the command below only with
+    `poe lint`, `poe format`, etc instead of `poetry run poe lint`,
+    `poetry run poe format`, etc.
 
 ### Linting
 

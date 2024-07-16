@@ -1,6 +1,6 @@
 # PyBMKG
 
-[![CI](https://github.com/kiraware/PyBMKG/workflows/ci/badge.svg)](https://github.com/kiraware/PyBMKG/actions/workflows/ci.yml)
+[![Test](https://github.com/kiraware/PyBMKG/workflows/Test/badge.svg)](https://github.com/kiraware/PyBMKG/actions/workflows/test.yml)
 [![CodeQL](https://github.com/kiraware/PyBMKG/workflows/CodeQL/badge.svg)](https://github.com/kiraware/PyBMKG/actions/workflows/codeql.yml)
 [![Docs](https://readthedocs.org/projects/pybmkg/badge/?version=latest)](https://pybmkg.readthedocs.io/en/latest/?badge=latest)
 [![codecov](https://codecov.io/gh/kiraware/PyBMKG/graph/badge.svg?token=MN6AXAHO0P)](https://codecov.io/gh/kiraware/PyBMKG)

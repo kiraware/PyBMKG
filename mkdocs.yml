@@ -61,6 +61,8 @@ nav:
       - reference/schema.md
 
 markdown_extensions:
+  - admonition
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
