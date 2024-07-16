@@ -1,25 +1,19 @@
-name: ci
+name: Dev
 
 on:
   push:
     branches:
       - main
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
-  cancel-in-progress: true
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.11", "3.12"]
-        os: [ubuntu-latest, macos-latest, windows-latest]
+  dev:
+    runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
-    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
@@ -27,7 +21,7 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.12"
       - name: Install Poetry
         uses: snok/install-poetry@v1.3.4
         with:
@@ -40,9 +34,7 @@ jobs:
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root --with docs
-      - name: Install library
-        run: poetry install --no-interaction
+        run: poetry install --no-interaction --no-root --without test --with docs
       - name: Activate virtual environment
         run: source $VENV
       - name: Lint with Ruff
@@ -53,13 +45,5 @@ jobs:
         run: poetry run mypy
       - name: Format with Ruff
         run: poetry run ruff format --check
-      - name: Test with pytest
-        run: poetry run pytest --cov=src --cov-report=xml
       - name: Build docs with Material for MkDocs
         run: poetry run mkdocs build
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          fail_ci_if_error: true
-          token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
