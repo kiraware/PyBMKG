@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyBMKG"
-version = "2.0.0"
+version = "2.1.0"
 description = "Python BMKG API Wrapper"
 authors = ["Kira <kiraware@github.com>"]
 maintainers = [
