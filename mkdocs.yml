@@ -66,6 +66,8 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
 
 repo_url: https://github.com/kiraware/PyBMKG
 repo_name: kiraware/PyBMKG
