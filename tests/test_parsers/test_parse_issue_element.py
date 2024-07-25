@@ -16,7 +16,7 @@ def test_parse_element_with_invalid_attribute():
         parse_issue_element(element)
 
 
-def test_parse_element_with_invalid_humidity_text():
+def test_parse_element_with_invalid_timestamp_text():
     timestamp = MagicMock()
     timestamp.text = None
 
