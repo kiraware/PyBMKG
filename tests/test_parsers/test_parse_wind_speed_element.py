@@ -19,7 +19,7 @@ def test_parse_element_with_invalid_attribute():
         WeatherForecastParseError,
         match="one or more value tag in timerange tag not found",
     ):
-        for wind_speed in parse_wind_speed_element(element):
+        for _wind_speed in parse_wind_speed_element(element):
             pass
 
 
@@ -51,5 +51,5 @@ def test_parse_element_with_invalid_value_elements_text(index, err_msg):
         WeatherForecastParseError,
         match=err_msg,
     ):
-        for wind_speed in parse_wind_speed_element(element):
+        for _wind_speed in parse_wind_speed_element(element):
             pass

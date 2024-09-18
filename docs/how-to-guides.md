@@ -73,7 +73,7 @@ pre-commit install
 
 We use [Poetry](https://python-poetry.org/) as the project
 packaging and dependency management. Install development
-dependency with the following command
+dependency with the following command:
 
 ```console
 poetry install
@@ -83,6 +83,7 @@ And done! You can make your changes and test thoroughly.
 Then push your branch to your fork and submit a pull request.
 
 !!! tip
+
     If you have installed [poethepoet](https://poethepoet.natn.io/index.html)
     globally, then you can use the command below only with
     `poe lint`, `poe format`, etc instead of `poetry run poe lint`,
@@ -132,7 +133,7 @@ poetry run poe format-check
 ### Testing
 
 We use [pytest](https://docs.pytest.org/en/stable/) for testing.
-To run pytest you can use the following command
+To run pytest you can use the following command:
 
 ```console
 poetry run poe test
@@ -178,9 +179,10 @@ poetry run poe docs-build
 
 We use the GitHub workflow to automatically release to PyPI when we
 release to GitHub. The special environment for people who have access
-to the workflow is in the GitHub environment with the name `production`.
+to the workflow is in the GitHub environment with the name `release`.
 Each release tag must be the same as `version` in `pyproject.toml` in
-the `tool.poetry` section.
+the `tool.poetry` section with prefix `v`, for example `v1.0.0`. Also
+we follow Semantic Versioning with version number MAJOR.MINOR.PATCH.
 
 ### Update Dependency
 

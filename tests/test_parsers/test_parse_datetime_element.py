@@ -15,5 +15,5 @@ def test_parse_element_with_invalid_attribute():
     with pytest.raises(
         WeatherForecastParseError, match="datetime attribute in timerange tag not found"
     ):
-        for dt in parse_datetime_element(element):
+        for _dt in parse_datetime_element(element):
             pass
