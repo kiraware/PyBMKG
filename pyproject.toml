@@ -95,4 +95,5 @@ docstring-code-format = true
 addopts = ["-vvv", "--doctest-modules", "--import-mode=importlib"]
 pythonpath = [".", "src"]
 testpaths = ["tests", "src"]
+asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
