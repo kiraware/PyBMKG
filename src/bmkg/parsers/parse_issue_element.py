@@ -39,12 +39,54 @@ def parse_issue_element(element: Element) -> datetime:
     >>> issue
     datetime.datetime(2024, 1, 16, 3, 23, 47)
     """
-    timestamp_element = element.find("timestamp")
-    if timestamp_element is None:
-        raise WeatherForecastParseError("timestamp tag in issue tag not found")
+    year_element = element.find("year")
+    if year_element is None:
+        raise WeatherForecastParseError("year tag in issue tag not found")
 
-    timestamp = timestamp_element.text
-    if timestamp is None:
-        raise WeatherForecastParseError("timestamp tag in issue tag has no text")
+    year = year_element.text
+    if year is None:
+        raise WeatherForecastParseError("year tag in issue tag has no text")
+
+    month_element = element.find("month")
+    if month_element is None:
+        raise WeatherForecastParseError("month tag in issue tag not found")
+
+    month = month_element.text
+    if month is None:
+        raise WeatherForecastParseError("month tag in issue tag has no text")
+
+    day_element = element.find("day")
+    if day_element is None:
+        raise WeatherForecastParseError("day tag in issue tag not found")
+
+    day = day_element.text
+    if day is None:
+        raise WeatherForecastParseError("day tag in issue tag has no text")
+
+    hour_element = element.find("hour")
+    if hour_element is None:
+        raise WeatherForecastParseError("hour tag in issue tag not found")
+
+    hour = hour_element.text
+    if hour is None:
+        raise WeatherForecastParseError("hour tag in issue tag has no text")
+
+    minute_element = element.find("minute")
+    if minute_element is None:
+        raise WeatherForecastParseError("minute tag in issue tag not found")
+
+    minute = minute_element.text
+    if minute is None:
+        raise WeatherForecastParseError("minute tag in issue tag has no text")
+
+    second_element = element.find("second")
+    if second_element is None:
+        raise WeatherForecastParseError("second tag in issue tag not found")
+
+    second = second_element.text
+    if second is None:
+        raise WeatherForecastParseError("second tag in issue tag has no text")
+
+    timestamp = year + month + day + hour + minute + second
 
     return datetime.strptime(timestamp, "%Y%m%d%H%M%S")

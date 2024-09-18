@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install Poetry
-        uses: snok/install-poetry@v1.3.4
+        uses: snok/install-poetry@v1.4.1
         with:
           virtualenvs-in-project: true
       - name: Mint token

@@ -2,6 +2,27 @@
 
 ## Contributing
 
+Thank you for your interest in contributing to PyBMKG!
+We welcome contributions from everyone. Before you get
+started, please take a moment to review the following
+guidelines.
+
+### Code of Conduct
+
+Please note that this project adheres to the Contributor
+Covenant Code of Conduct. By participating, you are
+expected to uphold this code. Please report any
+unacceptable behavior.
+
+### Ways to Contribute
+
+Here are a few ways you can contribute to PyBMKG:
+
+- Reporting bugs
+- Suggesting new features
+- Writing or improving documentation
+- Submitting bug fixes or enhancements via Pull Requests
+
 ### Getting Started
 
 You can contribute directly to PyBMKG by submit a pull
@@ -58,7 +79,8 @@ dependency with the following command
 poetry install
 ```
 
-And done! You can contribute directly by getting your hands wet.
+And done! You can make your changes and test thoroughly.
+Then push your branch to your fork and submit a pull request.
 
 !!! tip
     If you have installed [poethepoet](https://poethepoet.natn.io/index.html)
