@@ -3,13 +3,8 @@ name = "PyBMKG"
 version = "2.1.1"
 description = "Python BMKG API Wrapper"
 authors = ["Kira <kiraware@github.com>"]
-maintainers = [
-    "Kira <kiraware@github.com>",
-    "vexra <vexra@github.com>",
-]
-packages = [
-    { include = "*", from = "src" }
-]
+maintainers = ["Kira <kiraware@github.com>", "vexra <vexra@github.com>"]
+packages = [{ include = "*", from = "src" }]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/kiraware/PyBMKG"
@@ -53,7 +48,7 @@ optional = true
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
 mkdocs-material = "^9.5.4"
-mkdocstrings = {extras = ["python"], version = "^0.25.0"}
+mkdocstrings = { extras = ["python"], version = "^0.25.0" }
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -63,10 +58,14 @@ backend-path = ["src"]
 [tool.poe.tasks]
 bandit = "bandit -c pyproject.toml -r ."
 mypy = "mypy"
-ruff = "ruff check --fix"
+ruff-fix = "ruff check --fix"
+ruff = "ruff check"
 lint = ["bandit", "mypy", "ruff"]
+format-check = "ruff format --check"
 format = "ruff format"
-test = "pytest --cov=src --cov-report=html"
+docs-build = "poetry run mkdocs build"
+docs-serve = "poetry run mkdocs serve"
+test = "pytest --cov=src"
 
 [tool.bandit]
 targets = ["src", "tests"]
@@ -80,39 +79,20 @@ files = ["src", "tests"]
 strict_optional = false
 
 [tool.ruff]
-exclude = [
-    ".venv",
-    ".git",
-    "__pycache__",
-    "build",
-    "dist",
-    "venv",
-]
+exclude = [".venv", ".git", "__pycache__", "build", "dist", "venv"]
 line-length = 88
 target-version = "py311"
 src = ["src", "tests"]
 
 [tool.ruff.lint]
-select = [
-    "E",
-    "F",
-    "W",
-    "I",
-]
+select = ["E", "F", "W", "I"]
 ignore = []
 
 [tool.ruff.format]
 docstring-code-format = true
 
 [tool.pytest.ini_options]
-addopts = [
-    "-vvv",
-    "--doctest-modules",
-    "--import-mode=importlib",
-]
-pythonpath = [
-    ".",
-    "src",
-]
+addopts = ["-vvv", "--doctest-modules", "--import-mode=importlib"]
+pythonpath = [".", "src"]
 testpaths = ["tests", "src"]
 asyncio_mode = "auto"

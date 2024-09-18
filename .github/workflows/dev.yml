@@ -31,19 +31,19 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-dev-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root --with docs
       - name: Activate virtual environment
         run: source $VENV
       - name: Lint with Ruff
-        run: poetry run ruff check
+        run: poetry run poe ruff
       - name: Check code security with Bandit
-        run: poetry run bandit -c pyproject.toml -r .
+        run: poetry run poe bandit
       - name: Typing with mypy
-        run: poetry run mypy
+        run: poetry run poe mypy
       - name: Format with Ruff
-        run: poetry run ruff format --check
+        run: poetry run poe format-check
       - name: Build docs with Material for MkDocs
-        run: poetry run mkdocs build
+        run: poetry run poe docs-build
