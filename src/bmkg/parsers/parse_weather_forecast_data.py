@@ -121,6 +121,7 @@ def parse_weather_forecast_data(weather_forecast_data: str | bytes) -> WeatherFo
                     ),
                     parameters["wd"],
                     parameters["ws"],
+                    strict=False,
                 )
             )
 

@@ -15,7 +15,7 @@ def test_parse_element_with_invalid_attribute():
     with pytest.raises(
         WeatherForecastParseError, match="value tag in timerange tag not found"
     ):
-        for humidity in parse_humidity_element(element):
+        for _humidity in parse_humidity_element(element):
             pass
 
 
@@ -31,5 +31,5 @@ def test_parse_element_with_invalid_humidity_text():
     with pytest.raises(
         WeatherForecastParseError, match="value tag in timerange tag has no text"
     ):
-        for humidity in parse_humidity_element(element):
+        for _humidity in parse_humidity_element(element):
             pass
