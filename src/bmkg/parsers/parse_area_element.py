@@ -30,19 +30,19 @@ def parse_area_element(element: Element) -> Area:
     >>> from defusedxml.ElementTree import fromstring
     >>> element = fromstring(
     ...     "<area"
-    ...     ' id="501409"'
-    ...     ' latitude="4.176594"'
-    ...     ' longitude="96.124878"'
-    ...     ' coordinate="96.124878 4.176594"'
-    ...     ' type="land"'
-    ...     ' region=""'
-    ...     ' level="1"'
-    ...     ' description="Aceh Barat"'
-    ...     ' domain="Aceh"'
-    ...     ' tags=""'
+    ...     '  id="501409"'
+    ...     '  latitude="4.176594"'
+    ...     '  longitude="96.124878"'
+    ...     '  coordinate="96.124878 4.176594"'
+    ...     '  type="land"'
+    ...     '  region=""'
+    ...     '  level="1"'
+    ...     '  description="Aceh Barat"'
+    ...     '  domain="Aceh"'
+    ...     '  tags=""'
     ...     ">"
-    ...     '<name xml:lang="en_US">Aceh Barat</name>'
-    ...     '<name xml:lang="id_ID">Kab. Aceh Barat</name>'
+    ...     '  <name xml:lang="en_US">Aceh Barat</name>'
+    ...     '  <name xml:lang="id_ID">Kab. Aceh Barat</name>'
     ...     "</area>"
     ... )
     >>> area = parse_area_element(element)

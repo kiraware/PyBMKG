@@ -27,18 +27,18 @@ def parse_temperature_element(element: Element) -> Iterator[Temperature]:
     >>> from defusedxml.ElementTree import fromstring
     >>> element = fromstring(
     ...     '<parameter id="t" description="Temperature" type="hourly">'
-    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
-    ...     '<value unit="C">24</value>'
-    ...     '<value unit="F">75.2</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
-    ...     '<value unit="C">28</value>'
-    ...     '<value unit="F">82.4</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
-    ...     '<value unit="C">26</value>'
-    ...     '<value unit="F">78.8</value>'
-    ...     "</timerange>"
+    ...     '  <timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '    <value unit="C">24</value>'
+    ...     '    <value unit="F">75.2</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '    <value unit="C">28</value>'
+    ...     '    <value unit="F">82.4</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '    <value unit="C">26</value>'
+    ...     '    <value unit="F">78.8</value>'
+    ...     "  </timerange>"
     ...     "</parameter>"
     ... )
     >>> temperature = parse_temperature_element(element)

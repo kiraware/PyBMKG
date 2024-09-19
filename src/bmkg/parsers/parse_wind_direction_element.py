@@ -28,21 +28,21 @@ def parse_wind_direction_element(element: Element) -> Iterator[WindDirection]:
     >>> from defusedxml.ElementTree import fromstring
     >>> element = fromstring(
     ...     '<parameter id="wd" description="Wind direction" type="hourly">'
-    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
-    ...     '<value unit="deg">90</value>'
-    ...     '<value unit="CARD">E</value>'
-    ...     '<value unit="SEXA">9000</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
-    ...     '<value unit="deg">157.5</value>'
-    ...     '<value unit="CARD">SSE</value>'
-    ...     '<value unit="SEXA">15730</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
-    ...     '<value unit="deg">0</value>'
-    ...     '<value unit="CARD">VARIABLE</value>'
-    ...     '<value unit="SEXA">000</value>'
-    ...     "</timerange>"
+    ...     '  <timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '    <value unit="deg">90</value>'
+    ...     '    <value unit="CARD">E</value>'
+    ...     '    <value unit="SEXA">9000</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '    <value unit="deg">157.5</value>'
+    ...     '    <value unit="CARD">SSE</value>'
+    ...     '    <value unit="SEXA">15730</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '    <value unit="deg">0</value>'
+    ...     '    <value unit="CARD">VARIABLE</value>'
+    ...     '    <value unit="SEXA">000</value>'
+    ...     "  </timerange>"
     ...     "</parameter>"
     ... )
     >>> wind_direction = parse_wind_direction_element(element)

@@ -30,24 +30,24 @@ def parse_datetime_element(element: Element) -> Iterator[datetime]:
     >>> from defusedxml.ElementTree import fromstring
     >>> element = fromstring(
     ...     '<parameter id="ws" description="datetime" type="hourly">'
-    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
-    ...     '<value unit="Kt">5</value>'
-    ...     '<value unit="MPH">5.75389725</value>'
-    ...     '<value unit="KPH">9.26</value>'
-    ...     '<value unit="MS">2.57222222</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
-    ...     '<value unit="Kt">2</value>'
-    ...     '<value unit="MPH">2.3015589</value>'
-    ...     '<value unit="KPH">3.704</value>'
-    ...     '<value unit="MS">1.028888888</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
-    ...     '<value unit="Kt">0</value>'
-    ...     '<value unit="MPH">0</value>'
-    ...     '<value unit="KPH">0</value>'
-    ...     '<value unit="MS">0</value>'
-    ...     "</timerange>"
+    ...     '  <timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '    <value unit="Kt">5</value>'
+    ...     '    <value unit="MPH">5.75389725</value>'
+    ...     '    <value unit="KPH">9.26</value>'
+    ...     '    <value unit="MS">2.57222222</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '    <value unit="Kt">2</value>'
+    ...     '    <value unit="MPH">2.3015589</value>'
+    ...     '    <value unit="KPH">3.704</value>'
+    ...     '    <value unit="MS">1.028888888</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '    <value unit="Kt">0</value>'
+    ...     '    <value unit="MPH">0</value>'
+    ...     '    <value unit="KPH">0</value>'
+    ...     '    <value unit="MS">0</value>'
+    ...     "  </timerange>"
     ...     "</parameter>"
     ... )
     >>> datetime = parse_datetime_element(element)

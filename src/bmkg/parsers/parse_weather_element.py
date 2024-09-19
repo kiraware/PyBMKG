@@ -27,15 +27,15 @@ def parse_weather_element(element: Element) -> Iterator[enums.Weather]:
     >>> from defusedxml.ElementTree import fromstring
     >>> element = fromstring(
     ...     '<parameter id="weather" description="Weather" type="hourly">'
-    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
-    ...     '<value unit="icon">60</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
-    ...     '<value unit="icon">60</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
-    ...     '<value unit="icon">1</value>'
-    ...     "</timerange>"
+    ...     '  <timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '    <value unit="icon">60</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '    <value unit="icon">60</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '    <value unit="icon">1</value>'
+    ...     "  </timerange>"
     ...     "</parameter>"
     ... )
     >>> weather = parse_weather_element(element)
