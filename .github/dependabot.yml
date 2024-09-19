@@ -8,7 +8,7 @@ updates:
       dependencies:
         patterns:
           - "*"
-    versioning-strategy: "increase-if-necessary"
+    versioning-strategy: "widen"
 
   - package-ecosystem: "github-actions"
     directory: "/"
