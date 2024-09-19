@@ -26,13 +26,13 @@ def parse_issue_element(element: Element) -> datetime:
     >>> from defusedxml.ElementTree import fromstring
     >>> element = fromstring(
     ...     "<issue>"
-    ...     "<timestamp>20240116032347</timestamp>"
-    ...     "<year>2024</year>"
-    ...     "<month>01</month>"
-    ...     "<day>16</day>"
-    ...     "<hour>03</hour>"
-    ...     "<minute>23</minute>"
-    ...     "<second>47</second>"
+    ...     "  <timestamp>20240116032347</timestamp>"
+    ...     "  <year>2024</year>"
+    ...     "  <month>01</month>"
+    ...     "  <day>16</day>"
+    ...     "  <hour>03</hour>"
+    ...     "  <minute>23</minute>"
+    ...     "  <second>47</second>"
     ...     "</issue>"
     ... )
     >>> issue = parse_issue_element(element)

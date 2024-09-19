@@ -27,15 +27,15 @@ def parse_humidity_element(element: Element) -> Iterator[Humidity]:
     >>> from defusedxml.ElementTree import fromstring
     >>> element = fromstring(
     ...     '<parameter id="hu" description="Humidity" type="hourly">'
-    ...     '<timerange type="hourly" h="0" datetime="202401170000">'
-    ...     '<value unit="%">95</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="6" datetime="202401170600">'
-    ...     '<value unit="%">90</value>'
-    ...     "</timerange>"
-    ...     '<timerange type="hourly" h="12" datetime="202401171200">'
-    ...     '<value unit="%">95</value>'
-    ...     "</timerange>"
+    ...     '  <timerange type="hourly" h="0" datetime="202401170000">'
+    ...     '    <value unit="%">95</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="6" datetime="202401170600">'
+    ...     '    <value unit="%">90</value>'
+    ...     "  </timerange>"
+    ...     '  <timerange type="hourly" h="12" datetime="202401171200">'
+    ...     '    <value unit="%">95</value>'
+    ...     "  </timerange>"
     ...     "</parameter>"
     ... )
     >>> humidity = parse_humidity_element(element)
