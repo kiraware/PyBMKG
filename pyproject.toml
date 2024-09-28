@@ -34,7 +34,7 @@ types-defusedxml = "^0.7.0.20240218"
 [tool.poetry.group.dev.dependencies]
 bandit = "^1.7.6"
 mypy = "^1.8.0"
-poethepoet = "^0.28.0"
+poethepoet = "^0.29.0"
 ruff = "^0.6.5"
 
 [tool.poetry.group.test.dependencies]
@@ -48,7 +48,7 @@ optional = true
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
 mkdocs-material = "^9.5.4"
-mkdocstrings = { extras = ["python"], version = "^0.25.0" }
+mkdocstrings = { extras = ["python"], version = "^0.26.1" }
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
