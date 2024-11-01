@@ -35,12 +35,12 @@ types-defusedxml = "^0.7.0.20240218"
 bandit = "^1.7.6"
 mypy = "^1.8.0"
 poethepoet = "^0.29.0"
-ruff = "^0.6.5"
+ruff = "^0.7.2"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.0.0"
 pytest-asyncio = "^0.24.0"
-pytest-cov = "^5.0.0"
+pytest-cov = "^6.0.0"
 
 [tool.poetry.group.docs]
 optional = true
