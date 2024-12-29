@@ -1,3 +1,7 @@
-from .api import BMKG
+from .api import Earthquake, Shakemap, WeatherForecast
 
-__all__ = ["BMKG"]
+__all__ = [
+    "Earthquake",
+    "Shakemap",
+    "WeatherForecast",
+]

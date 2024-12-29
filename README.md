@@ -34,20 +34,21 @@ pip install PyBMKG
 ```python
 import asyncio
 
-from bmkg import BMKG
-from bmkg.enums import Province
+from bmkg import Earthquake, WeatherForecast
 
 async def main():
-    async with BMKG() as bmkg:
-        weather_forecast = await bmkg.weather_forecast.get_weather_forecast(Province.ACEH)
-        latest_earthquake = await bmkg.earthquake.get_latest_earthquake()
-        strong_earthquake = await bmkg.earthquake.get_strong_earthquake()
-        felt_earthquake = await bmkg.earthquake.get_felt_earthquake()
+    async with Earthquake() as earthquake:
+        latest_earthquake = await earthquake.get_latest_earthquake()
+        strong_earthquake = await earthquake.get_strong_earthquake()
+        felt_earthquake = await earthquake.get_felt_earthquake()
 
-        print(f"Weather Forecast: {weather_forecast}")
         print(f"Latest Earthquakes: {latest_earthquake}")
         print(f"Strong Earthquakes: {strong_earthquake}")
         print(f"Felt Earthquakes: {felt_earthquake}")
+
+    async with WeatherForecast() as weather_forecast:
+        weather_forecast = await weather_forecast.get_weather_forecast("11.01.01.2001")
+        print(f"Weather Forecast: {weather_forecast}")
 
 asyncio.run(main())
 ```

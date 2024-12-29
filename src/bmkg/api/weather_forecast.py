@@ -1,4 +1,3 @@
-from ..enums import Province
 from ..parsers import parse_weather_forecast_data
 from ..schemas import WeatherForecast as WeatherForecastData
 from .api import API
@@ -11,31 +10,35 @@ class WeatherForecast(API):
     Weather Forecast API Wrapper from BMKG API.
     """
 
-    url = "/DataMKG/MEWS/DigitalForecast"
+    base_url = "https://api.bmkg.go.id"
+    url = "/publik/prakiraan-cuaca"
 
-    async def get_weather_forecast(self, province: Province) -> WeatherForecastData:
+    async def get_weather_forecast(self, region_code: str) -> WeatherForecastData:
         """
         Request weather forecast from weather forecast API.
 
         Args:
-            province: A `Province` enum symbolic names (members).
+            region_code: The administrative region code (level IV) for a
+                subdistrict or village in Indonesia. The code is formatted as `W.X.Y.Z`
+                (e.g., `"11.01.01.2001"`). You can find the list of available region codes
+                at https://kodewilayah.id.
 
         Returns:
             A `WeatherForecastData` schema.
 
         Examples:
             >>> import asyncio
-            >>> from bmkg import BMKG
+            >>> from bmkg import WeatherForecast
             >>> async def main():
-            ...     async with BMKG() as bmkg:
-            ...         weather_forecast_data = (
-            ...             await bmkg.weather_forecast.get_weather_forecast(Province.ACEH)
+            ...     async with WeatherForecast() as weather_forecast:
+            ...         weather_forecast_data = await weather_forecast.get_weather_forecast(
+            ...             "11.01.01.2001"
             ...         )
             ...         print(weather_forecast_data)
             >>> asyncio.run(main())
-            WeatherForecast(data=Data(source=...)
-        """  # noqa: E501
+            WeatherForecast(location=Location(admin_level_1=...)
+        """
         async with self._session.get(
-            f"{self.url}/DigitalForecast-{province}.xml"
+            self.url, params={"adm4": region_code}
         ) as response:
-            return parse_weather_forecast_data(await response.read())
+            return parse_weather_forecast_data(await response.json())

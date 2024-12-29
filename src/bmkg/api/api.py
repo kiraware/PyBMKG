@@ -13,9 +13,12 @@ class API:
     """
 
     def __init__(self, session: ClientSession | None = None) -> None:
-        self._session = (
-            session if session is not None else ClientSession("https://data.bmkg.go.id")
-        )
+        if not hasattr(self, "base_url"):
+            raise NotImplementedError(
+                f"{self.__class__.__name__} must define 'base_url'."
+            )
+
+        self._session = session if session is not None else ClientSession(self.base_url)
 
     async def __aenter__(self) -> Self:
         return self

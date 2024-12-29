@@ -11,6 +11,7 @@ class Shakemap(API, schemas.Shakemap):
     Shakemap API Wrapper from BMKG API.
     """
 
+    base_url = "https://data.bmkg.go.id"
     url = "/DataMKG/TEWS"
 
     def __init__(self, file_name: str, session: ClientSession | None = None) -> None:
@@ -26,15 +27,15 @@ class Shakemap(API, schemas.Shakemap):
 
         Examples:
             >>> import asyncio
-            >>> from bmkg import BMKG
+            >>> from bmkg import Earthquake
             >>> async def main():
-            ...     async with BMKG() as bmkg:
-            ...         latest_earthquake = await bmkg.earthquake.get_latest_earthquake()
+            ...     async with Earthquake() as earthquake:
+            ...         latest_earthquake = await earthquake.get_latest_earthquake()
             ...         shakemap = latest_earthquake.shakemap
             ...         shakemap_content = await shakemap.get_content()
             ...         print(shakemap_content)
             >>> asyncio.run(main())
             b'...'
-        """  # noqa: E501
+        """
         async with self._session.get(f"{self.url}/{self.file_name}") as response:
             return await response.read()

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "PyBMKG"
-version = "2.1.1"
+version = "3.0.0"
 description = "Python BMKG API Wrapper"
 authors = ["Kira <kiraware@github.com>"]
 maintainers = ["Kira <kiraware@github.com>", "vexra <vexra@github.com>"]
@@ -27,9 +27,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 aiohttp = "^3.9.1"
-defusedxml = "^0.7.1"
 python = "^3.11"
-types-defusedxml = "^0.7.0.20240218"
 
 [tool.poetry.group.dev.dependencies]
 bandit = "^1.7.6"
