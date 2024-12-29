@@ -1,6 +1,6 @@
 import pytest
 from aiohttp import ClientSession
-from bmkg.api import API
+from bmkg.api.api import API
 
 
 def test_api_without_base_url():
