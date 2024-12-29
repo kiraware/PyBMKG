@@ -17,6 +17,7 @@ class Earthquake(API):
     Earthquake API Wrapper from BMKG API.
     """
 
+    base_url = "https://data.bmkg.go.id"
     url = "/DataMKG/TEWS"
 
     async def get_latest_earthquake(self) -> schemas.LatestEarthquake:
@@ -28,17 +29,17 @@ class Earthquake(API):
 
         Examples:
             >>> import asyncio
-            >>> from bmkg import BMKG
+            >>> from bmkg import Earthquake
             >>> async def main():
-            ...     async with BMKG() as bmkg:
-            ...         latest_earthquake = await bmkg.earthquake.get_latest_earthquake()
+            ...     async with Earthquake() as earthquake:
+            ...         latest_earthquake = await earthquake.get_latest_earthquake()
             ...         print(latest_earthquake)
             >>> asyncio.run(main())
             LatestEarthquake(earthquake=Earthquake(datetime=datetime.datetime(...)
 
         Notes:
             The `LatestEarthquake` schema has a `shakemap` field which is the `Shakemap` API.
-        """  # noqa: E501
+        """
         async with self._session.get(f"{self.url}/autogempa.json") as response:
             latest_earthquake = parse_latest_earthquake_data(await response.json())  # type: ignore
 
@@ -57,14 +58,14 @@ class Earthquake(API):
 
         Examples:
             >>> import asyncio
-            >>> from bmkg import BMKG
+            >>> from bmkg import Earthquake
             >>> async def main():
-            ...     async with BMKG() as bmkg:
-            ...         strong_earthquake = await bmkg.earthquake.get_strong_earthquake()
+            ...     async with Earthquake() as earthquake:
+            ...         strong_earthquake = await earthquake.get_strong_earthquake()
             ...         print(strong_earthquake)
             >>> asyncio.run(main())
             <generator object parse_strong_earthquake_data at ...>
-        """  # noqa: E501
+        """
         async with self._session.get(f"{self.url}/gempaterkini.json") as response:
             return parse_strong_earthquake_data(await response.json())  # type: ignore
 
@@ -77,10 +78,10 @@ class Earthquake(API):
 
         Examples:
             >>> import asyncio
-            >>> from bmkg import BMKG
+            >>> from bmkg import Earthquake
             >>> async def main():
-            ...     async with BMKG() as bmkg:
-            ...         felt_earthquake = await bmkg.earthquake.get_felt_earthquake()
+            ...     async with Earthquake() as earthquake:
+            ...         felt_earthquake = await earthquake.get_felt_earthquake()
             ...         print(felt_earthquake)
             >>> asyncio.run(main())
             <generator object parse_felt_earthquake_data at ...>
