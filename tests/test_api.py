@@ -3,12 +3,12 @@ from aiohttp import ClientSession
 from bmkg.api.api import API
 
 
-def test_api_without_base_url():
+async def test_api_without_base_url():
     with pytest.raises(NotImplementedError):
         API()
 
 
-def test_api_with_base_url():
+async def test_api_with_base_url():
     class TestAPI(API):
         base_url = "http://example.com"
 
