@@ -16,22 +16,18 @@ class Weather:
         t: Temperature in degrees Celsius.
         tcc: Total cloud cover percentage (0-100%).
         tp: Precipitation amount in millimeters.
-        weather: Weather condition code, corresponds to a predefined set of
-            weather conditions.
+        weather: Weather condition code, corresponds to a predefined set of weather conditions.
         wd_deg: Wind direction in degrees (0-360), where 0° is North.
         wd: Wind direction from which the wind blows.
         wd_to: Wind direction the wind is blowing towards.
         ws: Wind speed in kilometers per hour (km/h).
         hu: Humidity percentage (0-100%).
         vs: Visibility in meters.
-        time_index: Time index in the format `"x-y"`, where `x` is the hour
-            start of the forecast, and `y` is the hour end of the forecast.
-        analysis_date: The date when the weather data was generated (in UTC
-            format).
-        image: URL to an image representing the weather condition (e.g., an
-            icon).
+        time_index: Time index in the format `"x-y"`, where `x` is the hour start of the forecast, and `y` is the hour end of the forecast.
+        analysis_date: The date when the weather data was generated (in UTC format).
+        image: URL to an image representing the weather condition (e.g., an icon).
         utc_datetime: The UTC datetime when the weather data was recorded.
-        local_datetime: The local datetime when the weather data was recorded in this format "%Y-%m-%d %H:%M:%S"(adjusted for time zone).
+        local_datetime: The local datetime when the weather data was recorded.
     """
 
     datetime: dt.datetime

@@ -18,10 +18,7 @@ class WeatherForecast(API):
         Request weather forecast from weather forecast API.
 
         Args:
-            region_code: The administrative region code (level IV) for a
-                subdistrict or village in Indonesia. The code is formatted as `W.X.Y.Z`
-                (e.g., `"11.01.01.2001"`). You can find the list of available region codes
-                at https://kodewilayah.id.
+            region_code: The administrative region code (level IV) for a subdistrict or village in Indonesia. The code is formatted as `W.X.Y.Z` (e.g., `"11.01.01.2001"`). You can find the list of available region codes at https://kodewilayah.id.
 
         Returns:
             A `WeatherForecastData` schema.
