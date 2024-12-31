@@ -21,7 +21,7 @@ def parse_location_data(location_data: LocationData) -> Location:
         location_data["adm3"],
         location_data["adm4"],
         location_data["provinsi"],
-        location_data["kotkab"],
+        location_data["kota"],
         location_data["kecamatan"],
         location_data["desa"],
         float(location_data["lon"]),

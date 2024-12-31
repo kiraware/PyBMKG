@@ -71,7 +71,7 @@ class LocationData(TypedDict):
     adm3: str
     adm4: str
     provinsi: str
-    kotkab: str
+    kota: str
     kecamatan: str
     desa: str
     lon: float
