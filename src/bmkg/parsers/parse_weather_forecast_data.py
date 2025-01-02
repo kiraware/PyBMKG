@@ -21,7 +21,8 @@ def parse_weather_forecast_data(
     location = parse_location_data(weather_forecast_data["lokasi"])
     weathers = [
         parse_weather_data(weather)
-        for weather in weather_forecast_data["data"][0]["cuaca"][0]
+        for weathers in weather_forecast_data["data"][0]["cuaca"]
+        for weather in weathers
     ]
 
     return WeatherForecast(location, weathers)
